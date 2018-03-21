@@ -194,39 +194,36 @@ void main(void)
 			{
                 while(choice != 99)
                 {
-                    puts("\nWelcome to Room 19..");
-                    puts("\nYou take your first steps and see a case at the end of the hall.");
-                    puts("Out of the corners of the dark room leprechauns begin appearing and");
-                    puts("walk towards the case.");
-                    puts("\nEnter..\n");
-                    puts("1.If you want to exit room 19");
-                    puts("2.If you talk your way out of this");
-                    puts("3.If you unsheathe your Great Sword and commence an attack\n");
+                        puts("\nWelcome to Room 19..");
+                        puts("\nYou take your first steps and see a case at the end of the hall.");
+                        puts("Out of the corners of the dark room leprechauns begin appearing and");
+                        puts("walk towards the case.");
+                        puts("\nEnter..\n");
+                        puts("1.If you want to exit room 19");
+                        puts("2.If you talk your way out of this");
+                        puts("3.If you unsheathe your Great Sword and commence an attack\n");
                     
-                    int choice;
-                    scanf("%d", &choice);
+                        int choice;
+                        scanf("%d", &choice);
                         
-                    switch (choice)
-                    {
-                        case 1:
-                            puts("You leave the room and miss the opportunity of a lifetime.");
-                            break;
-                        case 2:
-                            puts("You ask the head leprechauns ");
-                            break;
-                        case 3:
-                            puts(" ");
-                            break;
-                            
-                        default:
+                        switch (choice)
+                        {
+                            case 1:
+                                puts("You leave the room and miss the opportunity of a lifetime.");
+                                break;
+                            case 2:
+                                puts("You ask the head leprechauns ");
+                                break;
+                            case 3:
+                                puts(" ");
+                                break;
+                            default:
                             printf("Error! Input 1-3 only");
                             break;
-                            
+                        }
+                        break;
                     }
                     break;
-                    
-                }
-                break;
 			}
 			case 20:
 			{
@@ -277,7 +274,7 @@ void main(void)
 			{
 					while(choice != 99)
 					{
-							puts("You open the door and close it behind you.");
+                            puts("You open the door and close it behind you.");
 							puts("After you overcome the panic from almost drowning, you look around and You find yourself in a cave, the air is damp and you smell mold.");
 							puts("You notice a skeleton at your feet with it's right hand clenched around something. The cave ahead leads to a tunnel and you see a door to your right.");
 							puts("At this point you have 3 choices:");
