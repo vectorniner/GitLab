@@ -1,6 +1,6 @@
 //Contributors
 //Garrett Poppe 3/19/18
-//
+//Salvador Rodriguez
 //
 
 #include <stdio.h>
