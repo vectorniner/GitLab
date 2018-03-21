@@ -50,8 +50,31 @@ void main(void)
 			{
 					while(choice != 99)
 					{
-							puts("you open the door and find ........");
-							scanf("%d",&choice);
+							//int input;
+							printf("This is Room 3.\n ");
+							printf ("You walk in and see 4 cards facing down on a table...\n");
+							printf ("You may choose 1 card to determine your fate:\n");
+							scanf ("%d", &choice);
+
+							switch (choice)
+							{
+								case 1:
+									printf("You die.\n");
+									break;
+								case 2:
+									printf ("You survive.\n");
+									break;
+									// you may choose another card
+								case 3:
+									printf ("You got lucky. You may go to another room");
+									break;
+								case 4:
+									printf ("You get another card");
+									break;
+								default:
+									break;
+	
+							}
 					}
 					break;
 			}
