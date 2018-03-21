@@ -170,10 +170,10 @@ void main(void)
 						        int userInput;
       						        int trapAnswer;
        						        int userHealth = 50;
-
+		printf("Beginning Health: %d\n", userHealth);
        		puts("Arriving in room 16, an empty cavern governed with sleeping bats, the noise of your footsteps jump off against the walls.");
 						         puts("Towards the end, you can see light coming through, as if it were an exit.");
-    						         puts("On your left looks to be a never ending cave room.");
+    						         puts("On your left looks to be a never ending cave.");
        							 puts("On your right you can hear what seems to be water rushing downwards.");
        							 puts("Pick a number between 1-3 to see which direction you fall in.");
 
@@ -191,9 +191,10 @@ void main(void)
 									printf("Opening the raggedy wooden chests, you are met with a flock of bats!");
 									puts("You put your arms up in an attempt to protect yourself, resulting in wounds.");
 									puts("The bats quickly leave the room. -10 HP from damage.");
+									
 									userHealth = userHealth - 10;
+									printf("HP left: %d\n", userHealth);
 								}
-								printf("HP left: %d\n To Be Continued...", userHealth);
 							}
 							
 							break;
