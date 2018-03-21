@@ -178,6 +178,25 @@ void main(void)
        							 puts("Pick a number between 1-3 to see which direction you fall in.");
 
        							 scanf("%d", &userInput);
+
+							if(userInput == 1)
+							{
+								printf("Walking towards the end of the cavern, the light becomes brighter and brighter.");
+								puts("Upon entering, you are met with a room of variety of chests.");
+								puts("Can you trust this mysterious treasure room? Choose between 1-5.");
+								
+								scanf("%d", &trapAnswer);
+								if((trapAnswer == 1) || (trapAnswer == 3))
+								{
+									printf("Opening the raggedy wooden chests, you are met with a flock of bats!");
+									puts("You put your arms up in an attempt to protect yourself, resulting in wounds.");
+									puts("The bats quickly leave the room. -10 HP from damage.");
+									userHealth = userHealth - 10;
+								}
+								printf("HP left: %d\n To Be Continued...", userHealth);
+							}
+							
+							break;
 					}
 					break;
 			}
