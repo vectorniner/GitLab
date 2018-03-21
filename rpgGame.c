@@ -218,7 +218,7 @@ void main(void)
                                     puts(" ");
                                     break;
                                 default:
-                                    printf("Error! Input 1-3 only");
+                                    puts("Error! Input 1-3 only");
                                     break;
                             }
                         break;
