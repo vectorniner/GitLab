@@ -188,25 +188,39 @@ void main(void)
 							puts("you open the door and find ........");
 							puts("Hordes of the crag-goblins");
 
-							int battleCounter = 0;
-							int locationChoice = 0;
-							int heroChoice = 0;
-							puts("You need to fight the crag-goblins! What type of hero are you?");
-							puts("1. A dwarf");
-							puts("2. Paladin Lancer");
-							puts("3. An archer");
-							scanf("%d", &heroChoice);
-
-							puts("There are many paths to fight the King Goblin! Which would you like to explore?");
-							puts("1. Volcanic Crag of Smaug");
-							puts("2. Ice Spires of Kyurem");
-							puts("3. Fire Pits of Apokylyps");
-							puts("4. Holland Marsh");
-							puts("6. Terminal from MW2");
+							puts("You need to fight the crag-goblins! Lancer Paladin, you can defeat them!");
 							
-							scanf("%d", &locationChoice);
-
 							
+							
+							puts("There are many paths to fight the King Goblin!");
+							puts("Travel through the Cavern of Smaug!");
+							puts("Climb the Spires of Kyurem!");
+							puts("Evade the Fire Pits of Apokylyps");
+							puts("Trudge through the Holland Marsh");
+							puts("\n\n");
+							puts("Traveling through the cavern of Smaug, you come across a goblet of gold.");
+							puts("Will you touch the goblet?");
+							puts("0 = yes; 1 = no");
+							scanf("%d", &choice);
+							if (choice == 0)
+							{
+								puts("The goblet was laced in poison. You tried your best, Lancer!\n\n");
+								break;
+							} 
+							else if (choice == 1)
+							{
+								puts("Good choice! Ah, a dragon! RUN, escape!\n");
+								puts("We're journeying through the Ice Spires. Watch your step.\n");
+								puts("\n...\n");
+								/*								
+								puts("It looks like you can jump across a gap. Will you, or will you just the edge slowly?");
+								puts("0 = yes; 1 = no");
+								scanf("%d", &choice);
+								*/
+								puts("You fell. I'm sorry, Lancer. Try again next time. Your story isnt over!\n");
+								break;
+							}
+							break;
 							scanf("%d",&choice);
 					}
 					break;
