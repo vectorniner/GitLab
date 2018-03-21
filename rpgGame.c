@@ -194,8 +194,32 @@ void main(void)
 			{
 					while(choice != 99)
 					{
-							puts("you open the door and find ........");
-							scanf("%d",&choice);
+                        puts("\nWelcome to Room 19..");
+                        puts("\nYou take your first steps and see a case at the end of the hall.");
+                        puts("Out of the corners of the dark room leprechauns begin appearing and");
+                        puts("walk towards the case.");
+                        puts("\nEnter..\n");
+                        puts("1.If you want to exit room 19");
+                        puts("2.If you talk your way out of this");
+                        puts("3.If you unsheathe your Great Sword and commence an attack\n");
+                        
+                        int usrinput;
+                        scanf("%d", &usrinput);
+                        
+                        switch (usrinput) {
+                            case 1:
+                                puts(" ");
+                                break;
+                            case 2:
+                                puts(" ");
+                                break;
+                            case 3:
+                                puts(" ");
+                                break;
+                            default:
+                                printf("Error! Input 1-3 only");
+                                break;
+                        }
 					}
 					break;
 			}
