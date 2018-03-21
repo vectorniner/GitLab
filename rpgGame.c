@@ -32,8 +32,35 @@ void main(void)
 			{
 				while(choice != 99)
 				{
-					puts("you open the door and find ........");
-					scanf("%d",&choice);
+
+							puts("You open the door and find a dog");
+							puts("At this point you have 3 choices: Please enter a number 1-3");
+							puts("1. Pet the dog");
+							puts("2. Feed the dog with the peanut butter sandwich you have in your hand");
+							puts("3. Run away.");
+							scanf("%d",&choice);
+							if(choice == 1)
+							{
+								puts("You pet the dog and he seems happy.");
+								puts("To be continued...");
+								break;
+							}
+							else if(choice == 2)
+							{
+								puts("You try and feed the dog but the dog seems like he is not hungry");
+								puts("To be continued....");
+								break;
+							}
+							else if(choice == 3)
+							{
+								puts("You run away but the dog barks.");
+                                                                puts("To be continued....");
+								break;
+							}
+							else
+							{
+								puts("wrong choice");
+							}
 				}
 				break;
 			}
