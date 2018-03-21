@@ -1,10 +1,12 @@
 //Contributors
 //Garrett Poppe 3/19/18
-//
+//Mahir Eldaw 3/21/18
 //
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h>
+#include <time.h>
 
 
 void main(void)
@@ -132,7 +134,103 @@ void main(void)
 					while(choice != 99)
 					{
 							puts("you open the door and find ........");
-							scanf("%d",&choice);
+							printf("A room full of games\nWelcome this is room 12\nWhat would you like to do: \n99. Leave Room 12\n2.Stay\n");
+							/* scanf("%d",&choice); */
+							int input=0;
+							srand(time(NULL));
+							scanf("%d", &choice);
+
+							if(choice==1)
+							{
+								puts("Thank You Come Again");
+							}
+
+							if(choice==2)
+	 						{
+	 							while(input!=5)
+	 							{
+	 								puts("Let's play some games");
+									puts("Choose a game");
+									printf("Games:\n1. Guess the number\n2. Word Modification\n3. Guess the word\n4. Roll a dice\n5. Leave Games Room\n");
+								
+									scanf("%d",&input);
+
+									if(input==1)
+									{
+										puts("Welcome to Guess the Number Game");
+										int a=0;
+										int b=(rand() % 10);;
+					
+
+										while(a!=b)
+										{
+											printf("Write a number between 0 and 10 inclusive\n");
+											scanf("%d",&a);
+
+											while(a<=0 && a>=11)
+											{
+												printf("Number is out of bounds\n");
+												printf("Write a number between 0 and 10 inclusive\n");
+												scanf("%d",&a);
+											}
+
+											if(a<b)
+											{
+												printf("Too low \n");
+											}
+
+											if(a>b)
+											{
+												printf("Too high \n");
+											}
+
+											if(a==b)
+											{
+												printf("Correct guess\n");
+											}
+
+										}
+				
+									}
+
+									else if(input==2)
+									{
+										puts("Welcome to the word Modification Game");
+										printf("Write a word to see it printed backwards\n");
+										int i=0;
+										int arrayCounter=0;
+										int line=0;
+										char backwards[30]=" ";
+				
+										scanf("%29s",backwards);
+				
+										for(i=29; i>=0; i--)
+										{
+											printf("%c", backwards[i]);
+										}
+										puts("");
+										puts("");
+									}
+
+									else if(input==3)
+									{
+										puts("Welcome to Guess the word Game");
+										puts("Used to ride in parks");
+				
+				
+									}
+
+									else if(input==4)
+									{
+										puts("Welcome to Roll the Dice Game");
+									}	
+
+									else if(input==99)
+									{
+										puts("Thank You Come Again");
+									}
+		 						}
+							}
 					}
 					break;
 			}
