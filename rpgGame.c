@@ -1,6 +1,6 @@
 //Contributors
 //Garrett Poppe 3/19/18
-//
+//Joseph Moreno
 //
 
 #include <stdio.h>
@@ -181,11 +181,32 @@ void main(void)
 					}
 					break;
 			}
-			case 18:
+			case 18://MINE: JOSEPH MORENO - ROOM 18			
 			{
 					while(choice != 99)
 					{
 							puts("you open the door and find ........");
+							puts("Hordes of the crag-goblins");
+
+							int battleCounter = 0;
+							int locationChoice = 0;
+							int heroChoice = 0;
+							puts("You need to fight the crag-goblins! What type of hero are you?");
+							puts("1. A dwarf");
+							puts("2. Paladin Lancer");
+							puts("3. An archer");
+							scanf("%d", &heroChoice);
+
+							puts("There are many paths to fight the King Goblin! Which would you like to explore?");
+							puts("1. Volcanic Crag of Smaug");
+							puts("2. Ice Spires of Kyurem");
+							puts("3. Fire Pits of Apokylyps");
+							puts("4. Holland Marsh");
+							puts("6. Terminal from MW2");
+							
+							scanf("%d", &locationChoice);
+
+							
 							scanf("%d",&choice);
 					}
 					break;
