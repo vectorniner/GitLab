@@ -220,6 +220,7 @@ void main(void)
                                 printf("Error! Input 1-3 only");
                                 break;
                         }
+                        break;
                     }
 					break;
 			}
