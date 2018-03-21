@@ -192,8 +192,8 @@ void main(void)
 			}
 			case 19:
 			{
-                while(choice != 99)
-                {
+                    while(choice != 99)
+                    {
                         puts("\nWelcome to Room 19..");
                         puts("\nYou take your first steps and see a case at the end of the hall.");
                         puts("Out of the corners of the dark room leprechauns begin appearing and");
