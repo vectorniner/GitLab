@@ -86,8 +86,10 @@ void main(void)
 			{
 					while(choice != 99)
 					{
-							puts("you open the door and find ........");
+ 							puts("You find youself in a room filled with pizza and posters of Blink 182. You have now succesfully time traveled to the year 2000. Hungry out of your mi                                                         and you hurridly walk over to the table stacked to the ceiling with pizza. You discover there are three types of pizza: pepperoni, cheese, and barbeque ch                                                        icken pizza. Which type of pizza do you deceide to eat first?");
+							puts("1.Pepperoni 2. Cheese or 3. barbeque chicken");
 							scanf("%d",&choice);
+							break;
 					}
 					break;
 			}
