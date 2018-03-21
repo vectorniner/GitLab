@@ -203,15 +203,15 @@ void main(void)
                         puts("2.If you talk your way out of this");
                         puts("3.If you unsheathe your Great Sword and commence an attack\n");
                         
-                        int usrinput;
-                        scanf("%d", &usrinput);
+                        int choice;
+                        scanf("%d", &choice);
                         
-                        switch (usrinput) {
+                        switch (choice) {
                             case 1:
-                                puts(" ");
+                                puts("You leave the room and miss the opportunity of a lifetime.");
                                 break;
                             case 2:
-                                puts(" ");
+                                puts("You ask the head leprechauns ");
                                 break;
                             case 3:
                                 puts(" ");
@@ -220,7 +220,7 @@ void main(void)
                                 printf("Error! Input 1-3 only");
                                 break;
                         }
-					}
+                    }
 					break;
 			}
 			case 20:
