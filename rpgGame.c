@@ -1,6 +1,6 @@
 //Contributors
 //Garrett Poppe 3/19/18
-//
+//Diana Guevara-Colocho 3/21/2018
 //
 
 #include <stdio.h>
@@ -167,8 +167,17 @@ void main(void)
 			{
 					while(choice != 99)
 					{
-							puts("you open the door and find ........");
-							scanf("%d",&choice);
+						        int userInput;
+      						        int trapAnswer;
+       						        int userHealth = 50;
+
+       		puts("Arriving in room 16, an empty cavern governed with sleeping bats, the noise of your footsteps jump off against the walls.");
+						         puts("Towards the end, you can see light coming through, as if it were an exit.");
+    						         puts("On your left looks to be a never ending cave room.");
+       							 puts("On your right you can hear what seems to be water rushing downwards.");
+       							 puts("Pick a number between 1-3 to see which direction you fall in.");
+
+       							 scanf("%d", &userInput);
 					}
 					break;
 			}
