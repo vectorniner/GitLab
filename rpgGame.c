@@ -187,17 +187,8 @@ void main(void)
 					{
 							puts("you open the door and find ........");
 							puts("Hordes of the crag-goblins");
-
 							puts("You need to fight the crag-goblins! Lancer Paladin, you can defeat them!");
-							
-							
-							
-							puts("There are many paths to fight the King Goblin!");
-							puts("Travel through the Cavern of Smaug!");
-							puts("Climb the Spires of Kyurem!");
-							puts("Evade the Fire Pits of Apokylyps");
-							puts("Trudge through the Holland Marsh");
-							puts("\n\n");
+							puts("There are many paths to fight the King Goblin!");							
 							puts("Traveling through the cavern of Smaug, you come across a goblet of gold.");
 							puts("Will you touch the goblet?");
 							puts("0 = yes; 1 = no");
@@ -212,10 +203,15 @@ void main(void)
 								puts("Good choice! Ah, a dragon! RUN, escape!\n");
 								puts("We're journeying through the Ice Spires. Watch your step.\n");
 								puts("\n...\n");
-								/*								
-								puts("It looks like you can jump across a gap. Will you, or will you just the edge slowly?");
-								puts("0 = yes; 1 = no");
-								scanf("%d", &choice);
+								/* These will all be used later;					
+									puts("It looks like you can jump across a gap. Will you, or will you just the edge slowly?");
+									puts("0 = yes; 1 = no");
+									scanf("%d", &choice);
+									puts("Travel through the Cavern of Smaug!");
+									puts("Climb the Spires of Kyurem!");
+									puts("Evade the Fire Pits of Apokylyps");
+									puts("Trudge through the Holland Marsh");
+									puts("\n\n");
 								*/
 								puts("You fell. I'm sorry, Lancer. Try again next time. Your story isnt over!\n");
 								break;
