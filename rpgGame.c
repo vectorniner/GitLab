@@ -50,8 +50,38 @@ void main(void)
 			{
 					while(choice != 99)
 					{
-							puts("you open the door and find ........");
-							scanf("%d",&choice);
+							//int input;
+							printf ("\n");
+							printf("This is Room 3.\n ");
+							printf ("You walk into a strangely bright and colorful room. However, you see 4 untitled buttons on a table...\n");
+							printf ("Keep in mind: There are hidden doors within this bright and colorful room. The only thing keeping these doors open is the power. Would be a mighty shame (for you) if there was a power outage!\n");
+							printf ("Above the buttons a sign reads: You may choose press one button to determine your fate. To not keep you in total suspense, a small LCD display will vaguely let you know what just happened after you pressed this button:\n");
+							scanf ("%d", &choice);
+
+							switch (choice)
+							{
+								case 1:
+									printf ("\n");
+									printf("Ya done messed up! Looks like this wasn't the number one choice you thought it was... This room will start filling with water now... Hope you know how to swim!!! :D \n");
+									break;
+								case 2:
+									printf ("\n");
+									printf ("You survive. Now, get out of my room!\n");
+									break;
+									// you may choose another card
+								case 3:
+									printf ("\n");
+									printf ("You got lucky. You have been granted permission to press more buttons! Sounds like fun...");
+									scanf ("%d", &choice);
+									break;
+								case 4:
+									printf ("\n");
+									printf ("This button just cut power to lights in the room (as well as those hidden doors I mentioned before). Hope you like the dark and oversized felines...\n");
+									break;
+								default:
+									break;
+	
+							}
 					}
 					break;
 			}
