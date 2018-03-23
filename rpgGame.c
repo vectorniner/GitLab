@@ -1,11 +1,12 @@
 //Contributors
 //Garrett Poppe 3/19/18
+//Diana Guevara-Colocho 3/21/2018
 //Mahir Eldaw 3/21/18
-//
 //Salvador Rodriguez 3/21/2018
 //Joseph Moreno
 //Maik De Leon Lopez 3/21/18
 //Kevin Ramirez
+
 
 
 #include <stdio.h>
@@ -466,8 +467,37 @@ void main(void)
 			{
 					while(choice != 99)
 					{
-							puts("you open the door and find ........");
-							scanf("%d",&choice);
+						        int userInput;
+      						        int trapAnswer;
+       						        int userHealth = 50;
+		printf("Beginning Health: %d\n", userHealth);
+       		puts("Arriving in room 16, an empty cavern governed with sleeping bats, the noise of your footsteps jump off against the walls.");
+						         puts("Towards the end, you can see light coming through, as if it were an exit.");
+    						         puts("On your left looks to be a never ending cave.");
+       							 puts("On your right you can hear what seems to be water rushing downwards.");
+       							 puts("Pick a number between 1-3 to see which direction you fall in.");
+
+       							 scanf("%d", &userInput);
+
+							if(userInput == 1)
+							{
+								printf("Walking towards the end of the cavern, the light becomes brighter and brighter.");
+								puts("Upon entering, you are met with a room of variety of chests.");
+								puts("Can you trust this mysterious treasure room? Choose between 1-5.");
+								
+								scanf("%d", &trapAnswer);
+								if((trapAnswer == 1) || (trapAnswer == 3))
+								{
+									printf("Opening the raggedy wooden chests, you are met with a flock of bats!");
+									puts("You put your arms up in an attempt to protect yourself, resulting in wounds.");
+									puts("The bats quickly leave the room. -10 HP from damage.");
+									
+									userHealth = userHealth - 10;
+									printf("HP left: %d\n", userHealth);
+								}
+							}
+							
+							break;
 					}
 					break;
 			}
