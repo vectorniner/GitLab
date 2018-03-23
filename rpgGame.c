@@ -1,5 +1,6 @@
 //Contributors
 //Garrett Poppe 3/19/18
+//Brian Baskovich 3/21/18
 //Diana Guevara-Colocho 3/21/2018
 //Mahir Eldaw 3/21/18
 //Salvador Rodriguez 3/21/2018
@@ -12,7 +13,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
+#include <string.h>
 #include <time.h>
+
 
 
 void main(void)
@@ -85,38 +88,8 @@ void main(void)
 			{
 					while(choice != 99)
 					{
-							//int input;
-							printf ("\n");
-							printf("This is Room 3.\n ");
-							printf ("You walk into a strangely bright and colorful room. However, you see 4 untitled buttons on a table...\n");
-							printf ("Keep in mind: There are hidden doors within this bright and colorful room. The only thing keeping these doors open is the power. Would be a mighty shame (for you) if there was a power outage!\n");
-							printf ("Above the buttons a sign reads: You may choose press one button to determine your fate. To not keep you in total suspense, a small LCD display will vaguely let you know what just happened after you pressed this button:\n");
-							scanf ("%d", &choice);
-
-							switch (choice)
-							{
-								case 1:
-									printf ("\n");
-									printf("Ya done messed up! Looks like this wasn't the number one choice you thought it was... This room will start filling with water now... Hope you know how to swim!!! :D \n");
-									break;
-								case 2:
-									printf ("\n");
-									printf ("You survive. Now, get out of my room!\n");
-									break;
-									// you may choose another card
-								case 3:
-									printf ("\n");
-									printf ("You got lucky. You have been granted permission to press more buttons! Sounds like fun...");
-									scanf ("%d", &choice);
-									break;
-								case 4:
-									printf ("\n");
-									printf ("This button just cut power to lights in the room (as well as those hidden doors I mentioned before). Hope you like the dark and oversized felines...\n");
-									break;
-								default:
-									break;
-	
-							}
+							puts("you open the door and find ........");
+							scanf("%d",&choice);
 					}
 					break;
 			}
@@ -476,8 +449,52 @@ void main(void)
 			{
 					while(choice != 99)
 					{
-							puts("you open the door and find ........");
-							scanf("%d",&choice);
+						char newName[256];
+						char quest[256];
+						char color[256];
+						char capital[256];
+						char airVelocity[256];
+						int i = 0;
+
+						puts("You enter room 14 and the door closes behind you. You hear a click that tells you the door is sealed from the water outside, but also locked. The first thing you notice is that it's dark. Like, really dark. Darker than I like my coffee. And that's pretty dark. Anyway, you hear a disembodied voice that seems to come from everywhere. It tells you if you want to progress you must correctly answer all its questions.");
+ 						puts("He asks his first question: \"WHAT... is your name?\"");
+						scanf("%s", newName);
+						if(strcmp(name, newName) != 0)
+						{
+							puts("You die");
+							break;
+						}
+        					puts("You hear an electric hum as the lights in the room turn on and begin to brighten. They're uncomfortably bright, like looking into the sun, but at least you can see. The room is qite large - larger than it should be considering how close the other doors were. Besides the lights, the room is completely and utterly undecorated. So much so it doesn't even have a door. Including the one you came through. Strange, isn't it?");
+        					puts("\"WHAT... is your quest?\"");
+        					scanf("%s", quest);
+        					puts("\"WHAT... is your favorite color?\"");
+        					scanf("%s", color);
+						scanf("%s", color);
+						// I have to put this second scan or else it just skips it. Idk why.
+        					puts("\"WHAT... is the capital of Assyria?\"");
+        					scanf("%[^\n]s", capital);
+        					for(i = 0; i < 256; i++)
+        					{
+                					capital[i] = tolower(capital[i]);
+        					}
+        					if((strcmp(capital, "assur") != 0) && (strcmp(capital, "nineveh") != 0))
+        					{
+        					        puts("You die");
+        					        break;
+        					}
+        					puts("\"WHAT... is the air speed velocity of an unladen swallow?\"");
+						scanf("%[^\n]s", airVelocity);
+        					for(i = 0; i < 256; i++);
+        					{
+        					        airVelocity[i] = tolower(airVelocity[i]);
+        					}
+        					if(strcmp(airVelocity, "whatdoyoumean?anafricanoreuropeanswallow?") != 0)
+        					{
+							puts("You die");
+        					        break;
+						}
+						puts("On the side of the room opposite from where you entered, the wall slowly ascends like a garage door to reveal a bridge. You cross the bridge, and find yourself... back in the damn water room somehow.");
+						break;
 					}
 					break;
 			}
@@ -579,38 +596,12 @@ void main(void)
 			}
 			case 19:
 			{
-                    while(choice != 99)
-                    {
-                            puts("\nWelcome to Room 19..");
-                            puts("\nYou take your first steps and see a case at the end of the hall.");
-                            puts("Out of the corners of the dark room leprechauns begin appearing and");
-                            puts("walk towards the case.");
-                            puts("\nEnter..\n");
-                            puts("1.If you want to exit room 19");
-                            puts("2.If you talk your way out of this");
-                            puts("3.If you unsheathe your Great Sword and commence an attack\n");
-                    
-                            int choice;
-                            scanf("%d", &choice);
-                        
-                            switch (choice)
-                            {
-                                case 1:
-                                    puts("You leave the room and miss the opportunity of a lifetime.");
-                                    break;
-                                case 2:
-                                    puts("You ask the head leprechauns ");
-                                    break;
-                                case 3:
-                                    puts(" ");
-                                    break;
-                                default:
-                                    puts("Error! Input 1-3 only");
-                                    break;
-                            }
-                        break;
-                    }
-                    break;
+					while(choice != 99)
+					{
+							puts("you open the door and find ........");
+							scanf("%d",&choice);
+					}
+					break;
 			}
 			case 20:
 			{
@@ -661,7 +652,7 @@ void main(void)
 			{
 					while(choice != 99)
 					{
-                            puts("You open the door and close it behind you.");
+							puts("You open the door and close it behind you.");
 							puts("After you overcome the panic from almost drowning, you look around and You find yourself in a cave, the air is damp and you smell mold.");
 							puts("You notice a skeleton at your feet with it's right hand clenched around something. The cave ahead leads to a tunnel and you see a door to your right.");
 							puts("At this point you have 3 choices:");
