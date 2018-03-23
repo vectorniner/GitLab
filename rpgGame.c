@@ -1,7 +1,9 @@
 //Contributors
 //Garrett Poppe 3/19/18
+//Salvador Rodriguez 3/21/2018
+//Joseph Moreno
+//Maik De Leon Lopez 3/21/18
 //Kevin Ramirez
-//
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -11,7 +13,7 @@ void main(void)
 {
 	int x,y,z,i,h,g,k,choice=0;
 	char name[256];
-	
+	int boxNum=0;
 
 	printf("Please enter your name: "); //Input any number of array inputs
 	scanf("%s",name);
@@ -50,8 +52,38 @@ void main(void)
 			{
 					while(choice != 99)
 					{
-							puts("you open the door and find ........");
-							scanf("%d",&choice);
+							//int input;
+							printf ("\n");
+							printf("This is Room 3.\n ");
+							printf ("You walk into a strangely bright and colorful room. However, you see 4 untitled buttons on a table...\n");
+							printf ("Keep in mind: There are hidden doors within this bright and colorful room. The only thing keeping these doors open is the power. Would be a mighty shame (for you) if there was a power outage!\n");
+							printf ("Above the buttons a sign reads: You may choose press one button to determine your fate. To not keep you in total suspense, a small LCD display will vaguely let you know what just happened after you pressed this button:\n");
+							scanf ("%d", &choice);
+
+							switch (choice)
+							{
+								case 1:
+									printf ("\n");
+									printf("Ya done messed up! Looks like this wasn't the number one choice you thought it was... This room will start filling with water now... Hope you know how to swim!!! :D \n");
+									break;
+								case 2:
+									printf ("\n");
+									printf ("You survive. Now, get out of my room!\n");
+									break;
+									// you may choose another card
+								case 3:
+									printf ("\n");
+									printf ("You got lucky. You have been granted permission to press more buttons! Sounds like fun...");
+									scanf ("%d", &choice);
+									break;
+								case 4:
+									printf ("\n");
+									printf ("This button just cut power to lights in the room (as well as those hidden doors I mentioned before). Hope you like the dark and oversized felines...\n");
+									break;
+								default:
+									break;
+	
+							}
 					}
 					break;
 			}
@@ -259,8 +291,37 @@ void main(void)
 			{
 					while(choice != 99)
 					{
-							puts("you open the door and find ........");
+							puts("You open the door and find a damp room, mostly empty, three boxes lay on the floor");
+							puts("You feel the urge to look through them");
+							puts("How many would you like to look through?");
 							scanf("%d",&choice);
+							if(choice>3||choice==0)
+							{
+								puts("Why? just leave");
+							}
+							else
+							{
+								for(i=0;i<choice;i++)
+								{
+									printf("Which box would you like to look in?\n");
+									scanf("%d",&boxNum);
+									switch(boxNum)
+									{
+										case 1:
+										case 2:
+										case 3:
+											printf("Box #%d was empty\n",boxNum);
+											break;
+										default:
+											break;
+									}
+								}
+								if(choice==3)
+								{
+									puts("You just wasted your time looking through 3 empty boxes");
+								}
+							}
+							break;
 					}
 					break;
 			}
@@ -318,23 +379,80 @@ void main(void)
 					}
 					break;
 			}
-			case 18:
+			case 18://MINE: JOSEPH MORENO - ROOM 18			
 			{
 					while(choice != 99)
 					{
 							puts("you open the door and find ........");
+							puts("Hordes of the crag-goblins");
+							puts("You need to fight the crag-goblins! Lancer Paladin, you can defeat them!");
+							puts("There are many paths to fight the King Goblin!");							
+							puts("Traveling through the cavern of Smaug, you come across a goblet of gold.");
+							puts("Will you touch the goblet?");
+							puts("0 = yes; 1 = no");
+							scanf("%d", &choice);
+							if (choice == 0)
+							{
+								puts("The goblet was laced in poison. You tried your best, Lancer!\n\n");
+								break;
+							} 
+							else if (choice == 1)
+							{
+								puts("Good choice! Ah, a dragon! RUN, escape!\n");
+								puts("We're journeying through the Ice Spires. Watch your step.\n");
+								puts("\n...\n");
+								/* These will all be used later;					
+									puts("It looks like you can jump across a gap. Will you, or will you just the edge slowly?");
+									puts("0 = yes; 1 = no");
+									scanf("%d", &choice);
+									puts("Travel through the Cavern of Smaug!");
+									puts("Climb the Spires of Kyurem!");
+									puts("Evade the Fire Pits of Apokylyps");
+									puts("Trudge through the Holland Marsh");
+									puts("\n\n");
+								*/
+								puts("You fell. I'm sorry, Lancer. Try again next time. Your story isnt over!\n");
+								break;
+							}
+							break;
 							scanf("%d",&choice);
 					}
 					break;
 			}
 			case 19:
 			{
-					while(choice != 99)
-					{
-							puts("you open the door and find ........");
-							scanf("%d",&choice);
-					}
-					break;
+                    while(choice != 99)
+                    {
+                            puts("\nWelcome to Room 19..");
+                            puts("\nYou take your first steps and see a case at the end of the hall.");
+                            puts("Out of the corners of the dark room leprechauns begin appearing and");
+                            puts("walk towards the case.");
+                            puts("\nEnter..\n");
+                            puts("1.If you want to exit room 19");
+                            puts("2.If you talk your way out of this");
+                            puts("3.If you unsheathe your Great Sword and commence an attack\n");
+                    
+                            int choice;
+                            scanf("%d", &choice);
+                        
+                            switch (choice)
+                            {
+                                case 1:
+                                    puts("You leave the room and miss the opportunity of a lifetime.");
+                                    break;
+                                case 2:
+                                    puts("You ask the head leprechauns ");
+                                    break;
+                                case 3:
+                                    puts(" ");
+                                    break;
+                                default:
+                                    puts("Error! Input 1-3 only");
+                                    break;
+                            }
+                        break;
+                    }
+                    break;
 			}
 			case 20:
 			{
@@ -385,7 +503,7 @@ void main(void)
 			{
 					while(choice != 99)
 					{
-							puts("You open the door and close it behind you.");
+                            puts("You open the door and close it behind you.");
 							puts("After you overcome the panic from almost drowning, you look around and You find yourself in a cave, the air is damp and you smell mold.");
 							puts("You notice a skeleton at your feet with it's right hand clenched around something. The cave ahead leads to a tunnel and you see a door to your right.");
 							puts("At this point you have 3 choices:");
