@@ -1,8 +1,9 @@
 //Contributors
 //Garrett Poppe 3/19/18
+
 //Salvador Rodriguez 3/21/2018
 //Joseph Moreno
-//
+//Maik De Leon Lopez 3/21/18
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -12,7 +13,7 @@ void main(void)
 {
 	int x,y,z,i,h,g,k,choice=0;
 	char name[256];
-	
+	int boxNum=0;
 
 	printf("Please enter your name: "); //Input any number of array inputs
 	scanf("%s",name);
@@ -153,8 +154,37 @@ void main(void)
 			{
 					while(choice != 99)
 					{
-							puts("you open the door and find ........");
+							puts("You open the door and find a damp room, mostly empty, three boxes lay on the floor");
+							puts("You feel the urge to look through them");
+							puts("How many would you like to look through?");
 							scanf("%d",&choice);
+							if(choice>3||choice==0)
+							{
+								puts("Why? just leave");
+							}
+							else
+							{
+								for(i=0;i<choice;i++)
+								{
+									printf("Which box would you like to look in?\n");
+									scanf("%d",&boxNum);
+									switch(boxNum)
+									{
+										case 1:
+										case 2:
+										case 3:
+											printf("Box #%d was empty\n",boxNum);
+											break;
+										default:
+											break;
+									}
+								}
+								if(choice==3)
+								{
+									puts("You just wasted your time looking through 3 empty boxes");
+								}
+							}
+							break;
 					}
 					break;
 			}
