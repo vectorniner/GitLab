@@ -1,6 +1,6 @@
 //Contributors
 //Garrett Poppe 3/19/18
-//Diana Guevara-Colocho 3/21/2018
+//Diana Guevara-Colocho 3/31/2018
 //
 
 #include <stdio.h>
@@ -214,6 +214,22 @@ void main(void)
 									printf("Health: %d\n", userHealth);
 									printf("Money: %d\n", wallet);
 									break;
+							}
+							if(userInput == 2)
+							{
+								printf("Health: %d", userHealth);
+								puts("Walking towards the never ending cavern, you try to get a feel of your surroundings.");
+								puts("The more you walk, the more your surroundings become darker and darker...");
+								while(userHealth != 0)
+								{
+									userHealth = userHealth - 5;
+									if(userHealth == 0)
+									{
+										printf("As you keep walking, your body starts to get sluggish...");
+										puts("Too late, it dawns on you that this cavern was filled with an odorless poison before falling over allowing death embrace your lifeless body...");
+									}
+								}
+								break;
 							}
 							if(userInput == 3)
 							{
