@@ -86,17 +86,29 @@ void main(void)
 			case 7:
 			{
 					while(choice != 99)
-					{ 
- 				       puts("You find youself in a room filled with pizza and posters of Blink 182.");
-				       puts("You have now succesfully time traveled to the year 2000.");
-				       puts("Hungry out of your mind and you hurridly walk over to the table stacked to the ceiling with pizza");
-				       puts("You discover there are three types of pizza: pepperoni, cheese, and barbeque chicken pizza. Which type of pizza do you deceide to eat first?");
-				       puts("1.Pepperoni 2. Cheese or 3. barbeque chicken");
+				{ 
+ 				       puts("You open the door to find yourself back in your highschool algebra class...");
+				       puts("There is one problem on the board that 92 percent of people get wrong it reads:");
+				       puts("6/2(1+2)");
+				       puts("What is the correct Answer?:");	  	 	   
+				       scanf("%d",&choice);
+				       switch(choice)
+					{
+
+				       	        default:
+							puts("The answer is wrong. You are forced to repeat Algebra again for the rest of your miserable life. GAME OVER");
+							choice = 99;
 							break;
-							scanf("%d",&choice);
 						
+						case 9:
+							puts("Congratulations, you passed Highschool Algebra! The door behind you opens...");
+							break;	
+					
+											
 						
 					}
+					break;
+				}
 					break;
 			}
 			case 8:
@@ -289,18 +301,12 @@ void main(void)
 							}
 					}
 					break;
+				
+			
+			
+				
 			}
-			default:
-			{
-					while(choice != 99)
-					{
-							puts("you open the door and find ........");
-							scanf("%d",&choice);
-					}
-					break;
-			}
-		}
-		puts("Magically you are transported through space and time. You are back at the beginning.....");
+		}	
 	}
-}
+    }
 
