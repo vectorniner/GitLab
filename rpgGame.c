@@ -578,35 +578,86 @@ void main(void)
 					while(choice != 99)
 					{
 							puts("you open the door and find ........");
-							puts("Hordes of the crag-goblins");
-							puts("You need to fight the crag-goblins! Lancer Paladin, you can defeat them!");
-							puts("There are many paths to fight the King Goblin!");							
+							puts("Terra Fictitia!");
+							puts("Are you the one? The the champion destined to beat them?");
 							puts("Traveling through the cavern of Smaug, you come across a goblet of gold.");
 							puts("Will you touch the goblet?");
-							puts("0 = yes; 1 = no");
+							puts("0 = no; 1 = yes");
 							scanf("%d", &choice);
-							if (choice == 0)
+							if (choice == 1)
 							{
-								puts("The goblet was laced in poison. You tried your best, Lancer!\n\n");
+								puts("The goblet was laced in poison. You tried your best, lancer! Surely, another story awaits you.\n");
 								break;
 							} 
-							else if (choice == 1)
+							else if (choice == 0)
 							{
 								puts("Good choice! Ah, a dragon! RUN, escape!\n");
-								puts("We're journeying through the Ice Spires. Watch your step.\n");
-								puts("\n...\n");
-								/* These will all be used later;					
-									puts("It looks like you can jump across a gap. Will you, or will you just the edge slowly?");
-									puts("0 = yes; 1 = no");
+								puts("We're journeying through the Ice Spires of Kyurem. Watch your step.\n");
+								puts("It looks like you can slide down the mountain. Would you like to, or would you like to trudge slowly?");
+								puts("0 = slide; 1 = trudge");
+								scanf("%d", &choice);
+								if (choice == 1) 
+								{
+									puts("Oh no! The dragon caught up to us! It looks like slow and steady didn't win this race. Shame, maybe the next one will be the champion...\n");
+									break;
+								}
+								else if (choice == 0)
+								{
+									puts("\nSnow's up, lancer! You shaved several hours with your sick shred time.");
+									puts("But it looks like you've discovered the Fire Pits of Apokylyps and its slums in the distance.");
+									puts("\nOn your way to the capital you've discovered a ferocius man-beast. He's charging at you, charge back or tuck and roll?");
+									puts("0 = tuck; 1 = charge");
 									scanf("%d", &choice);
-									puts("Travel through the Cavern of Smaug!");
-									puts("Climb the Spires of Kyurem!");
-									puts("Evade the Fire Pits of Apokylyps");
-									puts("Trudge through the Holland Marsh");
-									puts("\n\n");
-								*/
-								puts("You fell. I'm sorry, Lancer. Try again next time. Your story isnt over!\n");
-								break;
+									if (choice == 1)
+									{
+										puts("He charged faster than you. Kabob is not a look that suits you. Better luck next time! Your next adventure awaits.");
+										break;
+									} 
+									else if (choice == 0)
+									{
+										puts("You dodged him! But he's coming back! slash and roll or head on charge?");
+										puts("0 = slash; 1 = charge");
+										scanf("%d", &choice);
+										if (choice == 1)
+										{
+											puts("Head on attacks were probably not the best idea. That helmet you've got on doesn't look good in blood red.Find another world to travel");
+											break;
+										}
+										else if (choice == 0)
+										{
+											puts("\nThat slash damaged his leg terribly! But beast boy over there is coming for one last head charge. Slash or charge, Lancer?");
+											puts("0 = slash; 1 = charge");
+											scanf("%d", &choice);
+											if (choice == 1)
+											{
+												puts("A direct charge was not the best idea. If only we'd been able to know that from the beginning. You were a great warrior. Try again next time!");
+												break;
+											} 
+											else if (choice == 0)
+											{
+												puts("\n That did it. The monster is slain. Now let's be on our way lancer, I hear people coming from the slums.");
+												puts("\n...\n");
+												puts("From the distance, a villager shouts 'Kalibak is dead'.");
+												puts("\nYou must now trudge through the Holland Marsh. Something appears to be pulling you deeper into the water.");
+												puts("\n...\nWhat's that?! That thing is coming out of the swamp!");
+												puts("Will you fight it or try to befriend it?");
+												puts("0 = fight; 1 = befriend");
+												scanf("%d", &choice);
+												if (choice == 0)
+												{
+													puts("As you raise your lance, you're pulled into the swamp. Another sacrifice to the thing of Holland Marsh. A shame. You were so close too...");
+													break;
+												} 
+												else if(choice == 1) 
+												{
+													puts("Its.. Its friendly? He's allowing you to pass! Lets go, we're almost out of here.\n");
+													puts("We did it... You did it! You passed the Bat-Mites trials. You're ready. It's time to take you to the next ste-\n\nOh. I'm afraid to inform that we've been cancelled. But here's a reward for your troubles! A signed T-Shirt! Be sure to take it on your next adventure.. ");
+													break;
+												}
+											}
+										}
+									}
+								}								
 							}
 							break;
 							scanf("%d",&choice);
