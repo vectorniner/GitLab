@@ -106,10 +106,39 @@ void main(void)
 			{
 					while(choice != 99)
 					{
-							puts("you open the door and find ........");
-							scanf("%d",&choice);
+						int chest = 0;
+						char room5 = 'a';
+						puts("Welcome to room #5");
+						
+						printf("Enter which chest to open\n");
+						puts("Enter 1 for Red Chest");
+						puts("Enter 2 for Blue Chest");
+
+						scanf("%d", &chest);
+
+						if(chest == 1)
+						{
+							puts("A dragon has incinerated you!");
+							puts("Game over");
+						}
+						if(chest == 2)
+						{
+							puts("You have found the Princess");
+							puts("The King has offered you a grand reward");
+							puts("Do you accept the Kings reward? y-yes n-no");
+							scanf(" %c", &room5);
+							if(room5 == 'y')
+							{
+								puts("CONGRATULATIONS you have married the Princess");
+							}
+							if(room5 == 'n')
+							{
+								puts("The King has killed you");
+							}
+						}
+						break;
 					}
-					break;
+					
 			}
 			case 6:
 			{
