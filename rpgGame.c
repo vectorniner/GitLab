@@ -11,13 +11,13 @@ void main(void)
 {
 	int x,y,z,i,h,g,k,choice=0;
 	char name[256];
-	
+
 
 	printf("Please enter your name: "); //Input any number of array inputs
 	scanf("%s",name);
 
 	printf("Hello %s welcome to the rpgGame!\n",name);
-	
+
 	while(choice != 99)
 	{
 		puts("You find yourself in a dark room and you are not sure how you got here.");
@@ -25,7 +25,7 @@ void main(void)
         	puts("The room starts filling with water and you must choose a door to open or you will likely drown. you may quit anytime by selecting option 99");
         	puts("What door do you choose?");
         	scanf("%d",&choice);
-		
+
 		switch(choice)
 		{
 			case 1:
@@ -39,13 +39,31 @@ void main(void)
 			}
 			case 2:
 			{
-					while(choice != 99)
-					{
-							puts("you open the door and find ........");
-							scanf("%d",&choice);
-					}
-					break;
-			}
+				while(choice != 99)
+				{
+                    char b;
+                    scanf("%c",&b);
+                    puts("Thank you for coming to my door!!!");
+					puts("Now,you open the door and I will try to guess your name!!");
+					puts("********************************************************");
+					puts("Please Enter M for male or F for female");
+					scanf("%c",&b);
+					if (b=='m' || b=='M')
+                    {
+                        printf("your name is %s\n",name);
+                        puts("Thank you again for coming to my door.Please don't forget to close the door. BYE BYE!!!");
+                        exit(0);
+                    }
+                    else if (b=='f' || b=='F')
+                    {
+                        printf("Your name is %s\n",name);
+                        puts("Thank you again for coming to my door.Please don't forget to close the door. BYE BYE!!!");
+                        exit(0);
+                    }
+
+				}
+                break;
+            }
 			case 3:
 			{
 					while(choice != 99)
@@ -295,4 +313,3 @@ void main(void)
 		puts("Magically you are transported through space and time. You are back at the beginning.....");
 	}
 }
-
