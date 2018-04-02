@@ -57,7 +57,7 @@ void main(void)
                     else if (b=='f' || b=='F')
                     {
                         printf("Your name is %s\n",name);
-                        puts("Thank you again for coming to my door.Please don't forget to close the door. BYE BYE!!!");
+                        puts("Thank you again for coming to my door.Please don't forget to close the door. BYE BYE!!!!");
                         exit(0);
                     }
 
