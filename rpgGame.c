@@ -1,5 +1,6 @@
 //Contributors
 //Garrett Poppe 3/19/18
+//Dylan Dickerson 3/21/18
 //Brian Baskovich 3/21/18
 //Diana Guevara-Colocho 3/21/2018
 //Mahir Eldaw 3/21/18
@@ -7,7 +8,6 @@
 //Joseph Moreno
 //Maik De Leon Lopez 3/21/18
 //Kevin Ramirez
-
 
 
 #include <stdio.h>
@@ -260,10 +260,29 @@ void main(void)
 			case 7:
 			{
 					while(choice != 99)
+				{ 
+ 				       puts("You open the door to find yourself back in your highschool algebra class...");
+				       puts("There is one problem on the board that 92 percent of people get wrong it reads:");
+				       puts("6/2(1+2)");
+				       puts("What is the correct Answer?:");	  	 	   
+				       scanf("%d",&choice);
+				       switch(choice)
 					{
-							puts("you open the door and find ........");
-							scanf("%d",&choice);
+
+				       	        default:
+							puts("The answer is wrong. You are forced to repeat Algebra again for the rest of your miserable life. GAME OVER");
+							choice = 99;
+							break;
+						
+						case 9:
+							puts("Congratulations, you passed Highschool Algebra! The door behind you opens...");
+							break;	
+					
+											
+						
 					}
+					break;
+				}
 					break;
 			}
 			case 8:
@@ -685,18 +704,12 @@ void main(void)
 							}
 					}
 					break;
+				
+			
+			
+				
 			}
-			default:
-			{
-					while(choice != 99)
-					{
-							puts("you open the door and find ........");
-							scanf("%d",&choice);
-					}
-					break;
-			}
-		}
-		puts("Magically you are transported through space and time. You are back at the beginning.....");
+		}	
 	}
-}
+    }
 
