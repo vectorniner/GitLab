@@ -1,6 +1,5 @@
 //Contributors
 //Garrett Poppe 3/19/18
-//Alexander Gebretinsai
 //
 
 #include <stdio.h>
