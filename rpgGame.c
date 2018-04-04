@@ -10,10 +10,9 @@
 //Maik De Leon Lopez 3/21/18
 //Kevin Ramirez
 //Cesar Gutierrez 4/2/18
-<<<<<<< HEAD
+
 //Emanuel Fonseca
-=======
->>>>>>> upstream/master
+
 
 
 #include <stdio.h>
