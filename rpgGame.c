@@ -5,7 +5,7 @@
 //Dylan Dickerson 3/21/18
 //Brian Baskovich 3/21/18
 //Mahir Eldaw 3/21/18
-//Salvador Rodriguez 3/21/2018
+//Salvador Rodriguez 4/04/2018
 //Joseph Moreno
 //Maik De Leon Lopez 3/21/18
 //Kevin Ramirez
@@ -920,8 +920,11 @@ void main(void)
                         puts("2.If you talk your way out of this");
                         puts("3.If you unsheathe your Great Sword and commence an attack\n");
                         
+                        char usr_buff[256] = {0};
                         int choice;
-                        scanf("%d", &choice);
+                        fgets(usr_buff, 256, stdin);
+                        fgets(usr_buff, 256, stdin);
+                        sscanf(usr_buff, "%d", &choice);
                         
                         switch (choice)
                         {
@@ -986,6 +989,20 @@ void main(void)
                                 }
                                 break;
                             case 3:
+                                puts("Before you begin your assault you remember what your Sensei Mr.Poppe always said..");
+                                puts("\"One must ALWAYS using FILE PROCESSING when doing projects in CSC251\"");
+                                puts("With that in mind you decide to write a farewell note to your fellow classmates");
+                                puts("Theres only one way this will end and you want the world to know what happened");
+                                puts("By the way you should find it in ALL_CAPS.txt");
+                                
+                                FILE *all_caps = fopen( "ALL_CAPS.txt", "a");
+                                puts("So you begin to write your farewell letter.... !!!\n");
+                                char quote[256] = {0};
+                                fgets(usr_buff, 256, stdin);
+                                fputs(usr_buff, all_caps);
+                                fclose(all_caps);
+                                
+                                
                                 puts("The first victim comes at you and \"SLAAAASH\", his head rolls away into the darkness");
                                 puts("Who's next!? you yell. They shoot and you jump off the bullets like like a frog does lillypads");
                                 puts("You spin full 360 with your blade dismembering limbs left and right, so much blood....");
