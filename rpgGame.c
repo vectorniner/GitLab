@@ -1,7 +1,5 @@
 //Contributors
 //Garrett Poppe 3/19/18
-<<<<<<< HEAD
-=======
 //Dylan Dickerson 3/21/18
 //Brian Baskovich 3/21/18
 //Diana Guevara-Colocho 3/21/2018
@@ -10,7 +8,6 @@
 //Joseph Moreno
 //Maik De Leon Lopez 3/21/18
 //Kevin Ramirez
->>>>>>> upstream/master
 
 
 #include <stdio.h>
