@@ -1,6 +1,6 @@
 //Contributors
 //Garrett Poppe 3/19/18
-//Mohamed Shalabi -Room2
+//Mohamed Shalabi - Room2
 //
 
 #include <stdio.h>
