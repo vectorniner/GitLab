@@ -93,24 +93,30 @@ void main(void)
 			{
 					while(choice != 99)
 					{
-							//int input;
+							int e;
+							char elname[256];
+							for (e = 0; e < 256; e++)
+							{
+								elname[e] = toupper(name[e]);
+							}
 							printf ("\n");
-							printf("***This is Room 3.***\n ");
-							printf ("You walk into a strangely bright and colorful room. However, you see 4 untitled buttons on a table...\n");
-							printf ("Keep in mind: There are hidden doors within this bright and colorful room. The only thing keeping these doors open is the power. Would be a mighty shame (for you) if there was a power outage!\n");
-							printf ("Above the buttons a sign reads: You may choose press one button to determine your fate. To not keep you in total suspense, an LCD display on the wall will vaguely let you know what just happened after you pressed this button:\n");
+							printf("*** WELCOME %s!!! This is Room 3...***\n ", elname);
+							printf ("--You walk into a strangely bright and colorful room. You see 3 untitled buttons on a table...and you just heard the door close and lock behind you!\n");
+							printf ("--Keep in mind: There are hidden doors within this bright and colorful room. The only thing keeping these doors closed is the power. Would be a mighty shame if there was a power outage!\n");
+							printf ("--Above the buttons a sign reads: You may choose press one button to determine your fate. To not keep you in total suspense, an LCD display on the wall will vaguely let you know what just happened after you pressed this button:\n");
 							scanf ("%d", &choice);
 
 							switch (choice)
 							{
 								case 1:
 									printf ("\n");
+									printf ("**** BUTTON 1 PRESSED ****\n");
 									printf("***Ya done messed up! Looks like this wasn't the number one choice you thought it was... This room will start filling with water now... Hope you know how to swim!!! :D *** \n");
 									puts ("Well, this room may be filling up with water, but I can give you a fighting chance by giving you ONE tool of your choice that may help you escape OR KILL YOU... Type in your choice wisely (1-4)...");
 									scanf ("%d", &choice);
 
-									while (choice != 99)
-									{
+									//while (choice != 99)
+									//{
 										switch (choice)
 										{
 											case 1:
@@ -126,21 +132,20 @@ void main(void)
 												puts ("For once, being incorrect has saved you... The room has stopped filling with water.");
 												break;
 										}
-										break;
-									}
+										
+									//}
 									break; //end switch
 								case 2:
 									printf ("\n");
-									printf ("***You survive. Now, get out of my room!***\n");
+									printf ("**** BUTTON 2 PRESSED ****\n");
+									printf ("***Let's play a game to decide if you get to escape this room alive...***\n");
+									printf ("I'll tell you what. You may roll a 6 sided die one time. If you roll a 1, the exit door opens and you may leave at your leisure. If you roll a 6, you are immediately killed by electric shock. If you roll between a 2 and a 5, you get another try at rolling the die. Think of this as a Russian Roulette game, just that I gave you a lifeline... Aren't I the nicest???\n");
+									
 									break;
 									// you may choose another card
 								case 3:
 									printf ("\n");
-									printf ("***You got lucky. You have been granted permission to press more buttons! Sounds like fun...***");
-									scanf ("%d", &choice);
-									break;
-								case 4:
-									printf ("\n");
+									printf ("**** BUTTON 3 PRESSED ****\n");
 									printf ("***This button just cut power to lights in the room (as well as those hidden doors I mentioned before). Hope you like the dark and tigers...***\n");
 									while (choice != 99)
 									{
