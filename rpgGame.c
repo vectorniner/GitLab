@@ -47,7 +47,7 @@ void main(void)
 
 	while(choice != 99)
 	{
-            puts("You find yourself in a dark room and you are not sure how you got here.");
+                puts("You find yourself in a dark room and you are not sure how you got here.");
         	puts("As you look around you see the room has 25 doors, each labeled with a number. You are not sure how such a small room can have 25 doors, sooo magic...");
         	puts("The room starts filling with water and you must choose a door to open or you will likely drown. you may quit anytime by selecting option 99");
         	puts("What door do you choose?");
@@ -66,65 +66,64 @@ void main(void)
 			}
 			case 2: // Mohamed Shalabi
 			{
-                    while(choice != 99)
-                    {
-
-                            puts("Thank you for choosing my door!!!");
-                            puts("Now,you open the door and I hope you enjoyed your time!!");
-                            puts("********************************************************");
-
-                            char guess;
-                            int i, dice[NUM_DICE], sum, oldSum, correct, goodGuesses;
-
-                            srand(time(NULL));
-                            goodGuesses = 0;
-                            sum = rollDice(dice);
-
-                            printf("Please Enter, How many times do you want to play? ");
-                            scanf("%d", &i);
-
-                            for ( i;i; i--)
-                            {
-                                printDice(dice, sum);
-                                oldSum = sum;
-                                sum = rollDice(dice);
-                                printf("Do you think the next total will be Higher,""the Same,or Lower than the previous total? ""(h, s, l)\n");
-                                scanf(" %c", &guess);
-
-                                switch (guess)
+                                while(choice != 99)
                                 {
-                                        case 'h':
-                                                    correct = (sum > oldSum);
-                                                    break;
-                                        case 's':
-                                                    correct = (sum == oldSum);
-                                                    break;
-                                        case 'l':
-                                                    correct = sum < oldSum;
-                                                    break;
-                                        default:
-                                                     correct = 0; printf("Not h, s or l.\n");
-                                }
 
-                                if (correct)
-                                {
-                                    printf("Your guess was correct!\n");
-                                    goodGuesses++;
-                                }
+                          	        	puts("Thank you for choosing my door!!!");
+                           	        	puts("Now,you open the door and I hope you enjoyed your time!!");
+                           			puts("********************************************************");
 
-                                else
-                                {
-                                    printf("Your guess was incorrect!\n");
-                                }
+                            			char guess;
+                            			int i, dice[NUM_DICE], sum, oldSum, correct, goodGuesses;
+                            			srand(time(NULL));
+                            			goodGuesses = 0;
+                            			sum = rollDice(dice);
 
-                            }//end for loop
-                            printf("You got a total of %d guesses correct!\n", goodGuesses);
-                            printf("Thank you again for coming to my room #2\n");
-                            break;
-                        } //end while
+                            			printf("Please Enter, How many times do you want to play? ");
+                            			scanf("%d", &i);
 
-                    break;
-            }// end case2
+                            			for ( i;i; i--)
+                            			{
+                                			printDice(dice, sum);
+                                			oldSum = sum;
+                                			sum = rollDice(dice);
+                                			printf("Do you think the next total will be Higher,""the Same,or Lower than the previous total? ""(h, s, l)\n");
+                                			scanf(" %c", &guess);
+
+                                			switch (guess)
+                                			{
+                                        			case 'h':
+                                                    			correct = (sum > oldSum);
+                                                    			break;
+                                        			case 's':
+                                                    			correct = (sum == oldSum);
+                                                    			break;
+                                        			case 'l':
+                                                    			correct = sum < oldSum;
+                                                    			break;
+                                        			default:
+                                                     			correct = 0; printf("Not h, s or l.\n");
+                                			}
+
+                                			if (correct)
+                                			{
+                                    			printf("Your guess was correct!\n");
+                                    			goodGuesses++;
+                                			}
+
+                                			else
+                                			{
+                                    			printf("Your guess was incorrect!\n");
+                                			}
+
+                            			}//end for loop
+                            			printf("You got a total of %d guesses correct!\n", goodGuesses);
+                            			printf("Thank you again for coming to my room #2\n");
+                            			break;
+                        	} //end while
+
+                    			break;
+            		}// end case2
 			case 3:
 			{
 					while(choice != 99)
