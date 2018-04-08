@@ -326,21 +326,29 @@ void main(void)
 					{
 							puts("You open the door and find youself in a dungeon with five doors.");
 							puts("One of the five doors is the safe passage to escape and the other four are traps.");
-							puts("Which door do you want to open and choose wisely! (#1-5):");
+							puts("Which door do you want to open and choose wisely!:");
+							puts("1. Open the door #1");
+							puts("2. Open the door #2");
+							puts("3. Open the door #3");
+							puts("4. Open the door #4");
+							puts("5. Open the door #5");
 							scanf("%d",&choice);
 
 							switch(choice)
 							{
 								case 1:
-								puts("NO! IT's A TRAP! The door leads you the courtyard and the knights surrounded and beat you to death for escaping. GAME OVER.");
+								puts("NO! IT's A TRAP! The door leads you the courtyard and the knights surrounded and beat you to death for escaping.");
+								puts("GAME OVER!");
 								break;
 
 								case 2:
-                                                		puts("OH NO! The door you open leads you into a pit of spikes! You loss your footing and fell into the pit! GAME OVER!");
+                                                		puts("OH NO! The door you open leads you into a pit of spikes! You loss your footing and fell into the pit!");
+								puts("GAME OVER!");
                                                 		break;
 
                                                			case 3:
-                                                		puts("OH MY GOD! The door leads you into a room where a fire breathing dragon is sleeping front of you and the door shuts tight. You tried open but it's no use as the dragon awakened from his slumber and unleashed his fire breath. GAME OVER!");
+                                                		puts("OH MY GOD! The door leads you into a room where a fire breathing dragon is sleeping front of you and the door shuts tight. You tried open but it's no use as the dragon awakened from his slumber and unleashed his fire breath.");
+								puts("GAME OVER!");
                                                 		break;
 
                                                			case 4:
@@ -348,7 +356,8 @@ void main(void)
                                                 		break;
 
                                                			case 5:
-                                                		puts("AH!!!! The door you open released a prisoner and trapped you into his cell as a scapegoat so the prisoner can escape. You are unable to break the door and trapped in the room forever! GAME OVER.");
+                                                		puts("AH!!!! The door you open released a prisoner and trapped you into his cell as a scapegoat so the prisoner can escape. You are unable to break the door and trapped in the room forever!");
+								puts("GAME OVER!");
                                                 		break;
 
                                                			default:
