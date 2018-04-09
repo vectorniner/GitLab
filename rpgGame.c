@@ -584,6 +584,7 @@ void main(void)
 							puts("Will you touch the goblet?");
 							puts("0 = no; 1 = yes");
 							scanf("%d", &choice);
+							system("clear");
 							if (choice == 1)
 							{
 								puts("The goblet was laced in poison. You tried your best, lancer! Surely, another story awaits you.\n");
@@ -592,72 +593,74 @@ void main(void)
 							else if (choice == 0)
 							{
 								puts("Good choice! Ah, a dragon! RUN, escape!\n");
-								puts("We're journeying through the Ice Spires of Kyurem. Watch your step.\n");
-								puts("It looks like you can slide down the mountain. Would you like to, or would you like to trudge slowly?");
-								puts("0 = slide; 1 = trudge");
+								puts("We're journeying through the Ice Spires of Kyurem. Watch out for Snow Elves!");
+								puts("Ah shoot! You found one! And he wants to beat you in a game of craps. Roll snake eyes and he just might attack!");
+								srand(time(NULL));
+								puts("How many times would you like to roll a dice");
 								scanf("%d", &choice);
-								if (choice == 1) 
+								system("clear");
+								int die = choice;
+								int roll = 0;
+								int rollO = 0;
+								int i;
+								int snakeEyes = 0;
+								for (i = 0; i < die; i++)
 								{
-									puts("Oh no! The dragon caught up to us! It looks like slow and steady didn't win this race. Shame, maybe the next one will be the champion...\n");
+									roll = (1 + rand() % 6);
+									rollO = (1 + rand() % 6);
+									printf("You rolled %d and %d.\n", roll, rollO);
+									if (roll + rollO == 2)
+									{
+										puts("Snake eyes! Drat! Well, looks like you just became lunch!");
+										break;
+									}
+								}
+								printf("Woo. You didn't roll it. You get to live %s", name);
+								puts("We're passed the snow elves, shred down the mountain side and we'll shave a few seconds off!");
+								puts("But it looks like you've discovered the Fire Pits of Apokylyps and its slums in the distance.");
+								printf("It's very unlikely you'll get out of this alive, %s. You should send a letter back home.", name);
+								puts("What do you want the letter to be called? I'll probably just email it. Carrier-parademons can be unreliable. (psst) make it a file name.");
+								char letterName[256];
+								scanf("%s", letterName);
+								system("clear");
+								puts("Very well! It'll be on it's way in a nanosecond.");
+								char letterDetails[] = "Hello family and friends. Your fighter died. Oops. I'm sure they've lived a long life, probably.\nThey were likely beloved by many, I'm sure, probably, and will be missed, maybe.";
+								char letterDetailsTwo[] = "In the event that we managed to collect a body, we will send it back in whatever piece(s) we found it.";
+								FILE *wptr;
+								wptr = fopen(letterName, "w");
+								fprintf(wptr, "%s\n", letterDetails);
+								fprintf(wptr, "%s\n", letterDetailsTwo);
+								puts("\nOn your way to the capital you've discovered a ferocius man-beast. He's charging at you, you'll have to give a series of attacks.");
+								puts("Type and enter 'A' to attack and 'S' to standby when you think you've beaten him ");
+								int loopHold = 0;
+								char attack;
+								int attackCount = 0;
+								while(loopHold == 0)
+								{
+									scanf("%c", &attack);
+									
+									if (attack =='a')
+									{
+										attackCount++;
+									}
+									else if (attack == 's')
+									{
+										loopHold == 1;
+									}
+								}
+								system("clear");
+								if (attackCount < 5)
+								{
+									puts("You didn't attack enough. Unfortunately, he's still too strong.");
 									break;
 								}
-								else if (choice == 0)
-								{
-									puts("\nSnow's up, lancer! You shaved several hours with your sick shred time.");
-									puts("But it looks like you've discovered the Fire Pits of Apokylyps and its slums in the distance.");
-									puts("\nOn your way to the capital you've discovered a ferocius man-beast. He's charging at you, charge back or tuck and roll?");
-									puts("0 = tuck; 1 = charge");
-									scanf("%d", &choice);
-									if (choice == 1)
-									{
-										puts("He charged faster than you. Kabob is not a look that suits you. Better luck next time! Your next adventure awaits.");
-										break;
-									} 
-									else if (choice == 0)
-									{
-										puts("You dodged him! But he's coming back! slash and roll or head on charge?");
-										puts("0 = slash; 1 = charge");
-										scanf("%d", &choice);
-										if (choice == 1)
-										{
-											puts("Head on attacks were probably not the best idea. That helmet you've got on doesn't look good in blood red.Find another world to travel");
-											break;
-										}
-										else if (choice == 0)
-										{
-											puts("\nThat slash damaged his leg terribly! But beast boy over there is coming for one last head charge. Slash or charge, Lancer?");
-											puts("0 = slash; 1 = charge");
-											scanf("%d", &choice);
-											if (choice == 1)
-											{
-												puts("A direct charge was not the best idea. If only we'd been able to know that from the beginning. You were a great warrior. Try again next time!");
-												break;
-											} 
-											else if (choice == 0)
-											{
-												puts("\n That did it. The monster is slain. Now let's be on our way lancer, I hear people coming from the slums.");
-												puts("\n...\n");
-												puts("From the distance, a villager shouts 'Kalibak is dead'.");
-												puts("\nYou must now trudge through the Holland Marsh. Something appears to be pulling you deeper into the water.");
-												puts("\n...\nWhat's that?! That thing is coming out of the swamp!");
-												puts("Will you fight it or try to befriend it?");
-												puts("0 = fight; 1 = befriend");
-												scanf("%d", &choice);
-												if (choice == 0)
-												{
-													puts("As you raise your lance, you're pulled into the swamp. Another sacrifice to the thing of Holland Marsh. A shame. You were so close too...");
-													break;
-												} 
-												else if(choice == 1) 
-												{
-													puts("Its.. Its friendly? He's allowing you to pass! Lets go, we're almost out of here.\n");
-													puts("We did it... You did it! You passed the Bat-Mites trials. You're ready. It's time to take you to the next ste-\n\nOh. I'm afraid to inform that we've been cancelled. But here's a reward for your troubles! A signed T-Shirt! Be sure to take it on your next adventure.. ");
-													break;
-												}
-											}
-										}
-									}
-								}								
+
+
+								printf("\n That did it. The monster is slain. Now let's be on our way %s, I hear people coming from the slums.", name);
+								puts("\n...\n");
+								puts("From the distance, a villager shouts 'Kalibak is dead'.");
+								puts("We did it... You did it! You passed the Bat-Mites trials. You're ready. It's time to take you to the next ste-\n\nOh. I'm afraid to inform that we've been cancelled. But here's a reward for your troubles! A signed T-Shirt! Be sure to take it on your next adventure.. ");
+								break;							
 							}
 							break;
 							scanf("%d",&choice);
