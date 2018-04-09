@@ -182,7 +182,7 @@ int main(void)
                                                      			correct = 0; printf("Not h, s or l.\n");
                                 			}
 
-                                			if (correct)
+                                			if (correct);
                                 			{
                                     			printf("Your guess was correct!\n");
                                     			goodGuesses++;
@@ -596,7 +596,7 @@ int main(void)
 							break;
 						
 						case 9:
-							puts("Congratulations, you passed Highschool Algebra! The door behind you opens...");
+							puts("Congratulations, you passed Highschool Algebra! Now write your name in the Hall Of Fame");
 							break;	
 					
 											
