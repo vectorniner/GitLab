@@ -30,7 +30,7 @@
 
 
 
-void main(void)
+void main(int argc, char*argv[])
 {
 	int x,y,z,i,h,g,k,choice=0;
 	char name[256];
@@ -587,7 +587,8 @@ void main(void)
 			case 7:
 			{
 					while(choice != 99)
-				{ 
+				{      FILE *wptr;
+				       char swag[30] = {0};	
  				       puts("You open the door to find yourself back in your highschool algebra class...");
 				       puts("There is one problem on the board that 92 percent of people get wrong it reads:");
 				       puts("6/2(1+2)");
@@ -602,10 +603,17 @@ void main(void)
 							break;
 						
 						case 9:
-							puts("Congratulations, you passed Highschool Algebra! The door behind you opens...");
-							break;	
-					
-											
+							puts("Congratulations, you passed Highschool Algebra! Now write your name in the Hall Of Fame");
+							wptr = fopen("halloffame.dat", "w");
+							while(!feof(stdin))
+							{
+								scanf("%s", &swag);
+								fprintf(wptr, "%s", swag);
+								break;
+							}
+							fclose(wptr);
+							choice = 99;
+							break;									
 						
 					}
 					break;
