@@ -150,7 +150,7 @@ int main(void)
                           	        	puts("Thank you for choosing my door!!!");
                            	        	puts("Now,you open the door and I hope you enjoyed your time!!");
                            			puts("********************************************************");
-
+						/*
                             			char guess;
                             			int i, dice[NUM_DICE], sum, oldSum, correct, goodGuesses;
                             			srand(time(NULL));
@@ -196,8 +196,8 @@ int main(void)
                             			}//end for loop
                             	        	printf("You got a total of %d guesses correct!\n", goodGuesses);
                             			printf("Thank you again for coming to my room #2\n");
-                           			break;
-                        	} //end while
+                           			break;*/
+                        	//} //end while
                    			break;
                 	}// end case2
 
@@ -724,7 +724,6 @@ int main(void)
 												printf("What would you like to write in it?\nKEEP IT SHORT!\n");
 												scanf("%s",aString);
 												fputs(aString,writePage);
-											}
 											break;
 										case 3:
 											printf("Box #%d was empty\n",boxNum);
@@ -1494,7 +1493,7 @@ default:
 							printf("What do you do? Please choose from the following options!");
 							printf("Press 99 if you want to quit since video games cause violence");
 
-					scanf(%d, &choice);
+					scanf("%d", &choice);
 						int roll_0 =(rand() %10) +1;
 						int roll1 = (rand() %10) + 1;
 						int die = 0;
@@ -1502,9 +1501,7 @@ default:
 
 						if(choice ==1)
 						{
-							printf("You automatically rely on running out of the room. The room is locked out and there is no other exit besides the 
-										cave that the bear came out of. Since you're panick attack has gotten worse, you make poor judgments and gets
-							beaten to death by the bear. Now you have lost your legacy!");
+							printf("You automatically rely on running out of the room. The room is locked out and there is no other exit besides the cave that the bear came out of. Since you're panick attack has gotten worse, you make poor judgments and gets beaten to death by the bear. Now you have lost your legacy!");
 						}
 						else if(choice ==2)
 						{
@@ -1608,7 +1605,7 @@ default:
 											{
 												printf("As you keep walking, your body starts to get sluggish...");
 												puts("Too late, it dawns on you that this cavern was filled with an odorless poison before falling over allowing death embrace your lifeless body...");
-												return;
+												break;
 											}
 										}
 										break;
@@ -1647,7 +1644,7 @@ default:
 													wallet = wallet + 50;
 													printf("Health: %d\n", userHealth);
 													printf("Money: %d\n", wallet);
-													return;
+													break;
 												}
 											}
 											break;
@@ -1660,7 +1657,7 @@ default:
 											puts("You try to scream but all you can hear is her voice; your surroudings become dark and your breathing coming to a stop.");
 											userHealth = userHealth - 50;
 											printf("Better luck nextime! Health: %d\n", userHealth);
-											return;
+											break;
 										}
 										if(trapAnswer == 3)
 										{
@@ -1696,7 +1693,7 @@ default:
 													fprintf(fptr, "%s\n", text);
 													fclose(fptr);
 												}
-												return;
+												break;
 											}
 									
 											if(trapAnswer == 2)
@@ -1714,7 +1711,7 @@ default:
 												puts("You recover 15 HP. Youre back home, time for some well deserved rest.");
 												userHealth = userHealth + 15;
 												printf("Ending Health: %d", userHealth);
-												return;
+												break;
 											}
 											if(trapAnswer == 3)
 											{
@@ -1726,7 +1723,7 @@ default:
 												printf("Current Health: %d\n", userHealth);
 												puts("You both look at each other before deciding to laugh it off.");
 												puts("Out of empathy and wanting to forget this emberassing move, she tells you where to go back from to leave the cavern.");
-												return;
+												break;
 											}
 											if(trapAnswer == 4)
 											{
@@ -1745,14 +1742,14 @@ default:
 												{
 													puts("She looks at you in disappointment. Rather than spare you, she ends your life there.");
 													puts("Cue sad credits.");
-													return;
+													break;
 												}
 												else
 												{
 													puts("She laughs as you confidently say the answer.");
 													puts("You cant avoid but cringe at the dad joke you just said but to your amazement she keeps her end of the deal.");
 													puts("In a matter of seconds your teleported back home!");
-													return;
+													break;
 												}
 											}
 										}
@@ -2351,3 +2348,13 @@ default:
 							else if(choice == 2)
 							{
 								puts("You find yourself further ahead in the cave.");
+							}
+					}
+			}
+
+		}
+
+		}
+		}
+	}
+}
