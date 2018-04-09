@@ -1083,179 +1083,179 @@ void main(void)
 			}
 			case 20:
 			{
-                srand(time(NULL));
-                int password = 20;
-                int health = 100;
-                int defense = 0;
-                int money = 0;
-                int enemyHitMax = 2;
-                int enemyHit = (rand()%(enemyHit-1));
-                int myHit = 3;
-                printf("\nThe door labeled Room 20 is locked you must enter the 2 digit password: \n");
-                scanf("%d", &choice);
+                    srand(time(NULL));
+                    int password = 20;
+                    int health = 100;
+                    int defense = 0;
+                    int money = 0;
+                    int enemyHitMax = 2;
+                    int enemyHit = (rand()%(enemyHit-1));
+                    int myHit = 3;
+                    printf("\nThe door labeled Room 20 is locked you must enter the 2 digit password: \n");
+                    scanf("%d", &choice);
                 
-                if(choice == password)
-                {
-                    printf("\nYou enter the door labled Room 20\n");
-                    printf("Current Status - Health: %d \t Defense: %d \t Money: %d\n\n\n\n", health,defense,money);
-                }
-                else
-                {
-                    printf("You are locked out\n\n");
-                    break;
-                }
-                printf("You have encountered a sewer rat\n");
-                printf("\nYou enter the battle with your hands\n");
-                
-                puts("You have three choices:");
-                puts("1. Fight.");
-                puts("2. Run.");
-                puts("3. Insult its mother.");
-                scanf("%d",&choice);
-                int ratH = (rand()%(3-1))+1;
-                int attack;
-                switch(choice){
-                    case 1:
-                        printf("You have entered the battle:");
-                        while(ratH > 0)
-                        {
-                            printf("\n1.Punch \n2.Kick");
-                            scanf("%d",&choice);
-                            printf("Rat health: %d", ratH);
-                            if(choice == 1)
-                            {
-                                attack =(rand()%(2-1))+1;
-                                printf("\n%d\n",attack);
-                                ratH = ratH-attack;
-                                health -= 1;
-                            }
-                            else if(choice == 2)
-                            {
-                                attack = (rand()%(3-1)+1);
-                                printf("\n%d\n",attack);
-                                ratH = ratH-attack;
-                                health -= 1;
-                            }
-                        }
-                        printf("The rat is dead\n");
-                        money += 5;
-                        printf("Current Status - Health: %d \t Defense: %d \t Money: %d\n\n\n\n", health,defense,money);
-                        break;
-                        
-                    case 2:
-                        printf("You have ran away\n\n");
-                        break;
-                        
-                    case 3:
-                        printf("The rat has ran away...\n\n\n");
-                        printf("...(Ground Rumbles)...\n\n\n");
-                        printf("It turnes out the rat ran away to tell its mutant mother\n");
-                        printf("The glowing green mother rat towers over you blocking the sun\n");
-                        printf("You have entered the battle:");
-                        ratH = 99999;
-                        while(ratH > 0)
-                        {
-                            puts("\n1.Punch \n2.Kick");
-                            scanf("%d",&choice);
-                            printf("Rat health: %d", ratH);
-                            if(health<=0)
-                            {
-                                printf("\n\nYou died\n");
-                                break;
-                            }
-                            if(choice == 1)
-                            {
-                                attack =(rand()%(2-1))+1;
-                                printf("\n%d\n",attack);
-                                ratH = ratH-attack;
-                                health -= 99999;
-                            }
-                            else if(choice == 2)
-                            {
-                                attack = (rand()%(3-1)+1);
-                                printf("\n%d\n",attack);
-                                ratH = ratH-attack;
-                                health -= 99999;
-                            }
-                        }
-                        printf("Current Status - Health: %d \t Defense: %d \t Money: %d\n\n\n\n", health,defense,money);
-                        break;
-                }
-                
-                while(choice != 99)
-                {
-                    if(money >= 100)
+                    if(choice == password)
                     {
-                        printf("You have earned enough money to exit");
+                        printf("\nYou enter the door labled Room 20\n");
+                        printf("Current Status - Health: %d \t Defense: %d \t Money: %d\n\n\n\n", health,defense,money);
+                    }
+                    else
+                    {
+                        printf("You are locked out\n\n");
                         break;
                     }
-                    if(health <= 0)
-                    {
-                        printf("You have died\n\n");
-                        break;
-                    }
-                    int enemyHealth = (rand()%(enemyHitMax-1)+1);
-                    int attack = (rand()%(enemyHitMax-1)+1);
-                    printf("Current Status - Health: %d \t Defense: %d \t Money: %d\n\n\n\n", health,defense,money);
-                    printf("You have encountered an enemy\n");
+                    printf("You have encountered a sewer rat\n");
                     printf("\nYou enter the battle with your hands\n");
-                    
+                
                     puts("You have three choices:");
                     puts("1. Fight.");
-                    puts("2. Run. (-2 gold)");
-                    puts("3. Store.");
-                    puts("4. Exit");
+                    puts("2. Run.");
+                    puts("3. Insult its mother.");
                     scanf("%d",&choice);
-                    
+                    int ratH = (rand()%(3-1))+1;
+                    int attack;
                     switch(choice){
                         case 1:
                             printf("You have entered the battle:");
-                            
-                            while(enemyHealth > 0)
+                            while(ratH > 0)
                             {
                                 printf("\n1.Punch \n2.Kick");
                                 scanf("%d",&choice);
+                                printf("Rat health: %d", ratH);
                                 if(choice == 1)
                                 {
-                                    printf("Enemy health: %d", enemyHealth);
-                                    attack =(rand()%(myHit-1))+1;
+                                    attack =(rand()%(2-1))+1;
                                     printf("\n%d\n",attack);
-                                    enemyHealth -= attack;
-                                    health -= 2;
+                                    ratH = ratH-attack;
+                                    health -= 1;
                                 }
                                 else if(choice == 2)
                                 {
-                                    printf("Enemy health: %d", enemyHealth);
-                                    attack = (rand()%(myHit-1)+1);
+                                    attack = (rand()%(3-1)+1);
                                     printf("\n%d\n",attack);
-                                    enemyHealth -= attack;
-                                    health -= 2;
+                                    ratH = ratH-attack;
+                                    health -= 1;
                                 }
                             }
-                            
+                            printf("The rat is dead\n");
                             money += 5;
-                            myHit += 2;
-                            enemyHitMax += 1;
-                            printf("The enemy is dead");
+                            printf("Current Status - Health: %d \t Defense: %d \t Money: %d\n\n\n\n", health,defense,money);
                             break;
                             
                         case 2:
                             printf("You have ran away\n\n");
-                            money -= 2;
-                            printf("Current Status - Health: %d \t Defense: %d \t Money: %d\n\n\n\n", health,defense,money);
                             break;
                             
                         case 3:
-                            printf("Shop is under construction\n\nPotions and Armor coming soon\n\n");
-                            
+                            printf("The rat has ran away...\n\n\n");
+                            printf("...(Ground Rumbles)...\n\n\n");
+                            printf("It turnes out the rat ran away to tell its mutant mother\n");
+                            printf("The glowing green mother rat towers over you blocking the sun\n");
+                            printf("You have entered the battle:");
+                            ratH = 99999;
+                            while(ratH > 0)
+                            {
+                                puts("\n1.Punch \n2.Kick");
+                                scanf("%d",&choice);
+                                printf("Rat health: %d", ratH);
+                                if(health<=0)
+                                {
+                                    printf("\n\nYou died\n");
+                                    break;
+                                }
+                                if(choice == 1)
+                                {
+                                    attack =(rand()%(2-1))+1;
+                                    printf("\n%d\n",attack);
+                                    ratH = ratH-attack;
+                                    health -= 99999;
+                                }
+                                else if(choice == 2)
+                                {
+                                    attack = (rand()%(3-1)+1);
+                                    printf("\n%d\n",attack);
+                                    ratH = ratH-attack;
+                                    health -= 99999;
+                                }
+                            }
+                            printf("Current Status - Health: %d \t Defense: %d \t Money: %d\n\n\n\n", health,defense,money);
                             break;
-                        case 4:
-                            health = 0;
                     }
-                    
-                    
-                }
-                break;
+                
+                    while(choice != 99)
+                    {
+                        if(money >= 100)
+                        {
+                            printf("You have earned enough money to exit");
+                            break;
+                        }
+                        if(health <= 0)
+                        {
+                            printf("You have died\n\n");
+                            break;
+                        }
+                        int enemyHealth = (rand()%(enemyHitMax-1)+1);
+                        int attack = (rand()%(enemyHitMax-1)+1);
+                        printf("Current Status - Health: %d \t Defense: %d \t Money: %d\n\n\n\n", health,defense,money);
+                        printf("You have encountered an enemy\n");
+                        printf("\nYou enter the battle with your hands\n");
+                        
+                        puts("You have three choices:");
+                        puts("1. Fight.");
+                        puts("2. Run. (-2 gold)");
+                        puts("3. Store.");
+                        puts("4. Exit");
+                        scanf("%d",&choice);
+                        
+                        switch(choice){
+                            case 1:
+                                printf("You have entered the battle:");
+                                
+                                while(enemyHealth > 0)
+                                {
+                                    printf("\n1.Punch \n2.Kick");
+                                    scanf("%d",&choice);
+                                    if(choice == 1)
+                                    {
+                                        printf("Enemy health: %d", enemyHealth);
+                                        attack =(rand()%(myHit-1))+1;
+                                        printf("\n%d\n",attack);
+                                        enemyHealth -= attack;
+                                        health -= 2;
+                                    }
+                                    else if(choice == 2)
+                                    {
+                                        printf("Enemy health: %d", enemyHealth);
+                                        attack = (rand()%(myHit-1)+1);
+                                        printf("\n%d\n",attack);
+                                        enemyHealth -= attack;
+                                        health -= 2;
+                                    }
+                                }
+                                
+                                money += 5;
+                                myHit += 2;
+                                enemyHitMax += 1;
+                                printf("The enemy is dead");
+                                break;
+                                
+                            case 2:
+                                printf("You have ran away\n\n");
+                                money -= 2;
+                                printf("Current Status - Health: %d \t Defense: %d \t Money: %d\n\n\n\n", health,defense,money);
+                                break;
+                                
+                            case 3:
+                                printf("Shop is under construction\n\nPotions and Armor coming soon\n\n");
+                                
+                                break;
+                            case 4:
+                                health = 0;
+                        }
+                        
+                        
+                    }
+                    break;
 			}
 			case 21:
 			{
