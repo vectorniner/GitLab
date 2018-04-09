@@ -645,7 +645,7 @@ void main(void)
 									}
 									else if (attack == 's')
 									{
-										loopHold == 1;
+										loopHold = 1;
 									}
 								}
 								system("clear");
