@@ -1948,97 +1948,95 @@ void main(int argc, char*argv[])
 			}
 			case 18://MINE: JOSEPH MORENO - ROOM 18			
 			{
-					while(choice != 99)
-					{
-							puts("you open the door and find ........");
-							puts("Terra Fictitia!");
-							puts("Are you the one? The the champion destined to beat them?");
-							puts("Traveling through the cavern of Smaug, you come across a goblet of gold.");
-							puts("Will you touch the goblet?");
-							puts("0 = no; 1 = yes");
+				while(choice != 99)
+				{
+						puts("you open the door and find ........");
+						puts("Terra Fictitia!");
+						puts("Are you the one? The the champion destined to beat them?");
+						puts("Traveling through the cavern of Smaug, you come across a goblet of gold.");
+						puts("Will you touch the goblet?");
+						puts("0 = no; 1 = yes");
+						scanf("%d", &choice);
+						system("clear");
+						if (choice == 1)
+						{
+							puts("The goblet was laced in poison. You tried your best, lancer! Surely, another story awaits you.\n");
+							break;
+						} 
+						else if (choice == 0)
+						{
+						puts("Good choice! Ah, a dragon! RUN, escape!\n");
+						puts("We're journeying through the Ice Spires of Kyurem. Watch out for Snow Elves!");
+						puts("Ah shoot! You found one! And he wants to beat you in a game of craps. Roll snake eyes and he just might attack!");
+						srand(time(NULL));
+							puts("How many times would you like to roll a dice");
 							scanf("%d", &choice);
 							system("clear");
-							if (choice == 1)
+							int die = choice;
+							int roll = 0;
+							int rollO = 0;
+							int i;
+							int snakeEyes = 0;
+							for (i = 0; i < die; i++)
 							{
-								puts("The goblet was laced in poison. You tried your best, lancer! Surely, another story awaits you.\n");
-								break;
-							} 
-							else if (choice == 0)
-							{
-								puts("Good choice! Ah, a dragon! RUN, escape!\n");
-								puts("We're journeying through the Ice Spires of Kyurem. Watch out for Snow Elves!");
-								puts("Ah shoot! You found one! And he wants to beat you in a game of craps. Roll snake eyes and he just might attack!");
-								srand(time(NULL));
-								puts("How many times would you like to roll a dice");
-								scanf("%d", &choice);
-								system("clear");
-								int die = choice;
-								int roll = 0;
-								int rollO = 0;
-								int i;
-								int snakeEyes = 0;
-								for (i = 0; i < die; i++)
+								roll = (1 + rand() % 6);
+								rollO = (1 + rand() % 6);
+								printf("You rolled %d and %d.\n", roll, rollO);
+								if (roll + rollO == 2)
 								{
-									roll = (1 + rand() % 6);
-									rollO = (1 + rand() % 6);
-									printf("You rolled %d and %d.\n", roll, rollO);
-									if (roll + rollO == 2)
-									{
-										puts("Snake eyes! Drat! Well, looks like you just became lunch!");
-										break;
-									}
-								}
-								printf("Woo. You didn't roll it. You get to live %s", name);
-								puts("We're passed the snow elves, shred down the mountain side and we'll shave a few seconds off!");
-								puts("But it looks like you've discovered the Fire Pits of Apokylyps and its slums in the distance.");
-								printf("It's very unlikely you'll get out of this alive, %s. You should send a letter back home.", name);
-								puts("What do you want the letter to be called? I'll probably just email it. Carrier-parademons can be unreliable. (psst) make it a file name.");
-								char letterName[256];
-								scanf("%s", letterName);
-								system("clear");
-								puts("Very well! It'll be on it's way in a nanosecond.");
-								char letterDetails[] = "Hello family and friends. Your fighter died. Oops. I'm sure they've lived a long life, probably.\nThey were likely beloved by many, I'm sure, probably, and will be missed, maybe.";
-								char letterDetailsTwo[] = "In the event that we managed to collect a body, we will send it back in whatever piece(s) we found it.";
-								FILE *wptr;
-								wptr = fopen(letterName, "w");
-								fprintf(wptr, "%s\n", letterDetails);
-								fprintf(wptr, "%s\n", letterDetailsTwo);
-								puts("\nOn your way to the capital you've discovered a ferocius man-beast. He's charging at you, you'll have to give a series of attacks.");
-								puts("Type and enter 'A' to attack and 'S' to standby when you think you've beaten him ");
-								int loopHold = 0;
-								char attack;
-								int attackCount = 0;
-								while(loopHold == 0)
-								{
-									scanf("%c", &attack);
-									
-									if (attack =='a')
-									{
-										attackCount++;
-									}
-									else if (attack == 's')
-									{
-										loopHold = 1;
-									}
-								}
-								system("clear");
-								if (attackCount < 5)
-								{
-									puts("You didn't attack enough. Unfortunately, he's still too strong.");
+									puts("Snake eyes! Drat! Well, looks like you just became lunch!");
 									break;
 								}
-
-
-								printf("\n That did it. The monster is slain. Now let's be on our way %s, I hear people coming from the slums.", name);
-								puts("\n...\n");
-								puts("From the distance, a villager shouts 'Kalibak is dead'.");
-								puts("We did it... You did it! You passed the Bat-Mites trials. You're ready. It's time to take you to the next ste-\n\nOh. I'm afraid to inform that we've been cancelled. But here's a reward for your troubles! A signed T-Shirt! Be sure to take it on your next adventure.. ");
-								break;							
 							}
-							break;
-							scanf("%d",&choice);
-					}
-					break;
+							printf("Woo. You didn't roll it. You get to live %s", name);
+							puts("We're passed the snow elves, shred down the mountain side and we'll shave a few seconds off!");
+							puts("But it looks like you've discovered the Fire Pits of Apokylyps and its slums in the distance.");
+							printf("It's very unlikely you'll get out of this alive, %s. You should send a letter back home.", name);
+							puts("What do you want the letter to be called? I'll probably just email it. Carrier-parademons can be unreliable. (psst) make it a file name.");
+							char letterName[256];
+							scanf("%s", letterName);
+							system("clear");
+							puts("Very well! It'll be on it's way in a nanosecond.");
+							char letterDetails[] = "Hello family and friends. Your fighter died. Oops. I'm sure they've lived a long life, probably.\nThey were likely beloved by many, I'm sure, probably, and will be missed, maybe.";
+							char letterDetailsTwo[] = "In the event that we managed to collect a body, we will send it back in whatever piece(s) we found it.";
+							FILE *wptr;
+							wptr = fopen(letterName, "w");
+							fprintf(wptr, "%s\n", letterDetails);
+							fprintf(wptr, "%s\n", letterDetailsTwo);
+							puts("\nOn your way to the capital you've discovered a ferocius man-beast. He's charging at you, you'll have to give a series of attacks.");
+							puts("Type and enter 'A' to attack and 'S' to standby when you think you've beaten him ");
+							int loopHold = 0;
+							char attack;
+							int attackCount = 0;
+							while(loopHold == 0)
+							{
+								scanf("%c", &attack);
+								
+								if (attack =='a')
+								{
+									attackCount++;
+								}
+								else if (attack == 's')
+								{
+									loopHold = 1;
+								}
+							}
+							system("clear");
+							if (attackCount < 5)
+							{
+								puts("You didn't attack enough. Unfortunately, he's still too strong.");
+								break;
+							}
+							printf("\n That did it. The monster is slain. Now let's be on our way %s, I hear people coming from the slums.", name);
+							puts("\n...\n");
+							puts("From the distance, a villager shouts 'Kalibak is dead'.");
+							puts("We did it... You did it! You passed the Bat-Mites trials. You're ready. It's time to take you to the next ste-\n\nOh. I'm afraid to inform that we've been cancelled. But here's a reward for your troubles! A signed T-Shirt! Be sure to take it on your next adventure.. ");
+							break;							
+						}
+						break;
+						scanf("%d",&choice);
+				}
+				break;
 			}
 			case 19:
 			{
