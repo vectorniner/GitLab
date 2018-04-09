@@ -466,65 +466,187 @@ void main(void)
 					{
 							puts("you open the door and find ........");
 							printf("A room full of games\nWelcome this is room 12\nWhat would you like to do: \n99. Leave Room 12\n2.Stay\n");
-							/* scanf("%d",&choice); */
 							int input=0;
-							srand(time(NULL));
+							srand(time(NULL));		/* srand function allows the rolls to be as random as possible */
 							scanf("%d", &choice);
+							int i=0;
 
-							if(choice==1)
+	 						int tileChoice=0;		/* tile that the user chooses */
+	 						int currentTile=1;		/* current tile the user is on */
+
+	 						int mine1=0;			/* first mine on a random tile */
+	 						int mine2=0;			/* second mine on a random tile */
+	 						int newRandomMines=0;		/* used to indicate if new mines should be generated */
+	 						int mineFieldAttempt=1;		/* counts the amount of times the user has attempted the mine field level */
+	 						int incorrectFlag=0;		/* indicates if the user typed the word correctly in the Typing Challenge game */
+
+							if(choice==99)			/* indicates the user wants to leave the room */
 							{
 								puts("Thank You Come Again");
 							}
 
 							if(choice==2)
 	 						{
+								printf("You look around and find that this is a game room... But Wait\nPress a key to find out what happened");
+								getchar();
+								getchar();
+								printf("The lights have gone out. You see a torch across the end of the room but know there are two mines somewhere. So you have to watch your step\nPress a key to try to get the torch");
+								getchar();
+		
+								do		/* do while loop to generate mines and asks and moves the user through the tiles */
+								{
+									currentTile=1;		/* if the user has stepped on a mine, the currentTile variable is set to 1 */
+									printf("Okay this is the layout of the room.\n \t%d\t%d\t%d\n \t%d\t%d\t%d\n \t%d\t%d\t%d\n \t%d\t%d\t%d\n\n", 0,1,2,3,4,5,6,7,8,9,10,11);
+		 						
+									printf("You are at tile number 1. You will have to navigate to tile number 10 while watching out for the two mines in the room. If you hit the mines you will return back to tile 1 and have to try again. You cannot skip tiles such as going from 0 to 2 or 1 to 7 or move diagonally such as from 2 to 4.\n\n");
+
+									while(mine1==mine2 || mine1==1 || mine2==1 || mine1==10 || mine2==10 || newRandomMines==1)	/* generates the tile number for mine1 and mine2 */
+									{
+										mine1=1 + (rand() % 11);
+										mine2=1 + (rand() % 11);
+		
+										newRandomMines=0;
+									}	
+
+									printf("Enter a valid tile number to move to that tile: ");	
+
+									do		/* checks if the tile that the user chose to move to is valid or not */
+									{
+
+										scanf("%d", &tileChoice);
+
+										if(tileChoice-currentTile==3 || tileChoice-currentTile==-3 || tileChoice-currentTile==1 || tileChoice-currentTile==-1)
+										{
+											currentTile=tileChoice;
+
+											if(currentTile!=mine1 && currentTile!=mine2)
+											{
+												printf((currentTile==10)?"You have made it safely to tile 10 and got the torch.\n\n":"You moved to tile %d \nEnter Next Tile: ", currentTile);
+											}
+										}
+
+										else
+										{
+											if(tileChoice==currentTile)
+											{
+												printf("You are already at tile %d. Pick another tile.\nEnter another tile: ", currentTile);
+											}
+
+											else
+											{
+												if(currentTile!=mine1 || currentTile!=mine2)
+												{
+												printf("This is not a valid move. You are still at tile %d. Try again.\nEnter another Tile: ", currentTile);
+												}
+											}
+										}
+									}while(currentTile!=10 && currentTile!=mine1 && currentTile!=mine2);
+		
+									if(currentTile==mine1 || currentTile==mine2)		/* checks if the user picked a tile with a mine */
+									{
+										printf("Oh no... You hit a mine. You have to start all over.\n");
+										newRandomMines=1;
+										mineFieldAttempt++;
+										printf("Mine 1 was at tile %d\nMine 2 was at tile %d\nPress a key to start over.\n", mine1, mine2);
+										getchar();
+										getchar();
+									}
+
+								}while(currentTile==mine1 || currentTile==mine2);
+
+								if(mineFieldAttempt==1)		/* displays the amount of attempts the user took to complete the mine field */
+								{
+									printf("That took only %d attempt. Congratulations\n\nNow ", mineFieldAttempt);
+								}
+
+								else
+								{
+									printf("That took %d attempts. Now\n\n", mineFieldAttempt);
+								}
+	
 	 							while(input!=5)
 	 							{
 	 								puts("Let's play some games");
 									puts("Choose a game");
-									printf("Games:\n1. Guess the number\n2. Word Modification\n3. Guess the word\n4. Roll a dice\n5. Leave Games Room\n");
+									printf("Games:\n1. Guess the number\n2. Word Modification\n3. Typing Challenge\n4. Roll a dice\n5. Leave Room 12\n");
 								
 									scanf("%d",&input);
 
-									if(input==1)
+									if(input==1)		/* generates a random number between 0 and 9 inclusive that the user has to guess */
 									{
 										puts("Welcome to Guess the Number Game");
 										int a=0;
 										int b=(rand() % 10);;
+										int totalGuesses=0;
 					
 
 										while(a!=b)
 										{
-											printf("Write a number between 0 and 10 inclusive\n");
+											printf("Write a number between 0 and 9 inclusive\n");
 											scanf("%d",&a);
 
 											while(a<=0 && a>=11)
 											{
 												printf("Number is out of bounds\n");
-												printf("Write a number between 0 and 10 inclusive\n");
+												printf("Write a number between 0 and 9 inclusive\n");
 												scanf("%d",&a);
 											}
 
 											if(a<b)
 											{
 												printf("Too low \n");
+												totalGuesses++;
 											}
 
 											if(a>b)
 											{
 												printf("Too high \n");
+												totalGuesses++;
 											}
 
 											if(a==b)
 											{
 												printf("Correct guess\n");
-											}
-
+												totalGuesses++;	
+											}	
 										}
+
+										switch(totalGuesses)		/* checks how many tries it took the user to guess the correct number and gives a grade */
+										{
+											case 0:
+											case 1:
+												printf("You got it in 1 guess\n");
+												printf("Your grade is A.\n\n");
+												break;
+											case 2:
+												printf("You got the correct number in %d guesses.\n", totalGuesses);
+												printf("Your grade is A.\n\n");
+												break;
+											case 3:
+											case 4:
+												printf("You got the correct number in %d guesses.\n", totalGuesses);
+												printf("Your grade is B.\n\n");
+												break;
+											case 5:
+											case 6:
+												printf("You got the correct number in %d guesses.\n", totalGuesses);
+												printf("Your grade is C.\n\n");
+												break;
+											case 7:
+											case 8:
+												printf("You got the correct number in %d guesses.\n", totalGuesses);
+												printf("Your grade is D.\n\n");
+												break;
+											default:
+												printf("You got the correct number in %d guesses.\n", totalGuesses);
+												printf("Your grade is F.\n\n");
+												break;
+										}	
+				
 				
 									}
 
-									else if(input==2)
+									else if(input==2)	/* prints whatever word the user types backwards */
 									{
 										puts("Welcome to the word Modification Game");
 										printf("Write a word to see it printed backwards\n");
@@ -535,7 +657,7 @@ void main(void)
 				
 										scanf("%29s",backwards);
 				
-										for(i=29; i>=0; i--)
+										for(i=29; i>=0; i--)	/* goes through the char array from the end to the beginning and prints each letter */
 										{
 											printf("%c", backwards[i]);
 										}
@@ -543,10 +665,247 @@ void main(void)
 										puts("");
 									}
 
-									else if(input==3)
+									else if(input==3)		/* displays a random word of different size depending on the difficulty level selected by the user */
 									{
-										puts("Welcome to Guess the word Game");
-										puts("Used to ride in parks");
+										puts("Welcome to Typing Challenge \n\n In this game you have 10, 15, or 20 seconds, depending on what diffculty is chosen,  to type the word. If you type it in time you, will get another word and increase your score. If you do not type it in time, you will lose the game. \n \n Choose a difficulty level: \n 1. Beginner 2. Medium 3. Hard 4. Random Difficulty \n");
+										int difficultyChoice=0;		/* stores the difficulty level chosen by the user */
+										int randomLevel=0;
+
+										time_t start;
+										time_t end;
+										double elapsed=0.00;
+										double maximumTime=0.00;
+
+										char letters[]="ABCDEFGHIJKLMNOPQRSTUVWXYZ";	/* char array with the complete alphabet */
+										char beginnerWord[]="abcdefgh";			/* small size word for beginner difficulty */
+										char mediumWord[]="abcdefghijklmnop";		/* medium size word for medium difficulty */
+										char hardWord[]="abcdefghijklmnopqrstuvwxyz";	/* large size word for hard difficulty */
+										char userInput[30];				/* stores the word the user types to check if it matches the original word */
+										int totalWordsTypedCounter=0;			/* stores the amount of words typed correctly */
+
+				
+										scanf("%d", &difficultyChoice);
+
+										while(difficultyChoice<=0 || difficultyChoice >4)	/* checks if the user typed a number other than 1,2,3, or 4 */
+										{
+											puts("Choose 1,2,3, or 4");
+											puts("");
+											puts("Choose a difficulty level: \n 1. Beginner 2. Medium 3. Hard 4. Random Level Choice\n");
+											scanf("%d", &difficultyChoice);
+										}
+
+				
+										if(difficultyChoice==4)		/* generates a random number between 1 and 3 */
+										{
+											randomLevel=1 + (rand() % 3);
+											difficultyChoice=randomLevel;
+										}
+
+										if(difficultyChoice==1)
+										{
+											maximumTime=10;
+												
+											if(randomLevel==0)
+											{
+				        							printf("You have chosen beginner difficulty\n");
+											}
+											else
+											{
+												printf("Your random difficulty is beginner.\n");
+											}
+										}
+
+										if(difficultyChoice==2)
+										{
+											maximumTime=15;
+
+				         						if(randomLevel==0)
+											{
+				        							printf("You have chosen medium difficulty\n");
+											}
+											else
+											{
+												printf("Your random difficulty is medium.\n");
+											}
+										}
+
+										if(difficultyChoice==3)
+										{
+											maximumTime=20;
+
+				         						if(randomLevel==0)
+											{
+				        							printf("You have chosen hard difficulty\n");
+											}
+											else
+											{
+												printf("Your random difficulty is hard.\n");
+											}
+										}
+				
+										incorrectFlag=0;	/* indicates no words typed incorrectly */
+
+										while(elapsed<maximumTime && incorrectFlag==0)		/* checks if the user typed the word in time and it was correct */
+										{
+				
+											if(difficultyChoice==1)		/* generates a random small size word for beginner difficulty and keeps track of how long it took for the user to type it */
+											{
+												for(i=0; beginnerWord[i]!='\0'; i++)		/* generates a small size word from random letters in the alphabet */
+												{
+													beginnerWord[i]=letters[rand()% (sizeof(letters)-1)];
+												}
+
+												if(totalWordsTypedCounter==0)
+												{
+													printf("Here is the word. Type it in 10 seconds: \n%s\n", beginnerWord); 
+												}
+
+												else
+												{
+												printf("Here is the next word. Type it in 10 seconds: \n%s\n", beginnerWord);
+												}	
+	
+												time(&start);
+												scanf("%s", userInput);
+												time(&end);
+												elapsed=difftime(end,start);				
+
+												printf("It took %f seconds to type your answer \n", elapsed);
+				
+												if(elapsed<maximumTime && (strcmp(userInput, beginnerWord)==0))		/* checks if the word the user typed matches the random word given */
+												{
+													printf("You got it right in time\n");
+													totalWordsTypedCounter++;
+												}
+
+												else
+												{
+													if(elapsed<maximumTime && (strcmp(userInput, beginnerWord)!=0))
+													{
+														printf("You typed the word incorrectly\n");
+														incorrectFlag++;
+													}
+
+													else if(elapsed>maximumTime && (strcmp(userInput, beginnerWord)==0))
+													{
+														printf("You typed the word correctly but ran out of time\n");
+														incorrectFlag++;
+													}
+
+													else if(elapsed>maximumTime && (strcmp(userInput, beginnerWord)!=0))
+													{
+														printf("You typed the word incorrectly and ran out of time\n");
+														incorrectFlag++;
+													}
+												}
+											}
+
+											else if(difficultyChoice==2)		/* generates a random medium size word for medium difficulty and keeps track of how long it took for the user to type it */
+											{
+												for(i=0; mediumWord[i]!='\0'; i++)		/* generates a medium size word from random letters in the alphabet */
+												{
+													mediumWord[i]=letters[rand()% (sizeof(letters)-1)];
+												}
+
+												if(totalWordsTypedCounter==0)
+												{
+													printf("Here is the word. Type it in 15 seconds: \n%s\n", mediumWord); 
+												}
+
+												else
+												{
+													printf("Here is the next word. Type it in 15 seconds: \n%s\n", mediumWord);
+												}
+					
+												time(&start);
+												scanf("%s", userInput);
+												time(&end);
+												elapsed=difftime(end,start);				
+
+												printf("It took %f seconds to type your answer \n", elapsed);
+
+												if(elapsed<maximumTime && (strcmp(userInput, mediumWord)==0))		/* checks if the word the user typed matches the random word given */
+												{
+													printf("You got it right in time.\n");
+													totalWordsTypedCounter++;
+												}
+
+												else
+												{
+													if(elapsed<maximumTime && (strcmp(userInput, mediumWord)!=0))
+													{
+														printf("You typed the word incorrectly.\n");
+														incorrectFlag++;
+													}
+
+													else if(elapsed>maximumTime && (strcmp(userInput, mediumWord)==0))
+													{
+														printf("You typed the word correctly but ran out of time.\n");
+														incorrectFlag++;
+													}
+
+													else if(elapsed>maximumTime && (strcmp(userInput, mediumWord)!=0))
+													{
+														printf("You typed the word incorrectly and ran out of time.\n");
+														incorrectFlag++;
+													}
+												}
+											}
+
+											else if(difficultyChoice==3)			/* generates a random large size word for hard difficulty and keeps track of how long it took for the user to type it */
+											{
+												for(i=0; hardWord[i]!='\0'; i++)		/* generates a large size word from random letters in the alphabet */
+												{
+													hardWord[i]=letters[rand()% (sizeof(letters)-1)];
+												}
+
+												if(totalWordsTypedCounter==0)
+												{
+													printf("Here is the word. Type it in 20 seconds: \n%s\n", hardWord); 
+												}
+
+												else
+												{
+													printf("Here is the next word. Type it in 20 seconds: \n%s\n", hardWord);
+												}
+
+												time(&start);
+												scanf("%s", userInput);
+												time(&end);
+												elapsed=difftime(end,start);				
+
+												printf("It took %f seconds to type your answer \n", elapsed);
+
+												if(elapsed<maximumTime && (strcmp(userInput, hardWord)==0))		/* checks if the word the user typed matches the random word given */
+												{
+													printf("You got it right in time.\n");
+													totalWordsTypedCounter++;
+												}
+
+												else
+												{
+													if(elapsed<maximumTime && (strcmp(userInput, hardWord)!=0))
+													{
+														printf("You typed the word incorrectly.\n");
+														incorrectFlag++;
+													}
+
+													else if(elapsed>maximumTime && (strcmp(userInput, hardWord)==0))
+													{
+														printf("You typed the word correctly but ran out of time.\n");
+														incorrectFlag++;
+													}
+
+													else if(elapsed>maximumTime && (strcmp(userInput, hardWord)!=0))
+													{
+														printf("You typed the word incorrectly and ran out of time.\n");
+														incorrectFlag++;
+													}
+												}
+											}
+										}
+
+										printf("Total Words Typed correctly: %d \n\n", totalWordsTypedCounter);				
 				
 				
 									}
@@ -554,11 +913,108 @@ void main(void)
 									else if(input==4)
 									{
 										puts("Welcome to Roll the Dice Game");
-									}	
+										int firstPointer=0;
+										int secondPointer=0;
+										int thirdPointer=0;
+										int fourthPointer=0;
+										int fifthPointer=0;
+										int sixthsPointer=0;
+										int sevensPointer=0;
+										int eightsPointer=0;
+										int ninesPointer=0;
+										int tensPointer=0;
+										int roll=0;	/* rolls variable to store the number of rolls the user enters */
+										int *ones=&firstPointer;	/* ones pointer variable that will be used as a counter to store the number of ones that will be rolled */
+										int *twos=&secondPointer;	/* twos pointer variable that will be used as a counter to store the number of twos that will be rolled */
+										int *threes=&thirdPointer;	/* threes pointer variable that will be used as a counter to store the number of threes that will be rolled */
+										int *fours=&fourthPointer;	/* fours pointer variable that will be used as a counter to store the number of fours that will be rolled */
+										int *fives=&fifthPointer;	/* fives pointer variable that will be used as a counter to store the number of fives that will be rolled */
+										int *sixes=&sixthsPointer;	/* sixes pointer variable that will be used as a counter to store the number of sixes that will be rolled */
+										int *sevens=&sevensPointer;	/* sevens pointer variable that will be used as a counter to store the number of sevens that will be rolled */
+										int *eights=&eightsPointer;	/* eights pointer variable that will be used as a counter to store the number of eights that will be rolled */
+										int *nines=&ninesPointer;	/* nines pointer variable that will be used as a counter to store the number of nines that will be rolled */
+										int *tens=&tensPointer;	/* tens pointer variable that will be used as a counter to store the number of tens that will be rolled */
+										int userValue=0;
 
-									else if(input==99)
+										int i=0;
+										int rolledValue=0;
+										srand(time(NULL));		/* srand function allows the rolls to be as random as possible */
+
+										printf("How many time would you like to roll the 10 sided die? ");
+										scanf("%d", &userValue);
+				
+										roll=userValue;
+
+										for(i=0; i<roll; i++)	/* loop to simulate roll of a dice */
+										{
+											rolledValue=1+(rand() %10);	/* simulate roll of a dice between 1 and 10 */
+				
+											switch(rolledValue)		/* switch function to check the rolledValue variable value for different cases */
+											{
+												case 1:
+													*ones=*ones+1;		/* if the rolledValue variable value is one, the ones variable value is incremented */
+													break;
+
+												case 2:
+													*twos=*twos+1;		/* if the rolledValue variable value is two, the twos variable value is incremented */
+													break;
+
+												case 3:
+													*threes=*threes+1;	/* if the rolledValue variable value is three, the threes variable value is incremented */
+													break;
+
+												case 4:
+													*fours=*fours+1;	/* if the rolledValue variable value is four, the fours variable value is incremented */
+													break;
+
+												case 5:
+													*fives=*fives+1;	/* if the rolledValue variable value is five, the fives variable value is incremented */
+													break;
+
+												case 6:
+													*sixes=*sixes+1;	/* if the rolledValue variable value is six, the sixes variable value is incremented */
+													break;
+
+												case 7:
+													*sevens=*sevens+1;	/* if the rolledValue variable value is seven, the sevens variable value is incremented */
+													break;
+
+												case 8:
+													*eights=*eights+1;	/* if the rolledValue variable value is eight, the eights variable value is incrmented */
+													break;
+
+												case 9:
+													*nines=*nines+1;	/* if the rolledValue variable value is nine, the nines variable value is incremented */
+													break;
+
+												case 10:
+													*tens=*tens+1;		/* if the rolledValue variable value is ten, the tens variable value is incremented */
+													break;
+
+												default:		/* default case for any other values */
+													break;
+											}
+
+										}
+
+										puts("You had: ");
+				
+										printf("%d ones\n", *ones);
+										printf("%d twos\n", *twos);
+										printf("%d threes\n", *threes);
+										printf("%d fours\n", *fours);
+										printf("%d fives\n", *fives);
+										printf("%d sixes\n", *sixes);
+										printf("%d sevens\n", *sevens);
+										printf("%d eights\n", *eights);
+										printf("%d nines\n", *nines);
+										printf("%d tens\n\n", *tens);
+									}		
+
+									else if(input==5)
 									{
 										puts("Thank You Come Again");
+										choice=99;
 									}
 		 						}
 							}
