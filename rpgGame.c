@@ -143,14 +143,19 @@ void main(void)
 									printf ("**** BUTTON 2 PRESSED ****\n");
 									printf ("***Let's play a game to decide if you get to escape this room alive...***\n");
 									printf ("I'll tell you what. You may roll a 6 sided die one time. If you roll a 1, the exit door opens and you may leave at your leisure. If you roll a 6, you are immediately killed by electric shock. If you roll between a 2 and a 5, you get another try at rolling the die. Think of this as a Russian Roulette game, just that I gave you a lifeline... Aren't I the nicest???\n");
+									printf ("***Type 'r' to Roll***\n");
 									eRoll = 1 + (rand() % SIDES);
-									printf ("%d", eRoll);	
+									//printf ("%d", eRoll);	
 									
 									while ((eRoll >= 2) && (eRoll <=5))
 									{
-										printf ("Roll again! eRoll is:'%d'. Type 'r' to roll again: \n", eRoll);
+						
 										scanf ("%c", &advance);
-										eRoll = 1 + (rand() % SIDES);	//roll again
+										if (advance == 'r')
+										{
+											eRoll = 1 + (rand() % SIDES);	//roll again
+											printf ("Roll again! Your die rolled a :'%d'. Type 'r' to roll again: \n", eRoll);
+										}
 									}
 									if (eRoll == 1)
 									{
