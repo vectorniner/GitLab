@@ -49,13 +49,13 @@ void main(void)
 		
 		switch(choice)
 		{
-			case 1://Alexander Gebretinsai's Assigned Room
+			case 1:
 			{
 				while(choice != 99)
 				{
 
 							puts("You open the door and find a dog");
-							puts("You now have 3 choices to choose from below: Please enter a number 1-3");
+							puts("At this point you have 3 choices: Please enter a number 1-3");
 							puts("1. Pet the dog");
 							puts("2. Feed the dog with the peanut butter sandwich you have in your hand");
 							puts("3. Run away.");
@@ -63,81 +63,24 @@ void main(void)
 							if(choice == 1)
 							{
 								puts("You pet the dog and he seems happy.");
-								puts("You get bored of petting the dog so you stop. The dog then begins to whimper begging for you to pet him more");
-								puts("You now have 2 choices to choose from below: Please enter a number 1-2");
-								puts("1. Pet the dog again");
-								puts("2. Walk away to find something else");
-								scanf("%d",&choice);
-								if(choice == 1)
-								{
-									puts("You pet the dog again but while you are petting the dog, a monster appears and tries to attack you");
-									puts("You now have 2 choices to choose from below: Please enter a number 1-2");
-									puts("1. Run away");
-									puts("2. Grab the sword that appears on the ground next to you and fight the monster");
-									scanf("%d",&choice);
-									if(choice == 1)
-									{
-										puts("You try and run away but the monster eats you. Sorry, game over.");
-										break;
-									}
-									
-									
-									else if (choice == 2)
-									{
-										puts("You try to fight the monster but you are a noob and do not know how to sword fight so the monster eats you. Game over,sorry");
-										break;
-
-									}
-							
-								}
-								else if(choice == 2)
-								{
-									puts("As soon as you start walking away, the dog barks warning you that a monster is about to attack you");
-									break;
-								}
-	
+								puts("To be continued...");
 								break;
 							}
 							else if(choice == 2)
 							{
-								puts("You try and feed the dog but the dog seems like he is not hungry so you eat it yourself. All of a sudden a monster comes and attacks you.");
-								puts("You now have 2 choices to choose from below: Please enter a number 1-2");
-								puts("1. Run away");
-								puts("2. Grab the sword that appears on the ground next to you and fight the monster");
-								scanf("%d",&choice);
-								if(choice == 1)
-								{
-									puts("You try and run away but the monster eats you. Sorry, game over.");
-									break;
-								}																		
-								else if (choice == 2)
-								{
-									puts("You try to fight the monster but you are a noob and do not know how to sword fight so the monster eats you. Game over,sorry");
-									break;
-								}
+								puts("You try and feed the dog but the dog seems like he is not hungry");
+								puts("To be continued....");
+								break;
 							}
 							else if(choice == 3)
 							{
-								puts("You run away but the dog barks warning you there's a monster beind you.");
-								puts("You now have 2 choices to choose from below: Please enter a number 1-2");
-								puts("1. Run away");
-								puts("2. Grab the sword that appears on the ground next to you and fight the monster");
-								scanf("%d",&choice);
-								if(choice == 1)
-								{
-									puts("You try and run away but the monster eats you. Sorry, game over.");
-									break;
-								}
-								else if (choice == 2)
-								{
-									puts("You try to fight the monster but you are a noob and do not know how to sword fight so the monster eats you. Game over,sorry");
-									break;
-								}
+								puts("You run away but the dog barks.");
+                                                                puts("To be continued....");
 								break;
 							}
 							else
 							{
-								puts("Error!");
+								puts("wrong choice");
 							}
 				}
 				break;
