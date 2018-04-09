@@ -643,6 +643,8 @@ void main(void)
 					{
 							FILE *fptr;
 							const char *text = "You did your best.";
+							char riddle[256];
+							int i = 0;
 
 						        int userInput, trapAnswer;
 							int wallet = 0;
@@ -774,6 +776,7 @@ void main(void)
 											puts("1 - Youre family heirloom, a silver dagger that is nicely polished.");
 											puts("2 - Some of your HP seeing as how she most likely wields magic.");
 											puts("3 - Your charm. As obnoxious as that is.");
+											puts("4 - Answer a riddle and you win!");
 											scanf("%d", &trapAnswer);
 
 											if(trapAnswer == 1)
@@ -827,6 +830,33 @@ void main(void)
 												puts("You both look at each other before deciding to laugh it off.");
 												puts("Out of empathy and wanting to forget this emberassing move, she tells you where to go back from to leave the cavern.");
 												return;
+											}
+											if(trapAnswer == 4)
+											{
+												puts("The siren keeps a close eye on you.");
+												puts("Seeing as how you're quite flushed she decides to tease you.");
+												puts("Answer me this riddle and Ill send you home in an instant!");
+												puts("You gulp at the thought since youre brain is about the size of a pigeons...");
+												puts("...but agree to her barter either way.");
+												puts("If you threw a White stone into the Red Sea, what would it become?");
+												scanf("%[^\n]s", riddle);
+												for(i = 0; i < 256; i++)
+												{
+													riddle[i] = tolower(riddle[i]);
+												}
+												if(strcmp(riddle, "wet") != 0)
+												{
+													puts("She looks at you in disappointment. Rather than spare you, she ends your life there.");
+													puts("Cue sad credits.");
+													return;
+												}
+												else
+												{
+													puts("She laughs as you confidently say the answer.");
+													puts("You cant avoid but cringe at the dad joke you just said but to your amazement she keeps her end of the deal.");
+													puts("In a matter of seconds your teleported back home!");
+													return;
+												}
 											}
 										}
 									}
