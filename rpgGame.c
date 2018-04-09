@@ -581,7 +581,8 @@ int main(void)
 			case 7:
 			{
 					while(choice != 99)
-				{ 
+				{      FILE *wptr;
+				       char swag[30] = {0};	
  				       puts("You open the door to find yourself back in your highschool algebra class...");
 				       puts("There is one problem on the board that 92 percent of people get wrong it reads:");
 				       puts("6/2(1+2)");
@@ -597,9 +598,16 @@ int main(void)
 						
 						case 9:
 							puts("Congratulations, you passed Highschool Algebra! Now write your name in the Hall Of Fame");
-							break;	
-					
-											
+							wptr = fopen("halloffame.dat", "w");
+							while(!feof(stdin))
+							{
+								scanf("%s", &swag);
+								fprintf(wptr, "%s", swag);
+								break;
+							}
+							fclose(wptr);
+							choice = 99;
+							break;									
 						
 					}
 					break;
