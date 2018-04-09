@@ -28,8 +28,8 @@
 
 
 
-void main(void)
 
+void main(void)
 {
 	int x,y,z,i,h,g,k,choice=0;
 	char name[256];
@@ -155,15 +155,19 @@ void main(void)
                             			int i, dice[NUM_DICE], sum, oldSum, correct, goodGuesses;
                             			srand(time(NULL));
                             			goodGuesses = 0;
+
                             			//sum = rollDice(dice);
+
                             			printf("Please Enter, How many times do you want to play? ");
                             			scanf("%d", &i);
 
                             			for ( i;i; i--)
                             			{
+
                                 	        	//printDice(dice, sum);
                                 			oldSum = sum;
                                 			//sum = rollDice(dice);
+
                                 			printf("Do you think the next total will be Higher,""the Same,or Lower than the previous total? ""(h, s, l)\n");
                                 			scanf(" %c", &guess);
 
@@ -200,6 +204,7 @@ void main(void)
                         	} //end while
                    			break;
                 	}// end case2
+
 
           	case 3: // ELTHON CISNEROS'S ROOM 
 			{
@@ -724,7 +729,7 @@ void main(void)
 												printf("What would you like to write in it?\nKEEP IT SHORT!\n");
 												scanf("%s",aString);
 												fputs(aString,writePage);
-											
+
 											break;
 										case 3:
 											printf("Box #%d was empty\n",boxNum);
@@ -754,6 +759,7 @@ void main(void)
 							srand(time(NULL));		/* srand function allows the rolls to be as random as possible */
 							scanf("%d", &choice);
 							int i=0;
+
 
 	 						int tileChoice=0;		/* tile that the user chooses */
 	 						int currentTile=1;		/* current tile the user is on */
@@ -1251,6 +1257,7 @@ void main(void)
 													*fours=*fours+1;	/* if the rolledValue variable value is four, the fours variable value is incremented */
 													break;
 
+
 												case 5:
 													*fives=*fives+1;	/* if the rolledValue variable value is five, the fives variable value is incremented */
 													break;
@@ -1274,6 +1281,7 @@ void main(void)
 												case 10:
 													*tens=*tens+1;		/* if the rolledValue variable value is ten, the tens variable value is incremented */
 													break;
+
 
 												default:		/* default case for any other values */
 													break;
@@ -1320,6 +1328,7 @@ void main(void)
 						switch(choices)
 						{
     							case 1:
+
 								{	
 								puts("You encounter a demogorgon, the kids from stranger things appear to help you fight including eleven");
 								puts("battle begins \nmenu press the number to use the command example 1 to fight./n \nfight \ndefend \nitem \nrun");
@@ -1426,6 +1435,7 @@ void main(void)
 
 
 					}	//room 13 end Bradford Mcdaniel
+
 					break;
 				}
 			}
@@ -1496,7 +1506,9 @@ void main(void)
 							printf("What do you do? Please choose from the following options!");
 							printf("Press 99 if you want to quit since video games cause violence");
 
+
 					scanf("%d", &choice);
+
 						int roll_0 =(rand() %10) +1;
 						int roll1 = (rand() %10) + 1;
 						int die = 0;
@@ -1504,7 +1516,9 @@ void main(void)
 
 						if(choice ==1)
 						{
+
 							printf("You automatically rely on running out of the room. The room is locked out and there is no other exit besides the cave that the bear came out of. Since you're panick attack has gotten worse, you make poor judgments and gets beaten to death by the bear. Now you have lost your legacy!");
+
 						}
 						else if(choice ==2)
 						{
@@ -2351,6 +2365,7 @@ void main(void)
 							else if(choice == 2)
 							{
 								puts("You find yourself further ahead in the cave.");
+
 							}
 					}
 			}
@@ -2358,3 +2373,4 @@ void main(void)
 	}
 }
 		
+
