@@ -204,7 +204,7 @@ void main(void)
 							break; // added
 							puts("you open the door and find ........");
 							scanf("%d",&choice);
-					}
+					}// END ELTHON CISNEROS' ROOM
 					break;
 			}
 			case 4:
