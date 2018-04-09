@@ -1,7 +1,7 @@
 //Contributors
 //Garrett Poppe 3/19/18
 //Diana Guevara-Colocho 3/31/2018
-//
+//Mohamed shalabi
 //Dylan Dickerson 3/21/18
 //Brian Baskovich 3/21/18
 //Mahir Eldaw 3/21/18
@@ -23,7 +23,30 @@
 #include <ctype.h>
 #include <string.h>
 #include <time.h>
+#define NUM_DICE 3
 
+int rollDice(int *dice)
+{
+    int i, sum;
+
+    for (i = sum = 0; i < NUM_DICE; i++)
+    {
+        dice[i] = rand()%6 + 1;
+        sum += dice[i];
+    }
+    return sum;
+}
+
+void printDice(int *dice, int sum)
+{
+    int i;
+    printf("\n\n");
+    for (i = 0; i < NUM_DICE; i++)
+    {
+        printf("Die %d: %d\n", i + 1, dice[i]);
+    }
+    printf("---------\nTotal: %d\n\n", sum);
+}
 
 
 int main(void)
@@ -141,14 +164,64 @@ int main(void)
 			}
 			case 2:
 			{
-					while(choice != 99)
-					{
-							puts("you open the door and find ........");
-							scanf("%d",&choice);
-					}
-					break;
-			}
-			case 3: // ELTHON CISNEROS'S ROOM 
+                                while(choice != 99)
+
+                                {
+                          	        	puts("Thank you for choosing my door!!!");
+                           	        	puts("Now,you open the door and I hope you enjoyed your time!!");
+                           			puts("********************************************************");
+
+                            			char guess;
+                            			int i, dice[NUM_DICE], sum, oldSum, correct, goodGuesses;
+                            			srand(time(NULL));
+                            			goodGuesses = 0;
+                            			sum = rollDice(dice);
+                            			printf("Please Enter, How many times do you want to play? ");
+                            			scanf("%d", &i);
+
+                            			for ( i;i; i--)
+                            			{
+                                	        	printDice(dice, sum);
+                                			oldSum = sum;
+                                			sum = rollDice(dice);
+                                			printf("Do you think the next total will be Higher,""the Same,or Lower than the previous total? ""(h, s, l)\n");
+                                			scanf(" %c", &guess);
+
+                                			switch (guess)
+                                			{
+                                        			case 'h':
+                                                    	        	correct = (sum > oldSum);
+                                                    			break;
+                                        			case 's':
+                                                    			correct = (sum == oldSum);
+                                                    			break;
+                                        			case 'l':
+                                                            		correct = sum < oldSum;
+                                                    	         	break;
+                                        			default:
+                                                     			correct = 0; printf("Not h, s or l.\n");
+                                			}
+
+                                			if (correct)
+                                			{
+                                    			printf("Your guess was correct!\n");
+                                    			goodGuesses++;
+                                			}
+
+                                			else
+                                			{
+                                    			printf("Your guess was incorrect!\n");
+                                			}
+
+                            			}//end for loop
+                            	        	printf("You got a total of %d guesses correct!\n", goodGuesses);
+                            			printf("Thank you again for coming to my room #2\n");
+                           			break;
+                        	} //end while
+                   			break;
+                	}// end case2
+
+          			case 3: // ELTHON CISNEROS'S ROOM 
 			{
 					while(choice != 99)
 					{
