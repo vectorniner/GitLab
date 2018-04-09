@@ -1,22 +1,20 @@
 //Contributors
 //Garrett Poppe 3/19/18
+<<<<<<< HEAD
 //Diana Guevara-Colocho 3/31/2018
 //
+=======
 //Dylan Dickerson 3/21/18
 //Brian Baskovich 3/21/18
+//Diana Guevara-Colocho 3/21/2018
 //Mahir Eldaw 3/21/18
-//Salvador Rodriguez 4/04/2018
+//Salvador Rodriguez 3/21/2018
 //Joseph Moreno
 //Maik De Leon Lopez 3/21/18
 //Kevin Ramirez
-//Airrion Young 4/8/18
 //Cesar Gutierrez 4/2/18
-
 //Victor De Jesus 4/2/18
-
-
-//Emanuel Fonseca
-
+>>>>>>> upstream/master
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -30,6 +28,7 @@ void main(void)
 {
 	int x,y,z,i,h,g,k,choice=0;
 	char name[256];
+	int boxNum=0;
 
 	printf("Please enter your name: "); //Input any number of array inputs
 	scanf("%s",name);
@@ -46,13 +45,13 @@ void main(void)
 		
 		switch(choice)
 		{
-			case 1://Alexander Gebretinsai's Assigned Room
+			case 1:
 			{
 				while(choice != 99)
 				{
 
 							puts("You open the door and find a dog");
-							puts("You now have 3 choices to choose from below: Please enter a number 1-3");
+							puts("At this point you have 3 choices: Please enter a number 1-3");
 							puts("1. Pet the dog");
 							puts("2. Feed the dog with the peanut butter sandwich you have in your hand");
 							puts("3. Run away.");
@@ -60,81 +59,24 @@ void main(void)
 							if(choice == 1)
 							{
 								puts("You pet the dog and he seems happy.");
-								puts("You get bored of petting the dog so you stop. The dog then begins to whimper begging for you to pet him more");
-								puts("You now have 2 choices to choose from below: Please enter a number 1-2");
-								puts("1. Pet the dog again");
-								puts("2. Walk away to find something else");
-								scanf("%d",&choice);
-								if(choice == 1)
-								{
-									puts("You pet the dog again but while you are petting the dog, a monster appears and tries to attack you");
-									puts("You now have 2 choices to choose from below: Please enter a number 1-2");
-									puts("1. Run away");
-									puts("2. Grab the sword that appears on the ground next to you and fight the monster");
-									scanf("%d",&choice);
-									if(choice == 1)
-									{
-										puts("You try and run away but the monster eats you. Sorry, game over.");
-										break;
-									}
-									
-									
-									else if (choice == 2)
-									{
-										puts("You try to fight the monster but you are a noob and do not know how to sword fight so the monster eats you. Game over,sorry");
-										break;
-
-									}
-							
-								}
-								else if(choice == 2)
-								{
-									puts("As soon as you start walking away, the dog barks warning you that a monster is about to attack you");
-									break;
-								}
-	
+								puts("To be continued...");
 								break;
 							}
 							else if(choice == 2)
 							{
-								puts("You try and feed the dog but the dog seems like he is not hungry so you eat it yourself. All of a sudden a monster comes and attacks you.");
-								puts("You now have 2 choices to choose from below: Please enter a number 1-2");
-								puts("1. Run away");
-								puts("2. Grab the sword that appears on the ground next to you and fight the monster");
-								scanf("%d",&choice);
-								if(choice == 1)
-								{
-									puts("You try and run away but the monster eats you. Sorry, game over.");
-									break;
-								}																		
-								else if (choice == 2)
-								{
-									puts("You try to fight the monster but you are a noob and do not know how to sword fight so the monster eats you. Game over,sorry");
-									break;
-								}
+								puts("You try and feed the dog but the dog seems like he is not hungry");
+								puts("To be continued....");
+								break;
 							}
 							else if(choice == 3)
 							{
-								puts("You run away but the dog barks warning you there's a monster beind you.");
-								puts("You now have 2 choices to choose from below: Please enter a number 1-2");
-								puts("1. Run away");
-								puts("2. Grab the sword that appears on the ground next to you and fight the monster");
-								scanf("%d",&choice);
-								if(choice == 1)
-								{
-									puts("You try and run away but the monster eats you. Sorry, game over.");
-									break;
-								}
-								else if (choice == 2)
-								{
-									puts("You try to fight the monster but you are a noob and do not know how to sword fight so the monster eats you. Game over,sorry");
-									break;
-								}
+								puts("You run away but the dog barks.");
+                                                                puts("To be continued....");
 								break;
 							}
 							else
 							{
-								puts("Error!");
+								puts("wrong choice");
 							}
 				}
 				break;
@@ -148,86 +90,10 @@ void main(void)
 					}
 					break;
 			}
-			case 3: // ELTHON CISNEROS'S ROOM 
+			case 3:
 			{
 					while(choice != 99)
 					{
-							//int input;
-							printf ("\n");
-							printf("***This is Room 3.***\n ");
-							printf ("You walk into a strangely bright and colorful room. However, you see 4 untitled buttons on a table...\n");
-							printf ("Keep in mind: There are hidden doors within this bright and colorful room. The only thing keeping these doors open is the power. Would be a mighty shame (for you) if there was a power outage!\n");
-							printf ("Above the buttons a sign reads: You may choose press one button to determine your fate. To not keep you in total suspense, an LCD display on the wall will vaguely let you know what just happened after you pressed this button:\n");
-							scanf ("%d", &choice);
-
-							switch (choice)
-							{
-								case 1:
-									printf ("\n");
-									printf("***Ya done messed up! Looks like this wasn't the number one choice you thought it was... This room will start filling with water now... Hope you know how to swim!!! :D *** \n");
-									puts ("Well, this room may be filling up with water, but I can give you a fighting chance by giving you ONE tool of your choice that may help you escape OR KILL YOU... Type in your choice wisely (1-4)...");
-									scanf ("%d", &choice);
-
-									while (choice != 99)
-									{
-										switch (choice)
-										{
-											case 1:
-												puts ("I have granted you a spear... Maybe you can make a hole in the door?");
-												break;
-											case 2:
-												puts ("I have granted you an oxygen tank and scuba suit...");
-												break;
-											case 3:
-												puts ("HAHAHAH!!! You pressed the wrong button! Now the room will fill up with water even quicker...");
-												break;
-											default:
-												puts ("For once, being incorrect has saved you... The room has stopped filling with water.");
-												break;
-										}
-										break;
-									}
-									break; //end switch
-								case 2:
-									printf ("\n");
-									printf ("***You survive. Now, get out of my room!***\n");
-									break;
-									// you may choose another card
-								case 3:
-									printf ("\n");
-									printf ("***You got lucky. You have been granted permission to press more buttons! Sounds like fun...***");
-									scanf ("%d", &choice);
-									break;
-								case 4:
-									printf ("\n");
-									printf ("***This button just cut power to lights in the room (as well as those hidden doors I mentioned before). Hope you like the dark and tigers...***\n");
-									while (choice != 99)
-									{
-										puts ("Display reads: Power has been cut to this room. You will be given one chance to either escape from this room alive or not. Let's play some trivia. Being one myself, I like computers, so I would like you to guess what year Gottfried Leibniz invented binary");
-										scanf ("%d", &choice);
-										while (choice != 1679)
-										{
-											puts ("Oops! WRONG!!!!! Guess again!");
-											scanf ("%d", &choice);
-											puts ("Until you correctly guess Leibniz invented binary, you will be trapped in this room in particular!!! Well, that may be a bit harsh. I will give you one clue: 'late 1600's'");
-										
-										}
-										puts ("~~~YOU GUESSED CORRECTLY!~~~ You are one smart cookie! You get to escape...");
-										break;	
-									
-									}
-									break;
-								default:
-									while (choice != 99)
-									{
-										puts ("Choose a new door to explore....");
-										scanf ("%d", &choice);
-									
-									}
-									break;
-	
-							}
-							break; // added
 							puts("you open the door and find ........");
 							scanf("%d",&choice);
 					}
@@ -242,19 +108,13 @@ void main(void)
 					}
 					break;
 			}
-			case 5: //Airrion Young
+			case 5:
 			{
 					while(choice != 99)
 					{
 						int chest = 0;
-						int fight = 0;
-						int game = 0;
-						int guess = 0;
-						int i = 0;
-						int room5 = 0;
-
-						FILE *wPtr = fopen("room5.txt", "w");
-						puts("you open the door and find two different chests, one blue one red...");
+						char room5 = 'a';
+						puts("Welcome to room #5");
 						
 						printf("Enter which chest to open\n");
 						puts("Enter 1 for Red Chest");
@@ -264,86 +124,26 @@ void main(void)
 
 						if(chest == 1)
 						{
-							puts("Suddenly a dragon appears and lunges at you. There is a window to your left, and a sword to your right.");
-							puts("Do you...\n 1: take a chance and escape through the window \n 2: pick up the sword and defend yourself ");
-							scanf("%d", &fight);
-							if(fight == 1)
-							{
-								puts("Why would you choose to jump out of a window?");
-								puts("Due to your two-story fall, you now suffer from amnesia and have no recollection of room 5...");
-								fprintf(wPtr, "What happened here.....?");
-							}
-							if(fight == 2)
-							{
-								puts("The dragon watches as you picks up the sword, nervously he notices that you dont realize he is friendly");
-								puts("The dragon opens his mouth to speak, shocked you drop the sword");
-								puts("The dragon precedes to explain that he is friendly and is particularly fond of guessing games");
-								puts("Do you want to play the game? 1-yes 2-no");
-								scanf("%d", &game);
-								if(game == 1)
-								{
-									puts("The dragon wants you to guess a number as a hint he says 1 - 5");
-									puts(" Begin Entering: \n Press 10 to give up");
-									scanf("%d", &guess);
-
-									while(guess != 10)
-									{
-										puts("Enter Again");
-										scanf("%d", &guess);
-										game++;
-										if(game == 10)
-										{
-											puts("Looks like you got caught in dragon's infnite loop");
-											guess = 10;		
-										}
-									}
-									puts("The dragon is tricky, he mentioned 1 - 5 but said enter 10 to give up");
-									puts("10 was actually the target number and youve been taunted");
-									puts("The dragon admires you and lets you leave room 5");
-																		
-								}
-								if(game == 2)
-								{
-									puts("You have offended the dragon, He has now thrown you out of the window");
-									puts("Due to your two-story fall, you now suffer from amnesia and have no recollection of room 5....");
-									fprintf(wPtr,"What happened here......?");
-								}
-							}							
+							puts("A dragon has incinerated you!");
+							puts("Game over");
 						}
 						if(chest == 2)
 						{
 							puts("You have found the Princess");
 							puts("The King has offered you a grand reward");
-							puts("Do you accept the Kings reward? 1-yes 2-no");
-							scanf("%d", &room5);
-							if(room5 == 1)
+							puts("Do you accept the Kings reward? y-yes n-no");
+							scanf(" %c", &room5);
+							if(room5 == 'y')
 							{
 								puts("CONGRATULATIONS you have married the Princess");
-								fprintf(wPtr,"The food was the only highlight of your wedding day...Good Luck with that\n");
-								puts("Now that you have been crowned, what is first on your agenda?");
-								puts("1: Wage War \n2: Divorce the Princess");
-								scanf(" %d", &game);
-								if(game == 1)
-								{
-									puts("You are unprepared for war, you have 3 soliders while the neighboring kingdom has 200");	
-									puts("It was a valiant effort, but you have been defeated, better luck next time");
-								}
-								if(game == 2)
-								{
-									puts("The king does not take well to divorce, he banishes you from the kingdom and tarnishes your reputation");
-									puts("You decide that you no longer want to be seen so you carve out a tree and take shelter there, befriending local squirrels\n You are now seen as the town weirdo");
-								}
 							}
-							if(room5 == 2)
+							if(room5 == 'n')
 							{
-								puts("You have been banished");
-								fprintf(wPtr,"You have met your demise in room 5\n");
+								puts("The King has killed you");
 							}
 						}
-					break;					
-					fclose(wPtr);	
+						break;
 					}
-					break;
 					
 			}
 			case 6:
@@ -589,16 +389,10 @@ void main(void)
 			{
 					while(choice != 99)
 					{
-							int boxNum=0;
-							int randNum=0;
-							char aString[256];
-							FILE *writePage;
-
 							puts("You open the door and find a damp room, mostly empty, three boxes lay on the floor");
 							puts("You feel the urge to look through them");
 							puts("How many would you like to look through?");
 							scanf("%d",&choice);
-							srand(time(NULL));
 							if(choice>3||choice==0)
 							{
 								puts("Why? just leave");
@@ -612,34 +406,7 @@ void main(void)
 									switch(boxNum)
 									{
 										case 1:
-											printf("There is a Dice Would you like to Roll it?\n");
-											scanf("%s",aString);
-											if(isalpha(aString[0]))
-											{
-												aString[0]=tolower(aString[0]);
-												if(isalpha(aString[1]))
-												{
-													aString[1]=tolower(aString[1]);
-													if(isalpha(aString[2]))
-													{
-														aString[2]=tolower(aString[2]);
-													}
-												}
-											}
-											if(aString[0]=='y' && aString [1]=='e' && aString[2]=='s')
-											{
-												randNum=(rand()%5)+1;
-												printf("You rolled a %d, that's it\n",randNum);
-											}
-											break;
 										case 2:
-											printf("Under the box you find a pencil and a small page\n");
-												writePage=fopen("page.txt","w");
-												printf("What would you like to write in it?\nKEEP IT SHORT!\n");
-												scanf("%s",aString);
-												fputs(aString,writePage);
-											}
-											break;
 										case 3:
 											printf("Box #%d was empty\n",boxNum);
 											break;
@@ -649,7 +416,7 @@ void main(void)
 								}
 								if(choice==3)
 								{
-									puts("You just wasted your time looking through 3 useless boxes");
+									puts("You just wasted your time looking through 3 empty boxes");
 								}
 							}
 							break;
@@ -1003,54 +770,14 @@ void main(void)
 						}				
 					break;
 			}
-			case 17: // This room just adds to the game. Can be edited later to result in a loss and terminate the program. Currently, solving or failing to solve the problem ends up with the player choosing a room again
+			case 17:
 			{
-				while(choice != 99)
-				{
-					puts("\nYou open the door to room 17.");
-					puts("Upon entering, the door slams behind you and you hear it lock.");
-					puts("A lightbulb hanging from the ceiling begins to light up. After waiting a few moments, the lights slightly turn up and you notice something in the center of the room.");
-					puts("In the center of the room, you see a small table with a number pad embedded onto it.");
-				        puts("Upon inspection of the number pad, you press it  and the whole room suddenly lights up entirely, putting you in a daze.");
-					puts("You recover from the daze. Upon recovering, you see a small screen display hanging in front of you connected to the number pad.");
-					puts("Even worse, you notice multiple explosives, enough to blow the room (and yourself) out of existence.");
-					puts("On the screen display, it shows: Enter the correct 4 number password. After 3 wrong attempts, say bye to your life.");
-					puts("You look around the room and see a lot of scratch and scribbles, but you notice something barely legible.");
-					puts("You decipher it and it says roomx365."); // The 4 number password is 17 * 365, which is 6205
-					puts("You question the meaning of it as you hesitate to approach the number pad.");
-					puts("You must now enter the 4 number password.");
-
-					int i;						
-																						   						for(i = 1; i<4; i++)
+					while(choice != 99)
 					{
-						scanf("%d", &choice);
-						if(choice != 6205)
-						{
-							printf("\nYou guessed wrong. Attempt %d failed.\n", i);
-							if(i ==3)
-							{
-								puts("\nAll attempts failed, goodbye.");
-								puts("The explosion magically blows you back to where you started. Hey at least you aren't dead ... yet\n");
-								//choice = 99; //uncommenting would execute this: puts("Magically you are transported through space and time. You are back at the beginning....."); and end the program	break;
-							}
-						}																																					
-						else if(choice == 6205)
-						{
-							puts("\nThe screen displays: Congratulations, you can math, as you hear the door unlock and open behind you.");
-							puts("You never sprinted so fast in your life as you exit the room.");
-							puts("As you are about to exit the room, a portal appears out of no where and you inadvertently run through it...\n"); 
-							// After the correct choice, the player is transported back to the beginning as if nothing happened
-							break;
-						}
-						else
-						{
-							printf("You guessed wrong. Attempt %d failed.", i);
-							break;
-						}	
-					}			
-					break; // Break statement needed here to avoid infinite loop of room 17 whether correct or wrong	
-				}				
-				break;	
+							puts("you open the door and find ........");
+							scanf("%d",&choice);
+					}
+					break;
 			}
 			case 18://MINE: JOSEPH MORENO - ROOM 18			
 			{
@@ -1156,11 +883,8 @@ void main(void)
                         puts("2.If you talk your way out of this");
                         puts("3.If you unsheathe your Great Sword and commence an attack\n");
                         
-                        char usr_buff[256] = {0};
                         int choice;
-                        fgets(usr_buff, 256, stdin);
-                        fgets(usr_buff, 256, stdin);
-                        sscanf(usr_buff, "%d", &choice);
+                        scanf("%d", &choice);
                         
                         switch (choice)
                         {
@@ -1225,20 +949,6 @@ void main(void)
                                 }
                                 break;
                             case 3:
-                                puts("Before you begin your assault you remember what your Sensei Mr.Poppe always said..");
-                                puts("\"One must ALWAYS using FILE PROCESSING when doing projects in CSC251\"");
-                                puts("With that in mind you decide to write a farewell note to your fellow classmates");
-                                puts("Theres only one way this will end and you want the world to know what happened");
-                                puts("By the way you should find it in ALL_CAPS.txt");
-                                
-                                FILE *all_caps = fopen( "ALL_CAPS.txt", "a");
-                                puts("So you begin to write your farewell letter.... !!!\n");
-                                char quote[256] = {0};
-                                fgets(usr_buff, 256, stdin);
-                                fputs(usr_buff, all_caps);
-                                fclose(all_caps);
-                                
-                                
                                 puts("The first victim comes at you and \"SLAAAASH\", his head rolls away into the darkness");
                                 puts("Who's next!? you yell. They shoot and you jump off the bullets like like a frog does lillypads");
                                 puts("You spin full 360 with your blade dismembering limbs left and right, so much blood....");
@@ -1495,7 +1205,6 @@ void main(void)
 					{
 							puts("You open the door and close it behind you.");
 							puts("After you overcome the panic from almost drowning, you look around and You find yourself in a cave, the air is damp and you smell mold.");
-									printf ("You got lucky. You may press more buttons! Sounds like fun...");
 							puts("You notice a skeleton at your feet with it's right hand clenched around something. The cave ahead leads to a tunnel and you see a door to your right.");
 							puts("At this point you have 3 choices:");
 							puts("1. Examine the skeleton.");
