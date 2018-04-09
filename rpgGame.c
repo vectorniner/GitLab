@@ -9,16 +9,14 @@
 //Joseph Moreno
 //Maik De Leon Lopez 3/21/18
 //Kevin Ramirez
+//Airrion Young 4/8/18
 //Cesar Gutierrez 4/2/18
-<<<<<<< HEAD
+
 //Victor De Jesus 4/2/18
->>>>>>> upstream/master
-=======
+
 
 //Emanuel Fonseca
 
-
->>>>>>> upstream/master
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -244,13 +242,19 @@ void main(void)
 					}
 					break;
 			}
-			case 5:
+			case 5: //Airrion Young
 			{
 					while(choice != 99)
 					{
 						int chest = 0;
-						char room5 = 'a';
-						puts("Welcome to room #5");
+						int fight = 0;
+						int game = 0;
+						int guess = 0;
+						int i = 0;
+						int room5 = 0;
+
+						FILE *wPtr = fopen("room5.txt", "w");
+						puts("you open the door and find two different chests, one blue one red...");
 						
 						printf("Enter which chest to open\n");
 						puts("Enter 1 for Red Chest");
@@ -260,26 +264,86 @@ void main(void)
 
 						if(chest == 1)
 						{
-							puts("A dragon has incinerated you!");
-							puts("Game over");
+							puts("Suddenly a dragon appears and lunges at you. There is a window to your left, and a sword to your right.");
+							puts("Do you...\n 1: take a chance and escape through the window \n 2: pick up the sword and defend yourself ");
+							scanf("%d", &fight);
+							if(fight == 1)
+							{
+								puts("Why would you choose to jump out of a window?");
+								puts("Due to your two-story fall, you now suffer from amnesia and have no recollection of room 5...");
+								fprintf(wPtr, "What happened here.....?");
+							}
+							if(fight == 2)
+							{
+								puts("The dragon watches as you picks up the sword, nervously he notices that you dont realize he is friendly");
+								puts("The dragon opens his mouth to speak, shocked you drop the sword");
+								puts("The dragon precedes to explain that he is friendly and is particularly fond of guessing games");
+								puts("Do you want to play the game? 1-yes 2-no");
+								scanf("%d", &game);
+								if(game == 1)
+								{
+									puts("The dragon wants you to guess a number as a hint he says 1 - 5");
+									puts(" Begin Entering: \n Press 10 to give up");
+									scanf("%d", &guess);
+
+									while(guess != 10)
+									{
+										puts("Enter Again");
+										scanf("%d", &guess);
+										game++;
+										if(game == 10)
+										{
+											puts("Looks like you got caught in dragon's infnite loop");
+											guess = 10;		
+										}
+									}
+									puts("The dragon is tricky, he mentioned 1 - 5 but said enter 10 to give up");
+									puts("10 was actually the target number and youve been taunted");
+									puts("The dragon admires you and lets you leave room 5");
+																		
+								}
+								if(game == 2)
+								{
+									puts("You have offended the dragon, He has now thrown you out of the window");
+									puts("Due to your two-story fall, you now suffer from amnesia and have no recollection of room 5....");
+									fprintf(wPtr,"What happened here......?");
+								}
+							}							
 						}
 						if(chest == 2)
 						{
 							puts("You have found the Princess");
 							puts("The King has offered you a grand reward");
-							puts("Do you accept the Kings reward? y-yes n-no");
-							scanf(" %c", &room5);
-							if(room5 == 'y')
+							puts("Do you accept the Kings reward? 1-yes 2-no");
+							scanf("%d", &room5);
+							if(room5 == 1)
 							{
 								puts("CONGRATULATIONS you have married the Princess");
+								fprintf(wPtr,"The food was the only highlight of your wedding day...Good Luck with that\n");
+								puts("Now that you have been crowned, what is first on your agenda?");
+								puts("1: Wage War \n2: Divorce the Princess");
+								scanf(" %d", &game);
+								if(game == 1)
+								{
+									puts("You are unprepared for war, you have 3 soliders while the neighboring kingdom has 200");	
+									puts("It was a valiant effort, but you have been defeated, better luck next time");
+								}
+								if(game == 2)
+								{
+									puts("The king does not take well to divorce, he banishes you from the kingdom and tarnishes your reputation");
+									puts("You decide that you no longer want to be seen so you carve out a tree and take shelter there, befriending local squirrels\n You are now seen as the town weirdo");
+								}
 							}
-							if(room5 == 'n')
+							if(room5 == 2)
 							{
-								puts("The King has killed you");
+								puts("You have been banished");
+								fprintf(wPtr,"You have met your demise in room 5\n");
 							}
 						}
-						break;
+					break;					
+					fclose(wPtr);	
 					}
+					break;
 					
 			}
 			case 6:
