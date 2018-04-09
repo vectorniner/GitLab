@@ -938,12 +938,57 @@ default:
 					}
 					break;
 			}
-			case 15:
+			case 15://Sean
 			{
-					while(choice != 99)
+					
+					while(choice !=99)
 					{
-							puts("you open the door and find ........");
-							scanf("%d",&choice);
+						
+
+							printf("Hello! Welcome, gamer! You are now in room 15...");
+							printf("You hear a loud growl. Suddenly you hear loud footsteps. You panick but you try to rely on your instincts");
+							printf("You are shocked to your eyes to see a massive bear coming out of a cave!");
+							printf("You have a piece of rock laying next to you and a long club laying further away");
+							printf("What do you do? Please choose from the following options!");
+							printf("Press 99 if you want to quit since video games cause violence");
+
+					scanf(%d, &choice);
+						int roll_0 =(rand() %10) +1;
+						int roll1 = (rand() %10) + 1;
+						int die = 0;
+
+
+						if(choice ==1)
+						{
+							printf("You automatically rely on running out of the room. The room is locked out and there is no other exit besides the 
+										cave that the bear came out of. Since you're panick attack has gotten worse, you make poor judgments and gets
+							beaten to death by the bear. Now you have lost your legacy!");
+						}
+						else if(choice ==2)
+						{
+							printf("You decide to make friends with the bear. The bear seems to utter some sounds. It appears to speak a human language, but you are just being delusional. It turns out that the bear does not speak English, therefore, you instantly get eaten by the bear!");
+
+						}
+						else if(choice==3)
+						{
+							printf("You decide to use the stone rod that is laying on the floor. You end up getting bruised, although you emerge victorious after beating the bear to death and you feel accomplished!. Now you can move on to other rooms. Good luck on your journey!");
+									for (i = 0; i < die; i++);
+									{
+										if(roll_0 == roll1)
+										{
+											printf("You won the jackpot! Nobody knows what it is however...");
+										}
+									}
+									FILE *outfile = fopen( "outfile.txt", "a");
+									fclose(outfile);
+
+								}
+
+						else
+						{
+							printf("Please enter a valid option or just play a different game you rebel...");
+						}
+       
 					}
 					break;
 			}
