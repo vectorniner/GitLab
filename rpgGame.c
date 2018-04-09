@@ -32,7 +32,6 @@ void main(void)
 {
 	int x,y,z,i,h,g,k,choice=0;
 	char name[256];
-	int boxNum=0;
 
 	printf("Please enter your name: "); //Input any number of array inputs
 	scanf("%s",name);
@@ -526,10 +525,16 @@ void main(void)
 			{
 					while(choice != 99)
 					{
+							int boxNum=0;
+							int randNum=0;
+							char aString[256];
+							FILE *writePage;
+
 							puts("You open the door and find a damp room, mostly empty, three boxes lay on the floor");
 							puts("You feel the urge to look through them");
 							puts("How many would you like to look through?");
 							scanf("%d",&choice);
+							srand(time(NULL));
 							if(choice>3||choice==0)
 							{
 								puts("Why? just leave");
@@ -543,7 +548,34 @@ void main(void)
 									switch(boxNum)
 									{
 										case 1:
+											printf("There is a Dice Would you like to Roll it?\n");
+											scanf("%s",aString);
+											if(isalpha(aString[0]))
+											{
+												aString[0]=tolower(aString[0]);
+												if(isalpha(aString[1]))
+												{
+													aString[1]=tolower(aString[1]);
+													if(isalpha(aString[2]))
+													{
+														aString[2]=tolower(aString[2]);
+													}
+												}
+											}
+											if(aString[0]=='y' && aString [1]=='e' && aString[2]=='s')
+											{
+												randNum=(rand()%5)+1;
+												printf("You rolled a %d, that's it\n",randNum);
+											}
+											break;
 										case 2:
+											printf("Under the box you find a pencil and a small page\n");
+												writePage=fopen("page.txt","w");
+												printf("What would you like to write in it?\nKEEP IT SHORT!\n");
+												scanf("%s",aString);
+												fputs(aString,writePage);
+											}
+											break;
 										case 3:
 											printf("Box #%d was empty\n",boxNum);
 											break;
@@ -553,7 +585,7 @@ void main(void)
 								}
 								if(choice==3)
 								{
-									puts("You just wasted your time looking through 3 empty boxes");
+									puts("You just wasted your time looking through 3 useless boxes");
 								}
 							}
 							break;
