@@ -782,9 +782,6 @@ int main(void)
 				puts("Today you will be watching my puppy while I am in Pope's class holding on for dear life.");
 				puts("My dog's name is Cannon.\n");
 				puts("INSTRUCTIONS: You have to figure out what Cannon needs to remain happy...");
-				printf("What is your name?(10 char or less):\n");
-				char name[10];
-				scanf("%s",name);	
 				printf("Hello %s ",name);
 				convertToUpper(name);
 				puts("\nAs you open the door...");
@@ -862,8 +859,7 @@ int main(void)
 				{
 					puts("Cannon is very loving, so he cuddles up and falls alseep easily.");
 					flag =2;
-					printf("Thankyou %s I have returned from Pope's class.",name);
-					puts("");
+					printf("Thankyou %s I have returned from Pope's class.\n",name);
 				}			
 				if(num != 5)
 				{
