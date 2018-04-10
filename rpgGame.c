@@ -16,7 +16,7 @@
 // Elthon Cisneros 4/6/18
 //Victor De Jesus 4/2/18
 //Emanuel Fonseca
-
+//Cameron Jackson
 
 
 #include <stdio.h>
@@ -25,12 +25,17 @@
 #include <string.h>
 #include <time.h>
 #define NUM_DICE 3
+#define RAN 2
+int exercise(void);
+void convertToUpper(char *sPtr);
+void write(void);
+void switcch(void);
 
 
 
 
 
-void main(void)
+int main(void)
 {
 	int x,y,z,i,h,g,k,choice=0;
 	char name[256];
@@ -161,8 +166,8 @@ void main(void)
 
                             			printf("Please Enter, How many times do you want to play? ");
                             			scanf("%d", &i);
-
-                            			for ( i;i; i--)
+						int n =0;
+						for ( n=0;n <=i; n--)
                             			{
 
                                 	        	//printDice(dice, sum);
@@ -774,12 +779,99 @@ void main(void)
 			}
 			case 10:
 			{
-					while(choice != 99)
+				puts("Today you will be watching my puppy while I am in Pope's class holding on for dear life.");
+				puts("My dog's name is Cannon.\n");
+				puts("INSTRUCTIONS: You have to figure out what Cannon needs to remain happy...");
+				printf("What is your name?(10 char or less):\n");
+				char name[10];
+				scanf("%s",name);	
+				printf("Hello %s ",name);
+				convertToUpper(name);
+				puts("\nAs you open the door...");
+				printf("%s ",name);
+				puts("\nCANNON IS CRYING!!");
+				puts("Guess a number between 1-5 to see why Cannon is crying\n");
+				puts("1: Food");
+				puts("2: Water");
+				puts("3: Bathroom");
+				puts("4: Play");
+				puts("5: Sleepy\n");
+				int flag = 0;
+				int num=0;
+				while (flag!= 2)
+				{	
+					if (flag == 1)
 					{
-							puts("you open the door and find ........");
-							scanf("%d",&choice);
+						printf("");
 					}
-					break;
+					else 
+					{
+						scanf("%d",&num);
+						if (num ==1)
+						{
+							switcch();		
+						}
+					if(num ==2)
+					{
+						puts("Cannon was a bit thirsty but he is still wining.");
+					}
+					if (num ==3)
+					{
+					puts("Great thinking!");
+					puts("\nPick him up and take him to the back yard.");
+					num =1+(rand() % RAN);		
+					if(num ==1)
+					{
+						puts("He peed, Just water it down.");
+					}	
+					if (num ==2)
+					{
+						puts("He pooped, grab the pooper scooper and get to work.");
+					}
+				}
+				if (num ==4)
+				{	
+					puts("What game would you like to play?");
+					puts("1: Tug of war");
+					puts("2: Frisbee");
+					puts("3: Wrestle");
+					puts("4: Exercise");
+					int numb =0;
+					scanf("%d",&numb);
+					if (numb ==1)
+					{
+						puts("He is having a great time and will eventually get sleepy.");
+					}
+					if (numb ==2)
+					{
+						printf("He doesnt know how to play this game so he stares at %s.",name);
+					}
+					if (numb ==3)
+					{
+						printf("Cannon is agressive so he bites %s. ",name);
+						write();
+					}
+					if (numb ==4)
+					{
+						puts("Cannon runs up and down the black yard in 3 different intervals");
+						puts("you need to record the numbers");
+						exercise();
+					}
+				}
+				if (num ==5)
+				{
+					puts("Cannon is very loving, so he cuddles up and falls alseep easily.");
+					flag =2;
+					printf("Thankyou %s I have returned from Pope's class.",name);
+					puts("");
+				}			
+				if(num != 5)
+				{
+					puts("\ntry again!");
+				}	
+			
+		
+
 			}
 			case 11:
 			{
@@ -1633,7 +1725,7 @@ void main(void)
 						else if(choice==3)
 						{
 							printf("You decide to use the stone rod that is laying on the floor. You end up getting bruised, although you emerge victorious after beating the bear to death and you feel accomplished!. Now you can move on to other rooms. Good luck on your journey!");
-									for (i = 0; i < die; i++);
+									for (i = 0; i < die; i++)
 									{
 										if(roll_0 == roll1)
 										{
@@ -1727,7 +1819,7 @@ void main(void)
 											{
 												printf("As you keep walking, your body starts to get sluggish...");
 												puts("Too late, it dawns on you that this cavern was filled with an odorless poison before falling over allowing death embrace your lifeless body...");
-												return;
+												return 0;
 											}
 										}
 										break;
@@ -1766,7 +1858,7 @@ void main(void)
 													wallet = wallet + 50;
 													printf("Health: %d\n", userHealth);
 													printf("Money: %d\n", wallet);
-													return;
+													return 0;
 												}
 											}
 											break;
@@ -1779,7 +1871,7 @@ void main(void)
 											puts("You try to scream but all you can hear is her voice; your surroudings become dark and your breathing coming to a stop.");
 											userHealth = userHealth - 50;
 											printf("Better luck nextime! Health: %d\n", userHealth);
-											return;
+											return 0;
 										}
 										if(trapAnswer == 3)
 										{
@@ -1815,7 +1907,7 @@ void main(void)
 													fprintf(fptr, "%s\n", text);
 													fclose(fptr);
 												}
-												return;
+												return 0;
 											}
 									
 											if(trapAnswer == 2)
@@ -1833,7 +1925,7 @@ void main(void)
 												puts("You recover 15 HP. Youre back home, time for some well deserved rest.");
 												userHealth = userHealth + 15;
 												printf("Ending Health: %d", userHealth);
-												return;
+												return 0;
 											}
 											if(trapAnswer == 3)
 											{
@@ -1845,7 +1937,7 @@ void main(void)
 												printf("Current Health: %d\n", userHealth);
 												puts("You both look at each other before deciding to laugh it off.");
 												puts("Out of empathy and wanting to forget this emberassing move, she tells you where to go back from to leave the cavern.");
-												return;
+												return 0;
 											}
 											if(trapAnswer == 4)
 											{
@@ -1864,14 +1956,14 @@ void main(void)
 												{
 													puts("She looks at you in disappointment. Rather than spare you, she ends your life there.");
 													puts("Cue sad credits.");
-													return;
+													return 0;
 												}
 												else
 												{
 													puts("She laughs as you confidently say the answer.");
 													puts("You cant avoid but cringe at the dad joke you just said but to your amazement she keeps her end of the deal.");
 													puts("In a matter of seconds your teleported back home!");
-													return;
+													return 0;
 												}
 											}
 										}
@@ -2476,4 +2568,81 @@ void main(void)
 			}
 		}
 	}
+	return 0;
 }
+}
+}
+int exercise(void)
+{
+	int i;
+	int a=0;
+	int b=0;
+	int c=0;
+	int total=0;
+
+	printf("Please enter number of times for interval 1: ");
+	scanf("%d",&a);
+	printf("Please enter number of times for interval 2: "); 
+	scanf("%d",&b);	
+	printf("Please enter number of times for interval 3: ");
+	scanf("%d",&c);
+	i=a+b+c;
+	printf("The total number of times Cannon ran is %d\n",i);
+	puts("However Cannon is stil crying!");	
+	return 0;
+}
+void convertToUpper(char *sPtr)
+{
+	while (*sPtr != '\0')
+	{
+		if(islower(*sPtr))
+		{
+			*sPtr=toupper(*sPtr);
+		}
+	++sPtr;
+	}
+}
+void write(void)
+{	
+	int i =0;
+	
+	int bite =0;
+	FILE *wPtr;
+	if ( ( wPtr = fopen( "pproject.txt", "w" ) ) == NULL ) 
+	{
+		printf( "File could not be opened\n" );
+	 }
+	else 	
+	{
+		puts("\nCannon has a puppy biting problem.");
+		puts("Record how many times he bites your hand.");
+		printf( "Enter the number\n" );	
+		scanf( "%d", &bite);
+		fprintf(wPtr,"%d\n",bite);	
+	
+	}
+	printf("Cannon bit me %d times.",bite);
+	puts("However he is still crying!");
+	fclose(wPtr);
+}
+void switcch(void)
+{	
+	char i;
+	int n=0;
+	for (n=0;n<1;n++)
+	{
+		puts("Enter 'w' for wet food or 'd' for dry food.");
+		scanf(" %c",&i);
+			switch(i)
+			{
+			case 'w':
+				puts("Cannon doesnt eat wet food much so he doesnt eat much.");
+				break;				
+			case 'd':
+				puts("Cannon likes dry food but is still upset.");
+				break;
+			}
+	}
+	puts("Feeding the beast only fueled his rage!");
+}
+
