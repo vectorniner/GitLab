@@ -30,7 +30,7 @@
 
 
 
-void main(int argc, char*argv[])
+void main(void)
 {
 	int x,y,z,i,h,g,k,choice=0;
 	char name[256];
@@ -452,7 +452,7 @@ void main(int argc, char*argv[])
 										scanf("%d",&select);
 										break;
 									case 2:
-										puts("The crates are shut tight and is impossible to open without a specific tool.\nWhere else would you like to investigate?");										scanf("%d",&select);
+										puts("The crates are shut tight and is impossible to open without a specific tool.\nWhere else would you like to investigate?");	scanf("%d",&select);
 										break;
 									case 3: 
 										puts("The door will not yield by brute force, you require a key to move forward.\nWhere else would you like to investigate?");
@@ -587,8 +587,7 @@ void main(int argc, char*argv[])
 			case 7:
 			{
 					while(choice != 99)
-				{      FILE *wptr;
-				       char swag[30] = {0};	
+				{ 
  				       puts("You open the door to find yourself back in your highschool algebra class...");
 				       puts("There is one problem on the board that 92 percent of people get wrong it reads:");
 				       puts("6/2(1+2)");
@@ -603,17 +602,10 @@ void main(int argc, char*argv[])
 							break;
 						
 						case 9:
-							puts("Congratulations, you passed Highschool Algebra! Now write your name in the Hall Of Fame");
-							wptr = fopen("halloffame.dat", "w");
-							while(!feof(stdin))
-							{
-								scanf("%s", &swag);
-								fprintf(wptr, "%s", swag);
-								break;
-							}
-							fclose(wptr);
-							choice = 99;
-							break;									
+							puts("Congratulations, you passed Highschool Algebra! The door behind you opens...");
+							break;	
+					
+											
 						
 					}
 					break;
@@ -669,24 +661,18 @@ void main(int argc, char*argv[])
 			}
 			case 9:
 			{
+					puts("For this room, you require one txt file named infile.txt.");
 					while(choice != 99)
 					{FILE *inf;
 							FILE *outf;
-							inf = fopen(argv[1], "r"); 
-							outf = fopen(argv[2], "w"); 
+							inf = fopen("infile.txt", "r"); 
+							outf = fopen("outfile.txt", "w"); 
 							int optionz = 0; 
 							char wordz[20];
 							int i = 0;
 							int n = 0;
 							int k = 0;
-							
-							if (argc < 3)
-							{
-								printf("Check it! You're missing some Args, bud \n");
-								exit(-1);
 								
-							}
-							
 							
 							if (inf == NULL)
 							{
@@ -1915,7 +1901,7 @@ void main(int argc, char*argv[])
 					puts("You must now enter the 4 number password.");
 
 					int i;						
-																						   						for(i = 1; i<4; i++)
+																						   					for(i = 1; i<4; i++)
 					{
 						scanf("%d", &choice);
 						if(choice != 6205)
@@ -1927,7 +1913,7 @@ void main(int argc, char*argv[])
 								puts("The explosion magically blows you back to where you started. Hey at least you aren't dead ... yet\n");
 								//choice = 99; //uncommenting would execute this: puts("Magically you are transported through space and time. You are back at the beginning....."); and end the program	break;
 							}
-						}																																					
+						}																					
 						else if(choice == 6205)
 						{
 							puts("\nThe screen displays: Congratulations, you can math, as you hear the door unlock and open behind you.");
@@ -2491,5 +2477,3 @@ void main(int argc, char*argv[])
 		}
 	}
 }
-		
-
