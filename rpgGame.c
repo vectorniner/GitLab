@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 //Contributors
 //Garrett Poppe 3/19/18
 //Diana Guevara-Colocho 4/8/2018
@@ -664,22 +662,22 @@ void main(void)
 			case 9:
 			{
 					while(choice != 99)
-					{FILE *inf;
+					{		FILE *inf;
 							FILE *outf;
-							inf = fopen(argv[1], "r"); 
-							outf = fopen(argv[2], "w"); 
+						//	inf = fopen(argv[1], "r"); 
+						//	outf = fopen(argv[2], "w"); 
 							int optionz = 0; 
 							char wordz[20];
 							int i = 0;
 							int n = 0;
 							int k = 0;
 							
-							if (argc < 3)
+							/*if (argc < 3)
 							{
 								printf("Check it! You're missing some Args, bud \n");
 								exit(-1);
 								
-							}
+							}*/
 							
 							
 							if (inf == NULL)
@@ -2487,4 +2485,3 @@ void main(void)
 }
 		
 
->>>>>>> upstream/master
