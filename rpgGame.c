@@ -30,7 +30,7 @@
 
 
 
-void main(void)
+void main(int argc, char*argv[])
 {
 	int x,y,z,i,h,g,k,choice=0;
 	char name[256];
@@ -187,7 +187,7 @@ void main(void)
                                                      			correct = 0; printf("Not h, s or l.\n");
                                 			}
 
-                                			if (correct);
+                                			if (correct)
                                 			{
                                     			printf("Your guess was correct!\n");
                                     			goodGuesses++;
