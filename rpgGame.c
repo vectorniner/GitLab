@@ -12,6 +12,7 @@
 //Airrion Young 4/8/18
 //Cesar Gutierrez 4/2/18
 //Emanuel Fonseca
+//Thar Soe
 // Elthon Cisneros 4/6/18
 //Victor De Jesus 4/2/18
 //Emanuel Fonseca
@@ -28,8 +29,8 @@
 
 
 
-int main(void)
 
+void main(void)
 {
 	int x,y,z,i,h,g,k,choice=0;
 	char name[256];
@@ -155,15 +156,19 @@ int main(void)
                             			int i, dice[NUM_DICE], sum, oldSum, correct, goodGuesses;
                             			srand(time(NULL));
                             			goodGuesses = 0;
-                            			sum = rollDice(dice);
+
+                            			//sum = rollDice(dice);
+
                             			printf("Please Enter, How many times do you want to play? ");
                             			scanf("%d", &i);
 
                             			for ( i;i; i--)
                             			{
-                                	        	printDice(dice, sum);
+
+                                	        	//printDice(dice, sum);
                                 			oldSum = sum;
-                                			sum = rollDice(dice);
+                                			//sum = rollDice(dice);
+
                                 			printf("Do you think the next total will be Higher,""the Same,or Lower than the previous total? ""(h, s, l)\n");
                                 			scanf(" %c", &guess);
 
@@ -201,7 +206,8 @@ int main(void)
                    			break;
                 	}// end case2
 
-          			case 3: // ELTHON CISNEROS'S ROOM 
+
+          	case 3: // ELTHON CISNEROS'S ROOM 
 			{
 					while(choice != 99)
 					{
@@ -664,9 +670,119 @@ int main(void)
 			case 9:
 			{
 					while(choice != 99)
-					{
-							puts("you open the door and find ........");
-							scanf("%d",&choice);
+					{FILE *inf;
+							FILE *outf;
+							inf = fopen(argv[1], "r"); 
+							outf = fopen(argv[2], "w"); 
+							int optionz = 0; 
+							char wordz[20];
+							int i = 0;
+							int n = 0;
+							int k = 0;
+							
+							if (argc < 3)
+							{
+								printf("Check it! You're missing some Args, bud \n");
+								exit(-1);
+								
+							}
+							
+							
+							if (inf == NULL)
+							{
+								printf("Sorry, bud. File cannot not be opened \n"); 
+							}
+							
+							else {
+								
+								
+								printf("WELCOME TO ROOM 9! THE C ROOM of DOOM!!!! \n\n\n\n");
+								
+								
+								printf ("Let Me Know What Chu Wanna do to the WordList: \n"
+									"Enter 1 to make the first letter a capital letter \n"
+									"Enter 2 to make each word lowercase \n"
+									"Enter 3 to make each word uppercase \n"
+									"Enter 4 to make each word duplicate 10x and display the total num of duplicates \n"
+									);
+								scanf( "%d", &optionz); 
+								
+								if ( optionz == 1)
+								{
+									while ((n = fgetc(inf)) != EOF)
+									{
+										fscanf(inf, " %s", wordz); 
+										
+										fprintf(outf, "%c%s\n", toupper(wordz[0]), wordz + 1);
+						
+										i++;
+									}
+									fclose(inf);
+									fclose(outf);
+										
+									}
+								else if ( optionz == 2)
+								{
+									while ((n = fgetc(inf)) != EOF)
+									{
+										
+										fscanf(inf, "%s", wordz); 
+										
+										for (k = 0; k < strlen(wordz); k++) 
+										{
+											wordz[k] = tolower(wordz[k]); 
+										}
+										
+										fprintf(outf, "%s \n", wordz);
+										i++;
+									}
+									
+									fclose(inf);
+									fclose(outf);
+								}
+								
+								else if (optionz == 3) 
+								{
+									while ((n = fgetc(inf)) != EOF)
+									{
+										fscanf(inf, "%s", wordz); 
+										
+										for (k = 0; k < strlen(wordz); k++) 
+										{
+											wordz[k] = toupper(wordz[k]); 
+										}
+										fprintf(outf, "%s \n", wordz);
+										i++;
+									}
+									fclose(inf);
+									fclose(outf);
+									
+								}
+								
+								else if (optionz == 4)
+								{
+									while ((n = fgetc(inf)) != EOF)
+									{
+										fscanf(inf, "%s", wordz); 
+										for (k = 0; k < 10; k++) 
+										{
+											fprintf(outf, "%s \n", wordz); 
+												
+										}
+									}
+									
+									fclose(inf);
+									fclose(outf);
+								}
+								
+								else 
+								{
+									printf("Sorry but this is not a valid option \n"); 
+									
+								}
+								
+								
+							}	
 					}
 					break;
 			}
@@ -732,7 +848,7 @@ int main(void)
 												printf("What would you like to write in it?\nKEEP IT SHORT!\n");
 												scanf("%s",aString);
 												fputs(aString,writePage);
-											}
+
 											break;
 										case 3:
 											printf("Box #%d was empty\n",boxNum);
@@ -749,6 +865,8 @@ int main(void)
 							break;
 					}
 					break;
+				
+				
 			}
 			case 12:
 			{
@@ -760,6 +878,7 @@ int main(void)
 							srand(time(NULL));		/* srand function allows the rolls to be as random as possible */
 							scanf("%d", &choice);
 							int i=0;
+
 
 	 						int tileChoice=0;		/* tile that the user chooses */
 	 						int currentTile=1;		/* current tile the user is on */
@@ -1257,6 +1376,7 @@ int main(void)
 													*fours=*fours+1;	/* if the rolledValue variable value is four, the fours variable value is incremented */
 													break;
 
+
 												case 5:
 													*fives=*fives+1;	/* if the rolledValue variable value is five, the fives variable value is incremented */
 													break;
@@ -1280,6 +1400,7 @@ int main(void)
 												case 10:
 													*tens=*tens+1;		/* if the rolledValue variable value is ten, the tens variable value is incremented */
 													break;
+
 
 												default:		/* default case for any other values */
 													break;
@@ -1326,114 +1447,116 @@ int main(void)
 						switch(choices)
 						{
     							case 1:
-							{	
-							puts("You encounter a demogorgon, the kids from stranger things appear to help you fight including eleven");
-							puts("battle begins \nmenu press the number to use the command example 1 to fight./n \nfight \ndefend \nitem \nrun");
-    							scanf("%d",&battlecommands);
- 								while(battlecommands!=5&&demogorgonHP>0&&partyHP>0)
-								{
-									if(battlecommands==1)
+
+								{	
+								puts("You encounter a demogorgon, the kids from stranger things appear to help you fight including eleven");
+								puts("battle begins \nmenu press the number to use the command example 1 to fight./n \nfight \ndefend \nitem \nrun");
+									scanf("%d",&battlecommands);
+									while(battlecommands!=5&&demogorgonHP>0&&partyHP>0)
 									{
-										puts("Mike and the other kids ready various weapons none look too dangerous while eleven charges up her psychic powers who do you choice to attack? 1 for the kids 2 for eleven");
-	   		 							scanf("%d",&bossBattle);
-											if(bossBattle==1)
-											{
-												puts("mike and the other kids attack");
-												attackDamage= 1+(rand() %25);
-												puts("Demogorgon roars and counter attacks");
-												bossAttackdamage=1+(rand()+BossDamlower) %(BossDamnupper+1);
-				    								demogorgonHP-=attackDamage;
-												partyHP-=bossAttackdamage;
-				    								printf("boss hp =%d   , party hp =%d \n",demogorgonHP,partyHP);
-				    								puts("maybe we should let eleven attack ");
-											}
-	 			 							if(bossBattle==2)
-	 										{
-	 			    								puts("Eleven attacks!");
-	 	            									attackDamage= 1+(rand() +1000) %(4000);
-	 	            									if(attackDamage>3000){
-	 	           									puts("demogorgon is pinned against the wall and can't attack!");
-												demogorgonHP-=attackDamage;
-					    							printf("boss hp =%d   , party hp =%d \n",demogorgonHP,partyHP);
-					    						}
-	 										else
-	 										{
-	 											puts("demogorgon is stunned but swipes at eleven");
-	 											bossAttackdamage=1+(rand()+BossDamlower) %(BossDamnupper+1);
-	 											partyHP-=attackDamage;
-	 											partyHP+=50;//attack is weaker vs eleven so they don't lose as much
-					    							demogorgonHP-=attackDamage;
-												printf("boss hp =%d   , party hp =%d \n",demogorgonHP,partyHP);
-					    						}
-				 
-				 
-										} //if end
-		            puts("\nmenu press the number to use the command example 1 to fight./n \nfight \ndefend \nitem \nrun");
-			    scanf("%d",&battlecommands);
-			
-			}	
-	
-	 if(battlecommands==2)
-	 {
-			puts("Lucas screams how can we defend against This thing!!");
-			puts("try something else!");
-			puts("\nmenu press the number to use the command example 1 to fight./n \nfight \ndefend \nitem \nrun");
-			scanf("%d",&battlecommands);
-			
-	 }
-		
-	 if(battlecommands==3)
-	   {
-	   		puts("Eleven uses eggo waffles increases attack damage! note using this command again will not stack attack damage");
-	   		puts("\nmenu press the number to use the command example 1 to fight./n \nfight \ndefend \nitem \nrun");
-			scanf("%d",&battlecommands);
-	   }
-	 if(battlecommands==4)
-	 {
-	  	        puts("cannot escape try something else!");
-	  	        puts("\nmenu press the number to use the command example 1 to fight./n \nfight \ndefend \nitem \nrun");
-			scanf("%d",&battlecommands);
-	  }
-								}
-	if(partyHP<=50)
-	{
-		puts("game is over the kids have lost the upside down world has become our world");
-		return 0;
-	}
-			        else
-			        {
-			        	puts("Eleven destroys the demogorgon but she is pulled into the upside down world as a result to be continued.. you however end up back in your room safe and sound with a box of eggo waffles");
-				}
-			        	break;
-}
-// end of choice 1 if
-case 2:
-{
-	puts("you move into room with a lake");
-	break;
-}
+										if(battlecommands==1)
+										{
+											puts("Mike and the other kids ready various weapons none look too dangerous while eleven charges up her psychic powers who do you choice to attack? 1 for the kids 2 for eleven");
+											scanf("%d",&bossBattle);
+												if(bossBattle==1)
+												{
+													puts("mike and the other kids attack");
+													attackDamage= 1+(rand() %25);
+													puts("Demogorgon roars and counter attacks");
+													bossAttackdamage=1+(rand()+BossDamlower) %(BossDamnupper+1);
+														demogorgonHP-=attackDamage;
+													partyHP-=bossAttackdamage;
+														printf("boss hp =%d   , party hp =%d \n",demogorgonHP,partyHP);
+														puts("maybe we should let eleven attack ");
+												}
+												if(bossBattle==2)
+												{
+														puts("Eleven attacks!");
+															attackDamage= 1+(rand() +1000) %(4000);
+															if(attackDamage>3000){
+														puts("demogorgon is pinned against the wall and can't attack!");
+													demogorgonHP-=attackDamage;
+														printf("boss hp =%d   , party hp =%d \n",demogorgonHP,partyHP);
+													}
+												else
+												{
+													puts("demogorgon is stunned but swipes at eleven");
+													bossAttackdamage=1+(rand()+BossDamlower) %(BossDamnupper+1);
+													partyHP-=attackDamage;
+													partyHP+=50;//attack is weaker vs eleven so they don't lose as much
+														demogorgonHP-=attackDamage;
+													printf("boss hp =%d   , party hp =%d \n",demogorgonHP,partyHP);
+													}
+					
+					
+													} //if end
+											puts("\nmenu press the number to use the command example 1 to fight./n \nfight \ndefend \nitem \nrun");
+											scanf("%d",&battlecommands);
+						
+										}	
+						
+										if(battlecommands==2)
+										{
+												puts("Lucas screams how can we defend against This thing!!");
+												puts("try something else!");
+												puts("\nmenu press the number to use the command example 1 to fight./n \nfight \ndefend \nitem \nrun");
+												scanf("%d",&battlecommands);
+												
+										}
+											
+										if(battlecommands==3)
+										{
+												puts("Eleven uses eggo waffles increases attack damage! note using this command again will not stack attack damage");
+												puts("\nmenu press the number to use the command example 1 to fight./n \nfight \ndefend \nitem \nrun");
+												scanf("%d",&battlecommands);
+										}
+										if(battlecommands==4)
+										{
+													puts("cannot escape try something else!");
+													puts("\nmenu press the number to use the command example 1 to fight./n \nfight \ndefend \nitem \nrun");
+												scanf("%d",&battlecommands);
+										}
+																	}
+										if(partyHP<=50)
+										{
+											puts("game is over the kids have lost the upside down world has become our world");
+											
+										}
+										else
+										{
+											puts("Eleven destroys the demogorgon but she is pulled into the upside down world as a result to be continued.. you however end up back in your room safe and sound with a box of eggo waffles");
+										}
+												break;
+						}// end of choice 1 if
+						case 2:
+						{
+							puts("you move into room with a lake");
+							break;
+						}
 
 
-case 3:
-{
-	puts("room fills with water no escape game over");
-	break;
-}
-case 4:
-{
-	puts(" you find the sword of truth");
-	break;
-}
-default:
-{
-		puts("wrong button or impossible direction try again");
-		break;
-}
+						case 3:
+						{
+							puts("room fills with water no escape game over");
+							break;
+						}
+						case 4:
+						{
+							puts(" you find the sword of truth");
+							break;
+						}
+						default:
+						{
+								puts("wrong button or impossible direction try again");
+								break;
+						}
 
 
 
-}//room 13 end Bradford Mcdaniel
+					}	//room 13 end Bradford Mcdaniel
+
 					break;
+				}
 			}
 			case 14:
 			{
@@ -1502,7 +1625,9 @@ default:
 							printf("What do you do? Please choose from the following options!");
 							printf("Press 99 if you want to quit since video games cause violence");
 
-					scanf(%d, &choice);
+
+					scanf("%d", &choice);
+
 						int roll_0 =(rand() %10) +1;
 						int roll1 = (rand() %10) + 1;
 						int die = 0;
@@ -1510,9 +1635,9 @@ default:
 
 						if(choice ==1)
 						{
-							printf("You automatically rely on running out of the room. The room is locked out and there is no other exit besides the 
-										cave that the bear came out of. Since you're panick attack has gotten worse, you make poor judgments and gets
-							beaten to death by the bear. Now you have lost your legacy!");
+
+							printf("You automatically rely on running out of the room. The room is locked out and there is no other exit besides the cave that the bear came out of. Since you're panick attack has gotten worse, you make poor judgments and gets beaten to death by the bear. Now you have lost your legacy!");
+
 						}
 						else if(choice ==2)
 						{
@@ -2359,3 +2484,12 @@ default:
 							else if(choice == 2)
 							{
 								puts("You find yourself further ahead in the cave.");
+
+							}
+					}
+			}
+		}
+	}
+}
+		
+
