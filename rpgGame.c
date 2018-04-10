@@ -16,7 +16,7 @@
 // Elthon Cisneros 4/6/18
 //Victor De Jesus 4/2/18
 //Emanuel Fonseca
-
+//Bradford Mcdaniel
 
 
 #include <stdio.h>
@@ -1428,7 +1428,7 @@ void main(void)
 						int bossBattle,attackDamage,bossAttackdamage ,BossDamlower=100 ,BossDamnupper=400; //boss range for damage is higher than the kids defend command will have one save after that only damage reduction will be 25%
 						int demogorgonHP=9999,partyHP=1000;
 						srand(time(NULL));
-						puts("welcome to room13 there please chose a direction to move  1 for west 2 for east 3 for south 4 for north");
+						puts("Welcome to room13  please chose a direction to move 1 for west 2 for east 3 for south 4 for north");
 						scanf("%d",&choices);
 						switch(choices)
 						{
@@ -1436,7 +1436,7 @@ void main(void)
 
 								{	
 								puts("You encounter a demogorgon, the kids from stranger things appear to help you fight including eleven");
-								puts("battle begins \nmenu press the number to use the command example 1 to fight./n \nfight \ndefend \nitem \nrun");
+								puts("Battle begins \nmenu press the number to use the command example 1 to fight \nfight \ndefend \nitem \nrun");
 									scanf("%d",&battlecommands);
 									while(battlecommands!=5&&demogorgonHP>0&&partyHP>0)
 									{
@@ -1458,10 +1458,10 @@ void main(void)
 												if(bossBattle==2)
 												{
 														puts("Eleven attacks!");
-															attackDamage= 1+(rand() +1000) %(4000);
-															if(attackDamage>3000){
+														attackDamage= 1+(rand() +1000) %(4000);//so Eleven never does less than 1000 damage instead of 0-3000
+														if(attackDamage>3000){
 														puts("demogorgon is pinned against the wall and can't attack!");
-													demogorgonHP-=attackDamage;
+													        demogorgonHP-=attackDamage;
 														printf("boss hp =%d   , party hp =%d \n",demogorgonHP,partyHP);
 													}
 												else
@@ -1470,16 +1470,16 @@ void main(void)
 													bossAttackdamage=1+(rand()+BossDamlower) %(BossDamnupper+1);
 													partyHP-=attackDamage;
 													partyHP+=50;//attack is weaker vs eleven so they don't lose as much
-														demogorgonHP-=attackDamage;
+													demogorgonHP-=attackDamage;
 													printf("boss hp =%d   , party hp =%d \n",demogorgonHP,partyHP);
-													}
+												}
 					
 					
 													} //if end
 											puts("\nmenu press the number to use the command example 1 to fight./n \nfight \ndefend \nitem \nrun");
 											scanf("%d",&battlecommands);
 						
-										}	
+										}//case 1 end	
 						
 										if(battlecommands==2)
 										{
@@ -1500,13 +1500,12 @@ void main(void)
 										{
 													puts("cannot escape try something else!");
 													puts("\nmenu press the number to use the command example 1 to fight./n \nfight \ndefend \nitem \nrun");
-												scanf("%d",&battlecommands);
+												        scanf("%d",&battlecommands);
 										}
 																	}
 										if(partyHP<=50)
 										{
 											puts("game is over the kids have lost the upside down world has become our world");
-											
 										}
 										else
 										{
@@ -1516,19 +1515,28 @@ void main(void)
 						}// end of choice 1 if
 						case 2:
 						{
-							puts("you move into room with a lake");
-							break;
+								        puts("You find a room with a large book in the center it ask for you to sign your name please type your name in to gain the rights to room13")
+									f=fopen("book.txt", "w");
+                                                                        puts("Cartman from SouthPark enters the room... Cartman: its you Sir Douchebag I shall write your name in the book of truth");
+                                                                        fprintf(f," By the powers vested in Eric Cartman first of his name, Grand wizard of Kupa Keep room 13 is yours Sir Douchebag");
+                                                                        fclose(f);
+    									break;
 						}
-
 
 						case 3:
 						{
-							puts("room fills with water no escape game over");
+							puts("This room has one sign that reads Loud people are rude we will make you talk in a inside voice in this room");
+							puts("you figure out you need to yell to leave this room you scream (type anything in all caps)")
+							gets(string);
+ 							printf("Mystic wind blows as your voice lowers and repeats what you said but in a softer tone %s\n", strlwr(string));
+   							puts("Maybe is if I speak in a normal voice it will reverse it!");
+							gets(string);
+							printf("Your Voice booms and you hear a crash nearby there is now a way out! %s",strupr(string));
 							break;
 						}
 						case 4:
 						{
-							puts(" you find the sword of truth");
+							puts(" you find the stick of truth");
 							break;
 						}
 						default:
