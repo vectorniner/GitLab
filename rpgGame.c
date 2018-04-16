@@ -588,7 +588,7 @@ void main(int argc, char*argv[])
 			{
 					while(choice != 99)
 				{      FILE *wptr;
-				       char swag[30] = {0};	
+				       char swag[30];	
  				       puts("You open the door to find yourself back in your highschool algebra class...");
 				       puts("There is one problem on the board that 92 percent of people get wrong it reads:");
 				       puts("6/2(1+2)");
@@ -607,7 +607,7 @@ void main(int argc, char*argv[])
 							wptr = fopen("halloffame.dat", "w");
 							while(!feof(stdin))
 							{
-								scanf("%s", &swag);
+								scanf("%s", swag);
 								fprintf(wptr, "%s", swag);
 								break;
 							}
@@ -822,8 +822,7 @@ void main(int argc, char*argv[])
 									switch(boxNum)
 									{
 										case 1:
-											printf("There is a Dice Would you like to Roll it?\n");
-											scanf("%s",aString);
+											`
 											if(isalpha(aString[0]))
 											{
 												aString[0]=tolower(aString[0]);
@@ -1951,8 +1950,7 @@ void main(int argc, char*argv[])
 				while(choice != 99)
 				{
 						puts("you open the door and find ........");
-						puts("Terra Fictitia!");
-						puts("Are you the one? The the champion destined to beat them?");
+						puts("Terra Fictitia! The battle ground of the trial of the Bat-Mite!");
 						puts("Traveling through the cavern of Smaug, you come across a goblet of gold.");
 						puts("Will you touch the goblet?");
 						puts("0 = no; 1 = yes");
@@ -1960,15 +1958,15 @@ void main(int argc, char*argv[])
 						system("clear");
 						if (choice == 1)
 						{
-							puts("The goblet was laced in poison. You tried your best, lancer! Surely, another story awaits you.\n");
+							printf("The goblet was laced in poison. You tried your best, %s! Surely, another story awaits you.\n", name);
 							break;
 						} 
 						else if (choice == 0)
 						{
-						puts("Good choice! Ah, a dragon! RUN, escape!\n");
-						puts("We're journeying through the Ice Spires of Kyurem. Watch out for Snow Elves!");
-						puts("Ah shoot! You found one! And he wants to beat you in a game of craps. Roll snake eyes and he just might attack!");
-						srand(time(NULL));
+							puts("Good choice! Ah, a dragon! RUN, escape!\n");
+							puts("We're journeying through the Ice Spires of Kyurem. Watch out for Snow Elves!");
+							puts("Ah shoot! You found one! And he wants to beat you in a game of craps. Roll snake eyes and he just might attack!");
+							srand(time(NULL));
 							puts("How many times would you like to roll a dice");
 							scanf("%d", &choice);
 							system("clear");
@@ -1983,12 +1981,14 @@ void main(int argc, char*argv[])
 								rollO = (1 + rand() % 6);
 								printf("You rolled %d and %d.\n", roll, rollO);
 								if (roll + rollO == 2)
-								{
-									puts("Snake eyes! Drat! Well, looks like you just became lunch!");
-									break;
-								}
+									snakeEyes = 1;
 							}
-							printf("Woo. You didn't roll it. You get to live %s", name);
+							if (snakeEyes == 1)
+							{
+								puts("Snake eyes! Drat! Well, looks like you just became lunch!");
+								break;
+							}
+							printf("Woo. You didn't roll it. You get to live %s\n", name);
 							puts("We're passed the snow elves, shred down the mountain side and we'll shave a few seconds off!");
 							puts("But it looks like you've discovered the Fire Pits of Apokylyps and its slums in the distance.");
 							printf("It's very unlikely you'll get out of this alive, %s. You should send a letter back home.", name);
@@ -2030,7 +2030,8 @@ void main(int argc, char*argv[])
 							printf("\n That did it. The monster is slain. Now let's be on our way %s, I hear people coming from the slums.", name);
 							puts("\n...\n");
 							puts("From the distance, a villager shouts 'Kalibak is dead'.");
-							puts("We did it... You did it! You passed the Bat-Mites trials. You're ready. It's time to take you to the next ste-\n\nOh. I'm afraid to inform that we've been cancelled. But here's a reward for your troubles! A signed T-Shirt! Be sure to take it on your next adventure.. ");
+							puts("We did it... You did it! You passed the Bat-Mites trials. You're ready. It's time to take you to the next ste-\n");
+							puts("\nOh. I'm afraid to inform that we've been cancelled. But here's a reward for your troubles! A signed T-Shirt! Be sure to take it on your next adventure.. ");
 							break;							
 						}
 						break;
