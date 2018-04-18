@@ -31,7 +31,7 @@
 #define CORRECTCODE 1775
 int exercise(void);
 void convertToUpper(char *sPtr);
-//void write(void);
+void writeThisThing(void);
 void switcch(void);
 
 
@@ -849,7 +849,7 @@ int main(void)
 					if (numb ==3)
 					{
 						printf("Cannon is agressive so he bites %s. ",name);
-						//write();
+						writeThisThing();
 					}
 					if (numb ==4)
 					{
@@ -2159,7 +2159,7 @@ int main(void)
 								{
 									puts("...We did it... You did it! You passed the Bat-Mites trials. You're ready. It's time to take you to the next ste-\n");
 									puts("\nOh. I'm afraid to inform that we've been cancelled. But here's a reward for your troubles! A signed T-Shirt! Be sure to take it on your next adventure.. ");
-									break;
+									
 								}
 								else if (alive == 1) 
 								{
@@ -2168,7 +2168,7 @@ int main(void)
 								}	
 							}						
 						}
-						break;
+						
 						scanf("%d",&choice);
 				}
 				break;
@@ -2871,29 +2871,29 @@ void convertToUpper(char *sPtr)
 	++sPtr;
 	}
 }
-// void write(void)
-// {	
-// 	int i =0;
+void writeThisThing(void)
+{	
+	int i =0;
 	
-// 	int bite =0;
-// 	FILE *wPtr;
-// 	if ( ( wPtr = fopen( "pproject.txt", "w" ) ) == NULL ) 
-// 	{
-// 		printf( "File could not be opened\n" );
-// 	 }
-// 	else 	
-// 	{
-// 		puts("\nCannon has a puppy biting problem.");
-// 		puts("Record how many times he bites your hand.");
-// 		printf( "Enter the number\n" );	
-// 		scanf( "%d", &bite);
-// 		fprintf(wPtr,"%d\n",bite);	
+	int bite =0;
+	FILE *wPtr;
+	if ( ( wPtr = fopen( "pproject.txt", "w" ) ) == NULL ) 
+	{
+		printf( "File could not be opened\n" );
+	 }
+	else 	
+	{
+		puts("\nCannon has a puppy biting problem.");
+		puts("Record how many times he bites your hand.");
+		printf( "Enter the number\n" );	
+		scanf( "%d", &bite);
+		fprintf(wPtr,"%d\n",bite);	
 	
-// 	}
-// 	printf("Cannon bit me %d times.",bite);
-// 	puts("However he is still crying!");
-// 	fclose(wPtr);
-// }
+	}
+	printf("Cannon bit me %d times.",bite);
+	puts("However he is still crying!");
+	fclose(wPtr);
+}
 void switcch(void)
 {	
 	char i;
@@ -2914,4 +2914,3 @@ void switcch(void)
 	}
 	puts("Feeding the beast only fueled his rage!");
 }
-
