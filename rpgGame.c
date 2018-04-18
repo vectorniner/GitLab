@@ -1585,6 +1585,11 @@ int main(void)
 												printf("You have rolled the dice %d times.\n\n", rolledDiceCounter);
 											}
 										}
+									
+										else
+										{
+											printf("You have completed the objective of this game already.\n\n");
+										} 
 
 										printf("How many time would you like to roll the 10 sided die? ");
 										scanf("%d", &userValue);
