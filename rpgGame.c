@@ -1975,7 +1975,7 @@ int main(void)
 						break;
 			}//bracket of case room 16 DO NOT REMOVE (note for myself no one else)
 
-			case 17: // Kevin Maatubang (Last edt 4/18/18)
+			case 17: // (Last edt 4/18/18)
 			{
 					while(choice != 99)
 					{
@@ -2909,7 +2909,7 @@ void convertToUpper(char *sPtr)
 	++sPtr;
 	}
 }
-/*void write(void)
+void write(void)
 {	
 	int i =0;
 	
@@ -2931,7 +2931,7 @@ void convertToUpper(char *sPtr)
 	printf("Cannon bit me %d times.",bite);
 	puts("However he is still crying!");
 	fclose(wPtr);
-}*/
+}
 void switcch(void)
 {	
 	char i;
