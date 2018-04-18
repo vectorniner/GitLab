@@ -2026,6 +2026,9 @@ int main(void)
 				while(choice != 99)
 				{
 						puts("you open the door and find ........");
+						sleep(2);
+						system("clear");
+						int alive = 0;
 						puts("Terra Fictitia! The battle ground of the trial of the Bat-Mite!");
 						puts("Traveling through the cavern of Smaug, you come across a goblet of gold.");
 						puts("Will you touch the goblet?");
@@ -2035,6 +2038,7 @@ int main(void)
 						if (choice == 1)
 						{
 							printf("The goblet was laced in poison. You tried your best, %s! Surely, another story awaits you.\n", name);
+							alive = 1;
 							break;
 						} 
 						else if (choice == 0)
@@ -2046,6 +2050,7 @@ int main(void)
 							puts("How many times would you like to roll a dice");
 							scanf("%d", &choice);
 							system("clear");
+							//Start of random number generation
 							int die = choice;
 							int roll = 0;
 							int rollO = 0;
@@ -2062,53 +2067,106 @@ int main(void)
 							if (snakeEyes == 1)
 							{
 								puts("Snake eyes! Drat! Well, looks like you just became lunch!");
-								break;
+								alive = 1;
 							}
-							printf("Woo. You didn't roll it. You get to live %s\n", name);
-							puts("We're passed the snow elves, shred down the mountain side and we'll shave a few seconds off!");
-							puts("But it looks like you've discovered the Fire Pits of Apokylyps and its slums in the distance.");
-							printf("It's very unlikely you'll get out of this alive, %s. You should send a letter back home.", name);
-							puts("What do you want the letter to be called? I'll probably just email it. Carrier-parademons can be unreliable. (psst) make it a file name.");
-							char letterName[256];
-							scanf("%s", letterName);
-							system("clear");
-							puts("Very well! It'll be on it's way in a nanosecond.");
-							char letterDetails[] = "Hello family and friends. Your fighter died. Oops. I'm sure they've lived a long life, probably.\nThey were likely beloved by many, I'm sure, probably, and will be missed, maybe.";
-							char letterDetailsTwo[] = "In the event that we managed to collect a body, we will send it back in whatever piece(s) we found it.";
-							FILE *wptr;
-							wptr = fopen(letterName, "w");
-							fprintf(wptr, "%s\n", letterDetails);
-							fprintf(wptr, "%s\n", letterDetailsTwo);
-							puts("\nOn your way to the capital you've discovered a ferocius man-beast. He's charging at you, you'll have to give a series of attacks.");
-							puts("Type and enter 'A' to attack and 'S' to standby when you think you've beaten him ");
-							int loopHold = 0;
-							char attack;
-							int attackCount = 0;
-							while(loopHold == 0)
+							else 
 							{
-								scanf("%c", &attack);
-								
-								if (attack =='a')
+								printf("Woo. You didn't roll it. You get to live %s\n", name);
+								puts("We're passed the snow elves, shred down the mountain side and we'll shave a few seconds off!");
+								puts("But it looks like you've discovered the Fire Pits of Apokylyps and its slums in the distance.");
+								printf("It's very unlikely you'll get out of this alive, %s. You should send a letter back home.", name);
+								puts("What do you want the letter to be called? I'll probably just email it. Carrier-parademons can be unreliable. (psst) make it a file name.");
+								char letterName[256];
+								scanf("%s", letterName);
+								system("clear");
+								//Start of file manipulation
+								puts("Very well! It'll be on it's way in a nanosecond.");
+								char letterDetails[] = "Hello family and friends. Your fighter died. Oops. I'm sure they've lived a long life, probably.\nThey were likely beloved by many, I'm sure, probably, and will be missed, maybe.";
+								char letterDetailsTwo[] = "In the event that we managed to collect a body, we will send it back in whatever piece(s) we found it.";
+								FILE *wptr;
+								wptr = fopen(letterName, "w");
+								fprintf(wptr, "%s\n", letterDetails);
+								fprintf(wptr, "%s\n", letterDetailsTwo);
+								puts("\nOn your way to the capital you've discovered a ferocius man-beast. He's charging at you, you'll have to give a series of attacks.");
+								puts("Type and enter 'A' to attack and 'S' to standby when you think you've beaten him ");
+								//Start of constant user input
+								int loopHold = 0;
+								char attack;
+								int attackCount = 0;
+								while(loopHold == 0)
 								{
-									attackCount++;
+									scanf("%c", &attack);
+									
+									if (attack =='a')
+									{
+										attackCount++;
+									}
+									else if (attack == 's')
+									{
+										loopHold = 1;
+									}
 								}
-								else if (attack == 's')
+								system("clear");
+								if (attackCount < 5)
 								{
-									loopHold = 1;
+									puts("You didn't attack enough. Unfortunately, he's still too strong.");
+									alive = 1;
+									break;
 								}
-							}
-							system("clear");
-							if (attackCount < 5)
-							{
-								puts("You didn't attack enough. Unfortunately, he's still too strong.");
-								break;
-							}
-							printf("\n That did it. The monster is slain. Now let's be on our way %s, I hear people coming from the slums.", name);
-							puts("\n...\n");
-							puts("From the distance, a villager shouts 'Kalibak is dead'.");
-							puts("We did it... You did it! You passed the Bat-Mites trials. You're ready. It's time to take you to the next ste-\n");
-							puts("\nOh. I'm afraid to inform that we've been cancelled. But here's a reward for your troubles! A signed T-Shirt! Be sure to take it on your next adventure.. ");
-							break;							
+								printf("\n That did it. The monster is slain. Now let's be on our way %s, I hear people coming from the slums.", name);
+								puts("\n...\n");
+								puts("From the distance, a villager shouts 'Kalibak is dead'.");
+								sleep(4);
+								system("clear");
+								//Start of array swapping
+								printf("%s, we're coming upon the entrance to the Rock of Eternity. You'll need to tell the doorman the password.", name);
+								puts("\n* A very cryptic voice asks for a six letter password * ");
+								char yourpass[256];
+								char thepass[256] = "SHAZAM";
+								scanf("%s", yourpass);
+								int rightEntry = 0;
+								if  (rightEntry == 0)
+								{
+									int i = 0;
+									while (i < 255)
+									{
+										yourpass[i] = toupper(yourpass[i]);
+										i++;
+									}
+									char swap;
+									for (i = 0; i < 5; i++)
+									{
+										swap = thepass[i];
+										thepass[i] = yourpass[i];
+										yourpass[i] = swap;
+									}
+
+									if (strcmp(yourpass, thepass) == 0)
+									{
+										rightEntry = 1;
+									} 
+									else 
+									{
+										puts("Incorrect Password, stranger");
+										system("clear");
+										puts("Try again?");
+										scanf("%s", yourpass);
+									}
+								}
+								puts("You've figured out the password. The Rock of Eternity is opened...");
+								//Ending reward
+								if (alive == 0)
+								{
+									puts("...We did it... You did it! You passed the Bat-Mites trials. You're ready. It's time to take you to the next ste-\n");
+									puts("\nOh. I'm afraid to inform that we've been cancelled. But here's a reward for your troubles! A signed T-Shirt! Be sure to take it on your next adventure.. ");
+									break;
+								}
+								else if (alive == 1) 
+								{
+									printf("That's unfortunate, %s. Maybe your next adventure will go better.", name);
+									break;
+								}	
+							}						
 						}
 						break;
 						scanf("%d",&choice);
