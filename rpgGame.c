@@ -31,7 +31,7 @@
 #define CORRECTCODE 1775
 int exercise(void);
 void convertToUpper(char *sPtr);
-void write(void);
+//void write(void);
 void switcch(void);
 
 
@@ -352,8 +352,14 @@ int main(void)
 						int guess = 0;
 						int i = 0;
 						int room5 = 0;
+						int truce = 0;
 
+						int numGuess[6];
+						char nameBARN[50];
+
+						time_t t;
 						FILE *wPtr = fopen("room5.txt", "w");
+						
 						puts("you open the door and find two different chests, one blue one red...");
 						
 						printf("Enter which chest to open\n");
@@ -382,6 +388,8 @@ int main(void)
 								scanf("%d", &game);
 								if(game == 1)
 								{
+									i = 0;
+
 									puts("The dragon wants you to guess a number as a hint he says 1 - 5");
 									puts(" Begin Entering: \n Press 10 to give up");
 									scanf("%d", &guess);
@@ -390,16 +398,42 @@ int main(void)
 									{
 										puts("Enter Again");
 										scanf("%d", &guess);
+										numGuess[i] = guess;
 										game++;
-										if(game == 10)
+										if(game == 6)
 										{
 											puts("Looks like you got caught in dragon's infnite loop");
 											guess = 10;		
 										}
 									}
+										
 									puts("The dragon is tricky, he mentioned 1 - 5 but said enter 10 to give up");
 									puts("10 was actually the target number and youve been taunted");
-									puts("The dragon admires you and lets you leave room 5");
+									puts("The dragon would like to play another game, this time he wants you to guess his name");
+									puts("He offers you one hint, He was named after a popular dinasour from your childhood");
+									
+									puts("What is the dragons name?");
+									scanf("%s",nameBARN);
+									printf("\n");
+									
+									i = 0;
+									while (nameBARN[i])
+									{
+										nameBARN[i] = toupper(nameBARN[i]);
+
+										i++;
+									}
+
+									if((strcmp(nameBARN,"BARNEY") == 0))
+									{
+										puts("Barney is proud of your guess and decides you are too great of a competitor and decides he no longer can trick you with his games");
+									
+									}
+									else
+									{
+										puts("Sadly, your guess was incorrect, instead of making you keep guessing the dinasour tells you his name... Barney");
+									}
+									puts("Barney admires you and lets you leave room 5");
 																		
 								}
 								if(game == 2)
@@ -412,6 +446,7 @@ int main(void)
 						}
 						if(chest == 2)
 						{
+							srand((unsigned) time(&t));
 							puts("You have found the Princess");
 							puts("The King has offered you a grand reward");
 							puts("Do you accept the Kings reward? 1-yes 2-no");
@@ -426,7 +461,22 @@ int main(void)
 								if(game == 1)
 								{
 									puts("You are unprepared for war, you have 3 soliders while the neighboring kingdom has 200");	
-									puts("It was a valiant effort, but you have been defeated, better luck next time");
+									puts("The general offers a chance to call a truce, he says you must guess the random number he is thinking of...");
+									puts("Guess a number between 0 and 32");
+									scanf("%d", &guess);
+									truce = (rand() %33);
+									
+									if(guess == truce)
+									{
+										puts("You guess the correct number, there will be no lives lost today");
+										
+									}
+									else
+									{
+										puts("It was a valiant effort, but you have been defeated, better luck next time");
+									}
+									
+									puts("You may graciously leave room 5, Prince");
 								}
 								if(game == 2)
 								{
@@ -436,7 +486,7 @@ int main(void)
 							}
 							if(room5 == 2)
 							{
-								puts("You have been banished");
+								puts("You have been banished from room 5");
 								fprintf(wPtr,"You have met your demise in room 5\n");
 							}
 						}
@@ -445,7 +495,7 @@ int main(void)
 					}
 					break;
 					
-			}
+			}//end Airrion Young
 			case 6:
 			{
 					while(choice != 99)
@@ -849,7 +899,7 @@ int main(void)
 					if (numb ==3)
 					{
 						printf("Cannon is agressive so he bites %s. ",name);
-						write();
+						//write();
 					}
 					if (numb ==4)
 					{
@@ -2814,7 +2864,7 @@ void convertToUpper(char *sPtr)
 		}
 	++sPtr;
 	}
-}
+} /*
 void write(void)
 {	
 	int i =0;
@@ -2837,7 +2887,7 @@ void write(void)
 	printf("Cannon bit me %d times.",bite);
 	puts("However he is still crying!");
 	fclose(wPtr);
-}
+}*/
 void switcch(void)
 {	
 	char i;
