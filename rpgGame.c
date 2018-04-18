@@ -1708,18 +1708,28 @@ int main(void)
 						int roll_0 =(rand() %10) +1;
 						int roll1 = (rand() %10) + 1;
 						int die = 0;
+						char letter[256];
 
 
 						if(choice ==1)
 						{
 
 							printf("You automatically rely on running out of the room. The room is locked out and there is no other exit besides the cave that the bear came out of. Since you're panick attack has gotten worse, you make poor judgments and gets beaten to death by the bear. Now you have lost your legacy!");
-
+							FILE *outfile = fopen( "youshouldquit.txt", "a");
 						}
 						else if(choice ==2)
 						{
 							printf("You decide to make friends with the bear. The bear seems to utter some sounds. It appears to speak a human language, but you are just being delusional. It turns out that the bear does not speak English, therefore, you instantly get eaten by the bear!");
-
+								while(!feof(inptr))
+									 {
+										fscanf(inptr, "%s\n", letter);
+						
+										letter[0] = toupper(letter[0]);
+										fprintf(outptr, "%s\n", letter);
+		
+									 }
+										FILE *outfile = fopen( "youlose.txt", "a");
+									rewind(outptr);
 						}
 						else if(choice==3)
 						{
@@ -1731,7 +1741,7 @@ int main(void)
 											printf("You won the jackpot! Nobody knows what it is however...");
 										}
 									}
-									FILE *outfile = fopen( "outfile.txt", "a");
+									FILE *outfile = fopen( "yourjackpot.txt", "a");
 									fclose(outfile);
 
 								}
