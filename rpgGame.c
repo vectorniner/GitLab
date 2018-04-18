@@ -32,7 +32,7 @@
 #define CORRECTCODE 1775
 int exercise(void);
 void convertToUpper(char *sPtr);
-//void write(void);
+void write(void);
 void switcch(void);
 
 
@@ -850,7 +850,7 @@ int main(void)
 					if (numb ==3)
 					{
 						printf("Cannon is agressive so he bites %s. ",name);
-					//	write();
+						write();
 					}
 					if (numb ==4)
 					{
@@ -2656,7 +2656,7 @@ int main(void)
 			case 1: // Shock troop
 				
 				puts("Get ready, your landing is emminent...");
-			//	sleep(3);		
+				sleep(3);		
 				puts("As the Space Craft lands, you are the first to put boots on ground and rush to the closest Necrotin");
 				puts("You engage in combat with the Necrotin");
 
@@ -2783,7 +2783,7 @@ int main(void)
 			case 2: // sneaky sneaky mission
 
 				puts("Get ready, your landing is emminent...");
-			//	sleep(3);
+				sleep(3);
 
 				puts("With your badass Predator like cloaking suit you are able to rush past hordes of Necrotin and plant C5 explosive charges inside one of there underground tunnels");
 				puts("As you start to enter the detonation code, some atmospheric distubance disrupts your cloacking shield and your stealth suit goes offline...");
