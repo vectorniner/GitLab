@@ -31,7 +31,7 @@
 #define CORRECTCODE 1775
 int exercise(void);
 void convertToUpper(char *sPtr);
-void write(void);
+void writte(void);
 void switcch(void);
 
 
@@ -451,6 +451,8 @@ int main(void)
 					while(choice != 99)
 					{
 							int select;
+							FILE *optr;
+							optr = fopen("Note(room 6).txt", "w+");
 							puts("You enter the room and close the door to prevent the water from flowing in. Looking around you find a well at the center with no rope, sealed crates at the corner of the room, a locked door at the other side, a crack in the wall, and a pile of clothes next to the well. What would you like to investigate?\n1. The well\n2. The crates\n3. The door\n4. The crack\n5. The clothes");
 							scanf("%d",&select);
 							while(select != 5) {		
@@ -460,7 +462,8 @@ int main(void)
 										scanf("%d",&select);
 										break;
 									case 2:
-										puts("The crates are shut tight and is impossible to open without a specific tool.\nWhere else would you like to investigate?");	scanf("%d",&select);
+										puts("The crates are shut tight and is impossible to open without a specific tool.\nWhere else would you like to investigate?");
+										scanf("%d",&select);
 										break;
 									case 3: 
 										puts("The door will not yield by brute force, you require a key to move forward.\nWhere else would you like to investigate?");
@@ -477,7 +480,7 @@ int main(void)
 								}
 							}
 											
-							puts("You find a small chisel and hammer within the clothes. Perhaps this person was a carpenter. You decided to take them.");
+							puts("You find a small chisel and hammer within the clothes along with a piece of paper. Examining the clothes a bit closer you notice that the clothes is mishhapened for a human...\n");
 							puts("With your newly acquired hammer and chisel, you think of some ideas on how to use the hammer and chisel. What would you like to use the hammer and chisel on?\n1. The well\n2. The crates\n3. The door\n4. The crack");
 							scanf("%d",&select);
 							while(select != 4) {
@@ -494,7 +497,7 @@ int main(void)
 										scanf("%d",&select);
 										break;
 									case 5:
-										puts("Despite not listing the clothes as an option, you decided to be a rebel and use the hammer and chisel on the pile of clothes anyway. You somehow tear the clothes using the hammer and chisel and found a key embedded into the clothes. You use the key on the locked door and discovered it worked! You escaped!");
+										puts("Somehow, you decided against the obvious and decide to use the hammer and chisel on the clothes. While you tear through the clothes you find a magical glowing key. You use the key on the door and suddenly, you find yourself in a room filled with treasure! You leave the dungeon with chests full of riches! You found the true ending!");
 										exit(EXIT_SUCCESS);
 									default:
 										puts("That is not a valid choice, please pick a number from 1 to 5");
@@ -587,7 +590,9 @@ int main(void)
 										break;
 								}
 							}
-							puts("You decided to use the rope and managed to sling the rope around the bucket somehow. You tug it towards you until you retrieved the bucket. Once retrieved, you tie the rope around the bucket's handle and lower it into the well. Steadily and nimbly, you scoop the shiny object into the bucket and pull it upwards. The object was a key! You used the key on the door and escaped! You win!");
+							puts("You decided to use the rope and managed to sling the rope around the bucket somehow. You tug it towards you until you retrieved the bucket. Once retrieved, you tie the rope around the bucket's handle and lower it into the well. Steadily and nimbly, you scoop the shiny object into the bucket and pull it upwards. The object was a key! You used the key on the door and escaped!\n\nSuddenly, you noticed the piece of paper from earlier suddenly wet with black ink, maybe you should check it out?");
+							fputs("Dlj 313,\nTstyrd slgp mpnzxp otcp ty xj acpotnlxpye, pgpcj olj te qppwd ld tq estd ofyrpzy pialyod hteszfe wtxted. Egpcj etxp I qppw ld tq I'x nwzdpc ez hsle I yppo, lyo pgpcj etxp I zapy esp ozzc ez yzestyr. Iy estd dtxawp czzx I opntop ez deza, te'd etxp ez elvp xj cpde. Iq lyjzyp cplod estd eplc esczfrs xj nwzespd fdtyr xj slxxpc lyo nstdpw, I qldszypo l vpj qczx xlrtn esle htww spwa jzf zy jzfc hlj.\nKey: 11", optr);
+							fclose(optr);
 							exit(EXIT_SUCCESS);
 					}
 					break;
@@ -849,7 +854,7 @@ int main(void)
 					if (numb ==3)
 					{
 						printf("Cannon is agressive so he bites %s. ",name);
-						write();
+						writte();
 					}
 					if (numb ==4)
 					{
@@ -2815,7 +2820,7 @@ void convertToUpper(char *sPtr)
 	++sPtr;
 	}
 }
-void write(void)
+void writte(void)
 {	
 	int i =0;
 	
