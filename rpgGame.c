@@ -757,6 +757,7 @@ int main(void)
 					break;
 			}
 			case 7:
+			{
 			int passedMath = 0;                                                                                                                                                                                                int passedEng = 0;                                                                                                                                                                                                 puts("You open the door to find yourself back in your highschool hallway");                                                                                                                                         while(choice != 99)                                                                                                                                                                                                {                                                                                                                                                                                                                                                                                                                                                                                                                                       FILE *wptr;                                                                                                                                                                                                        char swag[30];                                                                                                                                                                                                     puts("What would you like to do?");                                                                                                                                                                                if(passedMath == 0)                                                                                                                                                                                              {                                                                                                                                                                                         			   puts("1. Go to Algebra");                                                                                                                                                                                          }                                                                                                                                                                                                                  else;                                                                                                                                                                                                                                                                                                                                                                                                                                 if (passedEng == 0)                                                                                                                                                                                                {                                                                                                                                                                                            	    		      puts("2. Go to English");                                                                                                                                                                                         }                                                                                                                                                                                                                  else;                                                                                                                                                                                                              if(passedEng == 1 && passedMath == 1)                                                                                                                                                                              {                                                                                                                                                                                                                  puts("17. Graduate");                                                                                                                                                                                              }                                                                                                                                                                                                                 	
 			else;                                                                                                                                                                                                              puts("3. Continue walking the halls");                                                                                                                                                                             puts("4. Go to the bathroom");                                                                                                                                                                                     scanf("%d", &choice);                                                                                                                                                                                              switch(choice)                                                                                                                                                                                                      {                                                                                                                                                                                                                 	 case 1:                                                                                                                                                                                                            puts("You walk into Algebra and there is one problem on the board that 92 percent of people get wrong it reads:");                                                                                                 puts("6/2(1+2)");                                                                                                                                                                                                  puts("What is the correct answer:");                                                                                                                                                                               scanf("%d", &choice);                                                                                                                                                                                              switch (choice)                                                                                                                                                                                                    {                                                                                                                                                                                                                  	 default:                                                                                                                                                                                                           puts("The answer is wrong. You are forced to repeat Algebra for the rest of your miserable highschool life. GAME OVER");                                                                                           choice = 99;                                                                                                                                                                                                      
 			       		break;                                                                                                                                                                                                             
@@ -958,83 +959,85 @@ int main(void)
 				int num=0;
 				while (flag!= 2)
 				{	
-					if (flag == 1)
-					{
-						printf(" ");
-					}
-					else 
-					{
-						scanf("%d",&num);
-						if (num ==1)
+						if (flag == 1)
 						{
-							switcch();		
+							printf(" ");
 						}
-					if(num ==2)
-					{
-						puts("Cannon was a bit thirsty but he is still wining.");
+						else 
+						{
+								scanf("%d",&num);
+								if (num ==1)
+								{
+									switcch();		
+								}
+							if(num ==2)
+							{
+								puts("Cannon was a bit thirsty but he is still wining.");
+							}
+							if (num ==3)
+							{
+							puts("Great thinking!");
+							puts("\nPick him up and take him to the back yard.");
+							num =1+(rand() % RAN);		
+							}
+							if(num ==1)
+							{
+								puts("He peed, Just water it down.");
+							}	
+							if (num ==2)
+							{
+								puts("He pooped, grab the pooper scooper and get to work.");
+							}
 					}
-					if (num ==3)
+					if (num ==4)
+					{	
+						puts("What game would you like to play?");
+						puts("1: Tug of war");
+						puts("2: Frisbee");
+						puts("3: Wrestle");
+						puts("4: Exercise");
+						int numb =0;
+						scanf("%d",&numb);
+						if (numb ==1)
+						{
+							puts("He is having a great time and will eventually get sleepy.");
+						}
+						if (numb ==2)
+						{
+							printf("He doesnt know how to play this game so he stares at %s.",name);
+						}
+						if (numb ==3)
+						{
+							printf("Cannon is agressive so he bites %s. ",name);
+
+
+							writte();
+
+
+
+
+						}
+						if (numb ==4)
+						{
+							puts("Cannon runs up and down the black yard in 3 different intervals");
+							puts("you need to record the numbers");
+							exercise();
+						}
+					}
+					if (num ==5)
 					{
-					puts("Great thinking!");
-					puts("\nPick him up and take him to the back yard.");
-					num =1+(rand() % RAN);		
-					if(num ==1)
+						puts("Cannon is very loving, so he cuddles up and falls alseep easily.");
+						flag =2;
+						printf("Thankyou %s I have returned from Pope's class.\n",name);
+					}			
+					if(num != 5)
 					{
-						puts("He peed, Just water it down.");
+						puts("\ntry again!");
 					}	
-					if (num ==2)
-					{
-						puts("He pooped, grab the pooper scooper and get to work.");
-					}
-				}
-				if (num ==4)
-				{	
-					puts("What game would you like to play?");
-					puts("1: Tug of war");
-					puts("2: Frisbee");
-					puts("3: Wrestle");
-					puts("4: Exercise");
-					int numb =0;
-					scanf("%d",&numb);
-					if (numb ==1)
-					{
-						puts("He is having a great time and will eventually get sleepy.");
-					}
-					if (numb ==2)
-					{
-						printf("He doesnt know how to play this game so he stares at %s.",name);
-					}
-					if (numb ==3)
-					{
-						printf("Cannon is agressive so he bites %s. ",name);
-
-
-						writte();
-
-
-
-
-					}
-					if (numb ==4)
-					{
-						puts("Cannon runs up and down the black yard in 3 different intervals");
-						puts("you need to record the numbers");
-						exercise();
-					}
-				}
-				if (num ==5)
-				{
-					puts("Cannon is very loving, so he cuddles up and falls alseep easily.");
-					flag =2;
-					printf("Thankyou %s I have returned from Pope's class.\n",name);
-				}			
-				if(num != 5)
-				{
-					puts("\ntry again!");
-				}	
-			
+				
 		
 
+				}
 			}
 			case 11:
 			{
@@ -2048,7 +2051,8 @@ int main(void)
 						int roll1 = (rand() %10) + 1;
 						int die = 0;
 						char letter[256];
-
+						FILE *inptr;
+						FILE *outptr;
 
 						if(choice ==1)
 						{
@@ -3219,7 +3223,8 @@ int main(void)
 		}
 	}
 }
-}
+	}
+	return 0;
 }
 int exercise(void)
 {
@@ -3371,7 +3376,7 @@ void menu(){ // just to show the menu not suppose to return anything
     
     
 }
-int guessNumber(){
+int guessNumber(void){
     
     int r = rand() % 10 +1; // generates random number
     int magic = 1;
@@ -3405,7 +3410,7 @@ int guessNumber(){
     }
     return 0;
 }
-void story(){
+void story(void){
     int g = rand() % 5 + 1;
     
     if(g==1){
@@ -3443,4 +3448,5 @@ int randomNumber=0;
 randomNumber = (lowestNumber + rand() % ((HighestNumber + 1) - lowestNumber));
 return randomNumber;
 }
+	
 
