@@ -11,7 +11,6 @@
 //Kevin Ramirez
 //Airrion Young 4/8/18
 //Cesar Gutierrez 4/2/18
-//Emanuel Fonseca
 //Thar Soe
 // Elthon Cisneros 4/6/18
 //Victor De Jesus 4/2/18
@@ -32,11 +31,13 @@
 int exercise(void);
 void convertToUpper(char *sPtr);
 
+
+int guessNumber();
+int cash(int temp);
+void menu();
+void story();
 void trivia(int *ptr);
-
-
 void writte(void);
-
 void switcch(void);
 void readScreen(void);
 
@@ -348,8 +349,105 @@ int main(void)
 			{
 					while(choice != 99)
 					{
-							puts("you open the door and find ........");
-							scanf("%d",&choice);
+                        char name[30]={0};
+                        char message[30]={0};
+                        FILE *wptr;
+                        int age =0;
+                    
+                        while(!feof(stdin)){
+                            puts("welcome to room 4!");
+                            puts("before we get to the games lets write out a letter in case you dont make it!");
+                            
+                            wptr= fopen("Letter.txt", "at");
+                            
+                            puts("enter your age");
+                            scanf(" %d", &age);
+                            
+                            
+                            puts("enter name: ");
+                            scanf(" %s", name);
+                            
+                            
+                            puts("enter last message ");
+                            scanf("%s", message);
+                            
+                            
+                            break;
+                        }
+                        
+                        
+                        fprintf(wptr,"%d %s %s\n", age,name,message);
+                        
+                        fclose(wptr);
+                        
+                        
+                        menu(); // this is just to show the menu nothing else
+                        int zero=0;
+                        int *counter;
+                        counter=&zero;
+                        
+                        char choice;
+                        while (choice !='z')
+                        {
+                            
+                            double gpa=0;
+                            
+                            
+                            scanf(" %c", &choice);
+                            
+                            
+                            if(choice =='1')
+                            {
+                                
+                                if((*counter)==1 ||(*counter)==2){
+                                    int temp=30;
+                                    puts("you found a key and 50 dollars");
+                                    puts("wonder where the key goes?");
+                                    (*counter)++;
+                                    printf("1 printing your pointer %d", (*counter));
+                                    cash(temp);
+                                }
+                                else{
+                                    puts("Didnt find anything? that sucks!");
+                                    (*counter)++;
+                                }
+                                
+                                menu();
+                            }
+                            
+                            
+                            if(choice =='2')
+                            {
+                                guessNumber();
+                                puts("thanks for playing your get $20");
+                                int temp=20;
+                                cash(temp);
+                                (*counter)++;
+                                menu();
+                            }
+                            
+                            if(choice =='3')
+                            {
+                                story();
+                                (*counter)++;
+                                menu();
+                            }
+                            
+                            if(choice =='4')
+                            {
+                                int temp=0;
+                                if(cash(temp)==2){
+                                    puts("Congrats you have won");break;
+                                }
+                                else{
+                                    puts("dont be a quiter go back and get some money");
+                                }
+                                (*counter)++; //(*ptr)++
+                                menu();
+                            }
+                            
+                        }
+                        
 					}
 					break;
 			}
@@ -868,8 +966,8 @@ int main(void)
 						printf("Cannon is agressive so he bites %s. ",name);
 
 
-						writte();
 
+						writte();
 					}
 					if (numb ==4)
 					{
@@ -2885,8 +2983,9 @@ void convertToUpper(char *sPtr)
 }
 
 
+
 void writte(void)
-{	
+{
 	int i =0;
 	
 	int bite =0;
@@ -2908,6 +3007,7 @@ void writte(void)
 	puts("However he is still crying!");
 	fclose(wPtr);
 }
+ 
 void switcch(void)
 {	
 	char i;
@@ -2984,4 +3084,78 @@ void trivia(int *ptr) // Function for Room 3 (Elthon Cisneros). (uses pointers)
 
 }//END TRIVIA FUNCTION (ROOM 3)
 
+
+void menu(){ // just to show the menu not suppose to return anything
+    
+    puts("Press 1 then Enter: to look around for weapons you can use");
+    puts("Press 2 then Enter: to play guess a number");
+    puts("Press 3 then Enter: to read a story");
+    puts("Press 4 then Enter: to exit room 4");
+    
+    
+}
+int guessNumber(){
+    
+    int r = rand() % 10 +1; // generates random number
+    int magic = 1;
+    int guess=1;
+    
+    puts("try to guess my number between 1-10");
+    scanf("%d", &guess);
+    
+    while (magic != guess)    // keep doing it until user is right
+    {
+        printf("Guess my number! ");
+        
+        scanf("%d", &guess);
+        if (guess == r)
+        {
+            
+            printf("correct!\n");
+            puts("you won 20 dollars");
+            break;
+        }
+        
+        if (guess < r)
+        {
+            printf("Your guess is too low. Guess again. "); // gives user a hint
+        }
+        
+        if (guess > r)
+        {
+            printf("Your guess is too high. Guess again. ");
+        }
+    }
+    return 0;
+}
+void story(){
+    int g = rand() % 5 + 1;
+    
+    if(g==1){
+        puts("We bought an old house, my boyfriend and I. He's in charge of the new construction – converting the kitchen in to the master bedroom for instance, while I'm on wallpaper removal duty. The previous owner papered EVERY wall and CEILING! Removing it is brutal, but oddly satisfying. The best feeling is getting a long peel, similar to your skin when you're peeling from a sunburn. I don't know about you but I kinda make a game of peeling, on the hunt for the longest piece before it rips.Under a corner section of paper in every room is a person’s name and a date. Curiosity got the best of me one night when I Googled one of the names and discovered the person was actually a missing person, the missing date matching the date under the wallpaper! The next day, I made a list of all the names and dates. Sure enough each name was for a missing person with dates to match. We notified the police who naturally sent out the crime scene team.I overhead one tech say yup, it's human. Human? What's human? Ma'am, where is the material you removed from the walls already? This isn't wallpaper you were removing.");
+    }
+    if(g==2){
+        puts("I hate it when my brother Charlie has to go away.My parents constantly try to explain to me how sick he is. That I am lucky for having a brain where all the chemicals flow properly to their destinations like undammed rivers. When I complain about how bored I am without a little brother to play with, they try to make me feel bad by pointing out that his boredom likely far surpasses mine, considering his confine to a dark room in an institution.I always beg for them to give him one last chance. Of course, they did at first. Charlie has been back home several times, each shorter in duration than the last. Every time without fail, it all starts again. The neighbourhood cats with gouged out eyes showing up in his toy chest, my dad's razors found dropped on the baby slide in the park across the street, mom's vitamins replaced by bits of dishwasher tablets. My parents are hesitant now, using last chances sparingly. They say his disorder makes him charming, makes it easy for him to fake normalcy, and to trick the doctors who care for him into thinking he is ready for rehabilitation. That I will just have to put up with my boredom if it means staying safe from him.I hate it when Charlie has to go away. It makes me have to pretend to be good until he is back.");
+    }
+    if(g==3){
+        puts("He awoke to the huge, insect like creatures looming over his bed and screamed his lungs out. They hastily left the room and he stayed up all night, shaking and wondering if it had been a dream.The next morning, there was a tap on the door. Gathering his courage, he opened it to see one of them gently place a plate filled with fried breakfast on the floor, then retreat to a safe distance. Bewildered, he accepted the gift. The creatures chittered excitedly.This happened every day for weeks. At first he was worried they were fattening him up, but after a particularly greasy breakfast left him clutching his chest from heartburn, they were replaced with fresh fruit. As well as cooking, they poured hot steamy baths for him and even tucked him in when he went to bed. It was bizarre.One night, he awoke to gunshots and screaming. He raced downstairs to find a decapitated burglar being devoured by the insects. He was sickened, but disposed of the remains as best he could. He knew they had just been protecting him.One morning the creatures wouldn't let him leave his room. He lay down, confused but trusting as they ushered him back into bed. Whatever their motives, they weren't going to hurt him.Hours later a burning pain spread throughout his body. It felt like his stomach was filled with razor wire. The insects chittered as he spasmed and moaned. It was only when he felt a terrible squirming feeling beneath his skin that he realised the insects hadn't been protecting him. They had been protecting their young.");
+    }
+    if(g==4){
+        puts("Everyone loves the first day of school, right? New year, new classes, new friends. It's a day full of potential and hope, before all the dreary depressions of reality show up to ruin all the fun.I like the first day of school for a different reason, though. You see, I have a sort of power. When I look at people, I can...sense a sort of aura around them. A colored outline based on how long that person has to live. Most everyone I meet around my age is surrounded by a solid green hue, which means they have plenty of time left.A fair amount of them have a yellow-orangish tinge to their auras, which tends to mean a car crash or some other tragedy. Anything that takes people before their time as they say.The real fun is when the auras venture into the red end of the spectrum, though. Every now and again I'll see someone who's basically a walking stoplight. Those are the ones who get murdered or kill themselves. It's such a rush to see them and know their time is numbered.With that in mind, I always get to class very early so I can scout out my classmates' fates. The first kid who walked in was basically radiating red. I chuckled to myself. Too damn bad, bro. But as people kept walking in, they all had the same intense glow. I finally caught a glimpse of my rose-tinted reflection in the window, but I was too stunned to move. Our professor stepped in and locked the door, his aura a sickening shade of green.");
+    }
+    if(g==5){
+        puts("It has been said that the definition of insanity is doing the same thing over and over and expecting different results. I understand the sentiment behind the saying, but it's wrong.I entered the building on a bet. I was strapped for cash and didn't buy into the old legends of the hotel to begin with, so fifty bucks was more than enough to get me do it. It was simple. Just reach the top floor, the 45th floor, shine my flashlight from a window.The hotel was old and broken, including the elevator, so that meant hiking up the stairs. So up the stairs I went. As I reached each platform, I noted the old brass plaques displaying the floor numbers. 15, 16, 17, 18. I felt a little tired as I crept higher, but so far, no ghosts, no cannibals, no demons. Piece of cake.I can't tell you how happy I was as I entered that last stretch of numbers. I joyfully counted them aloud at each platform. 40, 41, 42, 43, 44, 44. I stopped and looked back down the stairs. I must have miscounted, so I continued up. 44. One more flight. 44. And then down ten flights. 44. Fifteen flights. 44.And so it's been for as long as I can remember. So really, insanity isn't doing something repeatedly and expecting different results. It's knowing that the results will never ever change; that each door leads to the same staircase, to the same number. It’s realizing you no longer fall asleep. It's not knowing whether you've been running for days or weeks or years. It's when the sobbing slowly turns into laughter.");
+    }
+}
+int cash(int temp){
+    
+    int total= total+temp;
+    if(total>500){
+        return 2;    // if it returns one you reached your goal
+    }
+    else{
+        return 0;
+    }
+    
+}
 
