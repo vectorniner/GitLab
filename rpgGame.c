@@ -1929,6 +1929,10 @@ void main(void)
                     puts("\nYou take your first steps and see a case at the end of the hall.");
                     puts("Out of the corners of the dark room leprechauns begin appearing and");
                     puts("walk towards the case holding clubs, swords, and weapons of all sorts.");
+                    
+                    puts("A robot approaches you and asks to enter .25 cents so you comply");
+                    puts("It spits out randomly generated words of advice");
+                    
                     puts("\nEnter..\n");
                     puts("1.If you want to exit room 19");
                     puts("2.If you talk your way out of this");
@@ -1965,16 +1969,17 @@ void main(void)
                                     chance--;
                                     printf("You have %d chances remaining\n", chance);
                                 }
-                                else if (chance == 0)
-                                {
-                                    puts("\n-------ROOM SELF DESTRUCTS--------\n\tGAME OVER!!!\n\n");
-                                    
-                                }
                                 else if (guess == tekashi)
                                 {
                                     printf("\n %d Deadass!! Tekashi 6-9\n", guess);
                                     printf("Door unlocks-_-_-\"Click!\"\n\n");
                                     break;
+                                }
+                                
+                                if (chance == 0)
+                                {
+                                    puts("\n-------ROOM SELF DESTRUCTS--------\n\tGAME OVER!!!\n\n");
+                                    
                                 }
                             } while (chance != 0);
                             break;
