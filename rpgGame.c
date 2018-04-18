@@ -1,6 +1,6 @@
 //Contributors
 //Garrett Poppe 3/19/18
-//Diana Guevara-Colocho 4/8/2018
+//Diana Guevara-Colocho 4/18/2018
 //Mohamed shalabi
 //Dylan Dickerson 3/21/18
 //Brian Baskovich 3/21/18
@@ -2888,4 +2888,5 @@ void switcch(void)
 	}
 	puts("Feeding the beast only fueled his rage!");
 }
-
+}
+}
