@@ -713,6 +713,8 @@ int main(void)
 									}
 									fclose(inf);
 									fclose(outf);
+									
+									printf("Congrats! You're finished! \n");
 										
 									}
 								else if ( optionz == 2)
@@ -731,6 +733,10 @@ int main(void)
 										i++;
 									}
 									
+
+									printf("Congrats! You're finished! \n");
+
+									
 									fclose(inf);
 									fclose(outf);
 								}
@@ -748,6 +754,8 @@ int main(void)
 										fprintf(outf, "%s \n", wordz);
 										i++;
 									}
+									
+									printf("Congrats! You're finished! \n");
 									fclose(inf);
 									fclose(outf);
 									
@@ -764,7 +772,8 @@ int main(void)
 												
 										}
 									}
-									
+									printf("Congrats! You're finished! \n");
+
 									fclose(inf);
 									fclose(outf);
 								}
