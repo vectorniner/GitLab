@@ -31,9 +31,9 @@
 #define CORRECTCODE 1775
 int exercise(void);
 void convertToUpper(char *sPtr);
-void write(void);
+void writeF(void);
 void switcch(void);
-
+void readScreen(void);
 
 
 
@@ -673,31 +673,16 @@ int main(void)
 					while(choice != 99)
 					{		FILE *inf;
 							FILE *outf;
-<<<<<<< HEAD
-						//	inf = fopen(argv[1], "r"); 
-						//	outf = fopen(argv[2], "w"); 
-=======
 							inf = fopen("infile.txt", "r"); 
 							outf = fopen("outfile.txt", "w"); 
->>>>>>> upstream/master
 							int optionz = 0; 
 							char wordz[20];
 							int i = 0;
 							int n = 0;
 							int k = 0;
-<<<<<<< HEAD
-							
-							/*if (argc < 3)
-							{
-								printf("Check it! You're missing some Args, bud \n");
-								exit(-1);
-								
-							}*/
-							
-=======
-								
->>>>>>> upstream/master
-							
+					 
+					
+					 
 							if (inf == NULL)
 							{
 								printf("Sorry, bud. File cannot not be opened \n"); 
@@ -818,7 +803,7 @@ int main(void)
 				{	
 					if (flag == 1)
 					{
-						printf("");
+					//	printf("");
 					}
 					else 
 					{
@@ -865,7 +850,7 @@ int main(void)
 					if (numb ==3)
 					{
 						printf("Cannon is agressive so he bites %s. ",name);
-						write();
+						writeF();
 					}
 					if (numb ==4)
 					{
@@ -895,6 +880,7 @@ int main(void)
 							int boxNum=0;
 							int randNum=0;
 							char aString[256];
+							char aLetter;
 							FILE *writePage;
 
 							puts("You open the door and find a damp room, mostly empty, three boxes lay on the floor");
@@ -915,7 +901,8 @@ int main(void)
 									switch(boxNum)
 									{
 										case 1:
-											printf("There is a Dice Would you like to Roll it?\n");
+											printf("Under Box #%d there is a Die, Would you like to Roll it?\n",boxNum);
+											printf("Enter \"Yes\" or \"No\"\n");
 											scanf("%s",aString);
 											if(isalpha(aString[0]))
 											{
@@ -932,19 +919,38 @@ int main(void)
 											if(aString[0]=='y' && aString [1]=='e' && aString[2]=='s')
 											{
 												randNum=(rand()%5)+1;
-												printf("You rolled a %d, that's it\n",randNum);
+												printf("You rolled a %d, that's it nothing else\n",randNum);
+											}
+											else if(aString[0]=='n' && aString[1] == 'o')
+											{
+												printf("You place the box on top of the Die\n");
+											}
+											else
+											{
+												printf("Well I guess you leave it alone\n");	
 											}
 											break;
 										case 2:
-											printf("Under the box you find a pencil and a small page\n");
-												writePage=fopen("page.txt","w");
-												printf("What would you like to write in it?\nKEEP IT SHORT!\n");
-												scanf("%s",aString);
-												fputs(aString,writePage);
+											printf("Under Box #%d you find a pencil and a small page\n",boxNum);
+											writePage=fopen("page.txt","w");
+											printf("What would you like to write in it?\nKEEP IT SHORT!\nEnter CTRL-D to Stop\n");
+											aLetter=getc(stdin);
+											while((aLetter!=EOF))
+											{
+												if(isprint(aLetter))
+												{
+													fputc(aLetter,writePage);
+												}
+												aLetter=getc(stdin);
+											}
+											fclose(writePage);
 
 											break;
 										case 3:
-											printf("Box #%d was empty\n",boxNum);
+											printf("Under Box #%d is an old dusty monitor\n",boxNum);
+											printf("You try to power it on, even though it is not connected to an outlet\n");
+											printf("Surprisingly it turns on, because of magic? or maybe it is powered by AA batteries?\nEither way it works\n");
+											readScreen();
 											break;
 										default:
 											break;
@@ -955,10 +961,10 @@ int main(void)
 									puts("You just wasted your time looking through 3 useless boxes");
 								}
 							}
-							break;
+							break;	
 					}
-					break;
-				
+			
+					break;		
 				
 			}
 			case 12:
@@ -2831,7 +2837,7 @@ void convertToUpper(char *sPtr)
 	++sPtr;
 	}
 }
-void write(void)
+void writeF(void)
 {	
 	int i =0;
 	
@@ -2873,5 +2879,29 @@ void switcch(void)
 			}
 	}
 	puts("Feeding the beast only fueled his rage!");
+}
+void readScreen(void)
+{
+	FILE *inScreen;
+	char k;
+	if((inScreen=fopen("page.txt","r"))==NULL)
+	{
+		printf("The Screen is Blank, strange...\n");
+	}
+	else
+	{
+		printf("Words are Displayed on the Screen they read:\n");
+		k=fgetc(inScreen);
+		while(k!=EOF)
+		{
+			if(isprint(k))
+			{
+				printf("%c",k);
+			}	
+			k=fgetc(inScreen);
+		}
+		printf("\nI wonder who wrote that...\n");
+		fclose(inScreen);
+	}
 }
 
