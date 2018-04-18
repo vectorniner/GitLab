@@ -30,14 +30,16 @@
 #define CORRECTCODE 1775
 int exercise(void);
 void convertToUpper(char *sPtr);
-//void write(void);
-void switcch(void);
+
+
 int guessNumber();
 int cash(int temp);
 void menu();
 void story();
-
-
+void trivia(int *ptr);
+void writte(void);
+void switcch(void);
+void readScreen(void);
 
 
 
@@ -218,13 +220,15 @@ int main(void)
                    			break;
                 	}// end case2
 
-
-          	case 3: // ELTHON CISNEROS'S ROOM 
+          	case 3: // ELTHON CISNEROS'S ROOM  
 			{
 					while(choice != 99)
 					{
+							FILE *room3outfile; //pointer to outfile / file to be created on user computer.
+
+							int triviaTrueFalse = 0; //int variable used in 'trivia' function. called and modified using pointers.
 							int e;
-							char elname[256];
+							char elname[256]; // ARRAY to hold name user entered when game starts.
 							const int SIDES = 6; //for die roll
 							int eRoll;
 							char advance;
@@ -234,54 +238,29 @@ int main(void)
 							}
 							printf ("\n");
 							printf("*** WELCOME %s!!! This is Room 3...***\n ", elname);
-							printf ("--You walk into a strangely bright and colorful room. You see 3 untitled buttons on a table...and you just heard the door close and lock behind you!\n");
+							printf ("--You walk into a strangely bright and colorful room. You may get the impression that you walked into a toy store with the color scheme you see on the wall. You see 2 untitled buttons on a table...and you just heard the door close and lock behind you!\n");
 							printf ("--Keep in mind: There are hidden doors within this bright and colorful room. The only thing keeping these doors closed is the power. Would be a mighty shame if there was a power outage!\n");
-							printf ("--Above the buttons a sign reads: You may choose press one button to determine your fate. To not keep you in total suspense, an LCD display on the wall will vaguely let you know what just happened after you pressed this button:\n");
+							printf ("--Above the buttons a sign reads: You may choose press one button to determine your fate. To not keep you in total suspense, an LCD display on the wall will vaguely let you know what just happened after you pressed this button. (Type 1 OR 2 to choose button):\n");
+							printf ("--P.S. IF you are knowledgeable with computer trivia, you will do well here.. ELSE, you die. I MAY decide to give you hints... We will see...\n");
 							scanf ("%d", &choice);
 
 							switch (choice)
 							{
+
 								case 1:
 									printf ("\n");
 									printf ("**** BUTTON 1 PRESSED ****\n");
-									printf("***Ya done messed up! Looks like this wasn't the number one choice you thought it was... This room will start filling with water now... Hope you know how to swim!!! :D *** \n");
-									puts ("Well, this room may be filling up with water, but I can give you a fighting chance by giving you ONE tool of your choice that may help you escape OR KILL YOU... Type in your choice wisely (1-4)...");
-									scanf ("%d", &choice);
-
-									//while (choice != 99)
-									//{
-										switch (choice)
-										{
-											case 1:
-												puts ("I have granted you a spear... Maybe you can make a hole in the door?");
-												break;
-											case 2:
-												puts ("I have granted you an oxygen tank and scuba suit...");
-												break;
-											case 3:
-												puts ("HAHAHAH!!! You pressed the wrong button! Now the room will fill up with water even quicker...");
-												break;
-											default:
-												puts ("For once, being incorrect has saved you... The room has stopped filling with water.");
-												break;
-										}
-										
-									//}
-									break; //end switch
-								case 2:
-									printf ("\n");
-									printf ("**** BUTTON 2 PRESSED ****\n");
 									printf ("***Let's play a game to decide if you get to escape this room alive...***\n");
-									printf ("I'll tell you what. You may roll a 6 sided die one time. If you roll a 1, the exit door opens and you may leave at your leisure. If you roll a 6, you are immediately killed by electric shock. If you roll between a 2 and a 5, you get another try at rolling the die. Think of this as a Russian Roulette game, just that I gave you a lifeline... Aren't I the nicest???\n");
+									printf ("I'll tell you what. You may roll a 6 sided die one time. If you roll a 1, the exit door opens and you may leave at your leisure. If you roll a 6, you are immediately killed by electric shock. If you roll between a 2 and a 4, you get another try at rolling the die (except if you roll a '5'). Think of this as a Russian Roulette game, just that I gave you an extra lifeline (or two)... Aren't I the nicest???\n");
 									printf ("***Type 'r' to Roll***\n");
 									eRoll = 1 + (rand() % SIDES);
 									//printf ("%d", eRoll);	
 									
-									while ((eRoll >= 2) && (eRoll <=5))
+									while ((eRoll >= 2) && (eRoll <=4))
 									{
 						
 										scanf ("%c", &advance);
-										if (advance == 'r')
+										if (advance == 'r') // only continues roll if user enters 'r' character
 										{
 											eRoll = 1 + (rand() % SIDES);	//roll again
 											printf ("Roll again! Your die rolled a :'%d'. Type 'r' to roll again: \n", eRoll);
@@ -289,11 +268,41 @@ int main(void)
 									}
 									if (eRoll == 1)
 									{
-										puts ("YOU ROLLED A '1'. The exit door has open and you may leave at your leisure...");
+										puts ("YOU ROLLED A '1'. The exit door has opened and you may leave at your leisure...");
 									}
 									if (eRoll == 6)
 									{
-										puts ("YOU ROLLED A '6'. **** ZAP! *** An electric shock has killed you!");
+										puts ("***Ya done messed up!*** YOU ROLLED A '6'. **** ZAP! *** An electric shock has killed you!");
+									}
+									if (eRoll == 5)
+									{
+										puts ("YOU ROLLED A '5'. I will give you another chance to escape. Hope you like computer-related trivia...\n");
+										
+										trivia(&triviaTrueFalse); // FUNCTION AT BOTTOM OF PROGRAM!!!
+
+										if ((room3outfile = fopen("room3.txt", "w")) != NULL) // opens file on users computer
+										{
+										  	eRoll = 1 + (rand() % 2); //rerolled a dice for random selection of possible tools (or none) granted 
+											if (eRoll == 1)
+											{
+												fputs ("Congrats! You have been granted an axe. Maybe you can make a hole in the door? Or the wall?", room3outfile);
+											}
+											if (eRoll == 2)
+											{
+												fputs ("Sucks for you... Now the room will fill up with water even quicker... No tool has been granted to you, so looks like you are dead! GAME OVER!", room3outfile);
+												exit(EXIT_SUCCESS);	
+											}
+														
+										} //fclose
+										else
+										{
+											puts ("ERROR! YOUR TERRIBLE COMPUTER COULDN'T OPEN A SIMPLE TEXT FILE!");					
+										}
+										fclose(room3outfile);
+
+											
+										// call a function here w/ prototype. Have the function pass a true or false value back here.
+										// for the tool granted to user, have it be displayed in an outfile.
 									}
 									while ((eRoll < 1) || (eRoll > 6))
 									{
@@ -301,13 +310,13 @@ int main(void)
 									}							
 									break;
 									// you may choose another card
-								case 3:
+								case 2:
 									printf ("\n");
-									printf ("**** BUTTON 3 PRESSED ****\n");
-									printf ("***This button just cut power to lights in the room (as well as those hidden doors I mentioned before). Hope you like the dark and tigers...***\n");
+									printf ("**** BUTTON 2 PRESSED ****\n");
+									printf ("***This button just cut power to lights in the room (as well as those hidden doors I mentioned before). Hope you like the dark and bees...***\n");
 									while (choice != 99)
 									{
-										puts ("Display reads: Power has been cut to this room. You will be given one chance to either escape from this room alive or not. Let's play some trivia. Being one myself, I like computers, so I would like you to guess what year Gottfried Leibniz invented binary");
+										puts ("Display reads: Power has been cut to this room. You will be given a chance to either escape from this room alive or not. Let's play some trivia. Being one myself, I like computers, so I would like you to guess what year Gottfried Leibniz invented binary");
 										scanf ("%d", &choice);
 										while (choice != 1679)
 										{
@@ -322,21 +331,20 @@ int main(void)
 									}
 									break;
 								default:
-									while (choice != 99)
-									{
-										puts ("Choose a new door to explore....");
-										scanf ("%d", &choice);
 									
-									}
+									puts ("Man, you do not listen to instructions very well... Didn't I tell you to select buttons 1 OR 2??? Come back when you are not half-asleep...");
+									scanf ("%d", &choice);
+									
 									break;
 	
 							}
-							break; // added
-							puts("you open the door and find ........");
+							break;
+							puts("Choose another room.");
 							scanf("%d",&choice);
-					}// END ELTHON CISNEROS' ROOM
+					}
 					break;
-			}
+			}// ***END*** ELTHON CISNEROS' ROOM
+
 			case 4:
 			{
 					while(choice != 99)
@@ -552,6 +560,8 @@ int main(void)
 					while(choice != 99)
 					{
 							int select;
+							FILE *optr;
+							optr = fopen("Note(room 6).txt", "w+");
 							puts("You enter the room and close the door to prevent the water from flowing in. Looking around you find a well at the center with no rope, sealed crates at the corner of the room, a locked door at the other side, a crack in the wall, and a pile of clothes next to the well. What would you like to investigate?\n1. The well\n2. The crates\n3. The door\n4. The crack\n5. The clothes");
 							scanf("%d",&select);
 							while(select != 5) {		
@@ -561,7 +571,8 @@ int main(void)
 										scanf("%d",&select);
 										break;
 									case 2:
-										puts("The crates are shut tight and is impossible to open without a specific tool.\nWhere else would you like to investigate?");	scanf("%d",&select);
+										puts("The crates are shut tight and is impossible to open without a specific tool.\nWhere else would you like to investigate?");
+										scanf("%d",&select);
 										break;
 									case 3: 
 										puts("The door will not yield by brute force, you require a key to move forward.\nWhere else would you like to investigate?");
@@ -578,7 +589,7 @@ int main(void)
 								}
 							}
 											
-							puts("You find a small chisel and hammer within the clothes. Perhaps this person was a carpenter. You decided to take them.");
+							puts("You find a small chisel and hammer within the clothes along with a piece of paper. Examining the clothes a bit closer you notice that the clothes is mishhapened for a human...\n");
 							puts("With your newly acquired hammer and chisel, you think of some ideas on how to use the hammer and chisel. What would you like to use the hammer and chisel on?\n1. The well\n2. The crates\n3. The door\n4. The crack");
 							scanf("%d",&select);
 							while(select != 4) {
@@ -595,7 +606,7 @@ int main(void)
 										scanf("%d",&select);
 										break;
 									case 5:
-										puts("Despite not listing the clothes as an option, you decided to be a rebel and use the hammer and chisel on the pile of clothes anyway. You somehow tear the clothes using the hammer and chisel and found a key embedded into the clothes. You use the key on the locked door and discovered it worked! You escaped!");
+										puts("Somehow, you decided against the obvious and decide to use the hammer and chisel on the clothes. While you tear through the clothes you find a magical glowing key. You use the key on the door and suddenly, you find yourself in a room filled with treasure! You leave the dungeon with chests full of riches! You found the true ending!");
 										exit(EXIT_SUCCESS);
 									default:
 										puts("That is not a valid choice, please pick a number from 1 to 5");
@@ -688,7 +699,9 @@ int main(void)
 										break;
 								}
 							}
-							puts("You decided to use the rope and managed to sling the rope around the bucket somehow. You tug it towards you until you retrieved the bucket. Once retrieved, you tie the rope around the bucket's handle and lower it into the well. Steadily and nimbly, you scoop the shiny object into the bucket and pull it upwards. The object was a key! You used the key on the door and escaped! You win!");
+							puts("You decided to use the rope and managed to sling the rope around the bucket somehow. You tug it towards you until you retrieved the bucket. Once retrieved, you tie the rope around the bucket's handle and lower it into the well. Steadily and nimbly, you scoop the shiny object into the bucket and pull it upwards. The object was a key! You used the key on the door and escaped!\n\nSuddenly, you noticed the piece of paper from earlier suddenly wet with black ink, maybe you should check it out?");
+							fputs("Dlj 313,\nTstyrd slgp mpnzxp otcp ty xj acpotnlxpye, pgpcj olj te qppwd ld tq estd ofyrpzy pialyod hteszfe wtxted. Egpcj etxp I qppw ld tq I'x nwzdpc ez hsle I yppo, lyo pgpcj etxp I zapy esp ozzc ez yzestyr. Iy estd dtxawp czzx I opntop ez deza, te'd etxp ez elvp xj cpde. Iq lyjzyp cplod estd eplc esczfrs xj nwzespd fdtyr xj slxxpc lyo nstdpw, I qldszypo l vpj qczx xlrtn esle htww spwa jzf zy jzfc hlj.\nKey: 11", optr);
+							fclose(optr);
 							exit(EXIT_SUCCESS);
 					}
 					break;
@@ -772,7 +785,7 @@ int main(void)
 			{
 					puts("For this room, you require one txt file named infile.txt.");
 					while(choice != 99)
-					{FILE *inf;
+					{		FILE *inf;
 							FILE *outf;
 							inf = fopen("infile.txt", "r"); 
 							outf = fopen("outfile.txt", "w"); 
@@ -781,8 +794,9 @@ int main(void)
 							int i = 0;
 							int n = 0;
 							int k = 0;
-								
-							
+					 
+					
+					 
 							if (inf == NULL)
 							{
 								printf("Sorry, bud. File cannot not be opened \n"); 
@@ -903,7 +917,7 @@ int main(void)
 				{	
 					if (flag == 1)
 					{
-						printf("");
+					//	printf("");
 					}
 					else 
 					{
@@ -950,7 +964,10 @@ int main(void)
 					if (numb ==3)
 					{
 						printf("Cannon is agressive so he bites %s. ",name);
-					//	write();
+
+
+
+						writte();
 					}
 					if (numb ==4)
 					{
@@ -979,28 +996,46 @@ int main(void)
 					{
 							int boxNum=0;
 							int randNum=0;
+							int numBoxes=0;
+							int opt1=0;
+							int opt2=0;
+							int opt3=0;
+							int *aPtr;
 							char aString[256];
+							char aLetter;
 							FILE *writePage;
+							aPtr=&randNum;
 
-							puts("You open the door and find a damp room, mostly empty, three boxes lay on the floor");
-							puts("You feel the urge to look through them");
+							printf("You open the door of Room #%d and find a damp room, mostly empty, three boxes lay on the floor\n",choice);
+							puts("The floor feels wet, it seems water is entering the room");
+							puts("You feel the urge to look through the boxes, something in there might help the situation");
 							puts("How many would you like to look through?");
-							scanf("%d",&choice);
+							scanf("%d",&numBoxes);
 							srand(time(NULL));
-							if(choice>3||choice==0)
+							if(numBoxes>3)
 							{
-								puts("Why? just leave");
+								printf("You don't have the time to search through %d boxes\n",numBoxes);
+								puts("I'll give you a second chance");
+								puts("How many boxes would you like to look through?");
+								scanf("%d",&numBoxes);
+							}
+							if(numBoxes==0)
+							{
+								puts("I guess giving up is not so bad");
+								puts("The room floods and you drown.");
+								choice=99;
 							}
 							else
 							{
-								for(i=0;i<choice;i++)
+								for(i=0;i<numBoxes;i++)
 								{
 									printf("Which box would you like to look in?\n");
 									scanf("%d",&boxNum);
 									switch(boxNum)
 									{
 										case 1:
-											printf("There is a Dice Would you like to Roll it?\n");
+											printf("Under Box #%d there is a Die, Would you like to Roll it?\n",boxNum);
+											printf("Enter \"Yes\" or \"No\"\n");
 											scanf("%s",aString);
 											if(isalpha(aString[0]))
 											{
@@ -1016,34 +1051,64 @@ int main(void)
 											}
 											if(aString[0]=='y' && aString [1]=='e' && aString[2]=='s')
 											{
-												randNum=(rand()%5)+1;
-												printf("You rolled a %d, that's it\n",randNum);
+												*aPtr=(rand()%5)+1;
+												printf("You rolled a %d, that's it nothing else\n",randNum);
 											}
+											else if(aString[0]=='n' && aString[1] == 'o')
+											{
+												printf("You place the box on top of the Die\n");
+											}
+											else
+											{
+												printf("Well I guess you leave it alone\n");	
+											}
+											opt1++;
 											break;
 										case 2:
-											printf("Under the box you find a pencil and a small page\n");
-												writePage=fopen("page.txt","w");
-												printf("What would you like to write in it?\nKEEP IT SHORT!\n");
-												scanf("%s",aString);
-												fputs(aString,writePage);
-
+											printf("Under Box #%d you find a pencil and a small page\n",boxNum);
+											writePage=fopen("page.txt","w");
+											printf("What would you like to write in it?\nKEEP IT SHORT!\nEnter CTRL-D to Stop\n");
+											aLetter=getc(stdin);
+											while((aLetter!=EOF))
+											{
+												if(isprint(aLetter))
+												{
+													fputc(aLetter,writePage);
+												}
+												aLetter=getc(stdin);
+											}
+											fclose(writePage);
+											opt2++;
 											break;
 										case 3:
-											printf("Box #%d was empty\n",boxNum);
+											printf("Under Box #%d is an old dusty monitor\n",boxNum);
+											printf("You try to power it on, even though it is not connected to an outlet\n");
+											printf("Surprisingly it turns on, because of magic? or maybe it is powered by AA batteries?\nEither way it works\n");
+											readScreen();
+											opt3++;
 											break;
 										default:
 											break;
 									}
 								}
-								if(choice==3)
+								if(numBoxes==3)
 								{
 									puts("You just wasted your time looking through 3 useless boxes");
+									if(opt1==1 && opt2==1 && opt3==1)
+									{
+										puts("But you took the time to look through all 3 of them");
+										puts("A secret door opens, it leads to the outside world, you are free of this place");
+									}
+								}
+								else
+								{
+									puts("The room floods with water, you end up drowning");
 								}
 							}
-							break;
+							break;	
 					}
-					break;
-				
+			
+					break;		
 				
 			}
 			case 12:
@@ -2916,9 +2981,11 @@ void convertToUpper(char *sPtr)
 	++sPtr;
 	}
 }
-/*
-void write(void)
-{	
+
+
+
+void writte(void)
+{
 	int i =0;
 	
 	int bite =0;
@@ -2940,7 +3007,7 @@ void write(void)
 	puts("However he is still crying!");
 	fclose(wPtr);
 }
- */
+ 
 void switcch(void)
 {	
 	char i;
@@ -2961,6 +3028,62 @@ void switcch(void)
 	}
 	puts("Feeding the beast only fueled his rage!");
 }
+void readScreen(void)
+{
+	FILE *inScreen;
+	char k;
+	if((inScreen=fopen("page.txt","r"))==NULL)
+	{
+		printf("The Screen is Blank, strange...\n");
+	}
+	else
+	{
+		printf("Words are Displayed on the Screen they read:\n");
+		k=fgetc(inScreen);
+		while(k!=EOF)
+		{
+			if(isprint(k))
+			{
+				printf("%c",k);
+			}	
+			k=fgetc(inScreen);
+		}
+		printf("\nI wonder who wrote that...\n");
+		fclose(inScreen);
+	}
+}
+
+void trivia(int *ptr) // Function for Room 3 (Elthon Cisneros). (uses pointers)
+{
+	const int releaseYear = 1985;
+	int rollNum;
+	int userAnswer; 
+	
+	puts ("Answer this trivia correctly (you only get 6 chances) for a chance to win a tool to help you escape this room: 'What year was Windows 1.0 released?' \n");
+	scanf ("%d", &userAnswer);
+	while (releaseYear != userAnswer)
+	{
+		rollNum++;
+		puts ("WRONG!!! Guess again!!!");
+		scanf ("%d", &userAnswer);
+		if ((rollNum >= 2) && (releaseYear != userAnswer))
+		{
+			puts ("Hint: Sometime in 1980's");
+		}
+		if ((rollNum >= 6) && (releaseYear != userAnswer))
+		{
+			puts ("YOU HAVE HIT 6 INCORRECT GUESSES!!! Your ignorance makes me sick... You are clearly not Computer Science/Computer Tech/Information Tech material (or couldn't bother Googling it with the smartphone in your pocket)... ***YOU DIE!!!***\n");
+			exit(EXIT_SUCCESS);
+		}
+	}
+	if (userAnswer == releaseYear)
+	{
+		puts ("You are truly a computer geek... but you GUESSED CORRECTLY! Check your computer for a file called 'room3.txt' to reveal what tool you won!!!\n");
+		*ptr = 1;
+	}
+
+}//END TRIVIA FUNCTION (ROOM 3)
+
 
 void menu(){ // just to show the menu not suppose to return anything
     
