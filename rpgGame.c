@@ -2026,7 +2026,7 @@ int main(void)
 				while(choice != 99)
 				{
 						puts("you open the door and find ........");
-						sleep(2);
+						sleep(1);
 						system("clear");
 						int alive = 0;
 						puts("Terra Fictitia! The battle ground of the trial of the Bat-Mite!");
@@ -2116,7 +2116,7 @@ int main(void)
 								printf("\n That did it. The monster is slain. Now let's be on our way %s, I hear people coming from the slums.", name);
 								puts("\n...\n");
 								puts("From the distance, a villager shouts 'Kalibak is dead'.");
-								sleep(4);
+								sleep(2);
 								system("clear");
 								//Start of array swapping
 								printf("%s, we're coming upon the entrance to the Rock of Eternity. You'll need to tell the doorman the password.", name);
