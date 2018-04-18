@@ -1251,14 +1251,14 @@ int main(void)
 										
 										if(game2ObjectiveCompleteFlag==0)
 										{
-											game2TotalWordsTypedCounter++;
-										}										
+											game2TotalWordsTypedCounter++;										
 	
-										if(game2TotalWordsTypedCounter==20)
-										{
-											game2ObjectiveCompleteFlag=1;
-											totalObjectivesCompletedCounter++;
-											puts("Congratulations you have completed the objective for this game.");
+											if(game2TotalWordsTypedCounter==20)
+											{
+												game2ObjectiveCompleteFlag=1;
+												totalObjectivesCompletedCounter++;
+												puts("Congratulations you have completed the objective for this game.");
+											}
 										}
 									}
 
