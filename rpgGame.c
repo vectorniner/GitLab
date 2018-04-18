@@ -33,6 +33,7 @@ int exercise(void);
 void convertToUpper(char *sPtr);
 void write(void);
 void switcch(void);
+void trivia(int *ptr);
 
 
 
@@ -214,13 +215,15 @@ int main(void)
                    			break;
                 	}// end case2
 
-
-          	case 3: // ELTHON CISNEROS'S ROOM 
+          	case 3: // ELTHON CISNEROS'S ROOM  
 			{
 					while(choice != 99)
 					{
+							FILE *room3outfile; //pointer to outfile / file to be created on user computer.
+
+							int triviaTrueFalse = 0; //int variable used in 'trivia' function. called and modified using pointers.
 							int e;
-							char elname[256];
+							char elname[256]; // ARRAY to hold name user entered when game starts.
 							const int SIDES = 6; //for die roll
 							int eRoll;
 							char advance;
@@ -230,54 +233,29 @@ int main(void)
 							}
 							printf ("\n");
 							printf("*** WELCOME %s!!! This is Room 3...***\n ", elname);
-							printf ("--You walk into a strangely bright and colorful room. You see 3 untitled buttons on a table...and you just heard the door close and lock behind you!\n");
+							printf ("--You walk into a strangely bright and colorful room. You may get the impression that you walked into a toy store with the color scheme you see on the wall. You see 2 untitled buttons on a table...and you just heard the door close and lock behind you!\n");
 							printf ("--Keep in mind: There are hidden doors within this bright and colorful room. The only thing keeping these doors closed is the power. Would be a mighty shame if there was a power outage!\n");
-							printf ("--Above the buttons a sign reads: You may choose press one button to determine your fate. To not keep you in total suspense, an LCD display on the wall will vaguely let you know what just happened after you pressed this button:\n");
+							printf ("--Above the buttons a sign reads: You may choose press one button to determine your fate. To not keep you in total suspense, an LCD display on the wall will vaguely let you know what just happened after you pressed this button. (Type 1 OR 2 to choose button):\n");
+							printf ("--P.S. IF you are knowledgeable with computer trivia, you will do well here.. ELSE, you die. I MAY decide to give you hints... We will see...\n");
 							scanf ("%d", &choice);
 
 							switch (choice)
 							{
+
 								case 1:
 									printf ("\n");
 									printf ("**** BUTTON 1 PRESSED ****\n");
-									printf("***Ya done messed up! Looks like this wasn't the number one choice you thought it was... This room will start filling with water now... Hope you know how to swim!!! :D *** \n");
-									puts ("Well, this room may be filling up with water, but I can give you a fighting chance by giving you ONE tool of your choice that may help you escape OR KILL YOU... Type in your choice wisely (1-4)...");
-									scanf ("%d", &choice);
-
-									//while (choice != 99)
-									//{
-										switch (choice)
-										{
-											case 1:
-												puts ("I have granted you a spear... Maybe you can make a hole in the door?");
-												break;
-											case 2:
-												puts ("I have granted you an oxygen tank and scuba suit...");
-												break;
-											case 3:
-												puts ("HAHAHAH!!! You pressed the wrong button! Now the room will fill up with water even quicker...");
-												break;
-											default:
-												puts ("For once, being incorrect has saved you... The room has stopped filling with water.");
-												break;
-										}
-										
-									//}
-									break; //end switch
-								case 2:
-									printf ("\n");
-									printf ("**** BUTTON 2 PRESSED ****\n");
 									printf ("***Let's play a game to decide if you get to escape this room alive...***\n");
-									printf ("I'll tell you what. You may roll a 6 sided die one time. If you roll a 1, the exit door opens and you may leave at your leisure. If you roll a 6, you are immediately killed by electric shock. If you roll between a 2 and a 5, you get another try at rolling the die. Think of this as a Russian Roulette game, just that I gave you a lifeline... Aren't I the nicest???\n");
+									printf ("I'll tell you what. You may roll a 6 sided die one time. If you roll a 1, the exit door opens and you may leave at your leisure. If you roll a 6, you are immediately killed by electric shock. If you roll between a 2 and a 4, you get another try at rolling the die (except if you roll a '5'). Think of this as a Russian Roulette game, just that I gave you an extra lifeline (or two)... Aren't I the nicest???\n");
 									printf ("***Type 'r' to Roll***\n");
 									eRoll = 1 + (rand() % SIDES);
 									//printf ("%d", eRoll);	
 									
-									while ((eRoll >= 2) && (eRoll <=5))
+									while ((eRoll >= 2) && (eRoll <=4))
 									{
 						
 										scanf ("%c", &advance);
-										if (advance == 'r')
+										if (advance == 'r') // only continues roll if user enters 'r' character
 										{
 											eRoll = 1 + (rand() % SIDES);	//roll again
 											printf ("Roll again! Your die rolled a :'%d'. Type 'r' to roll again: \n", eRoll);
@@ -285,11 +263,41 @@ int main(void)
 									}
 									if (eRoll == 1)
 									{
-										puts ("YOU ROLLED A '1'. The exit door has open and you may leave at your leisure...");
+										puts ("YOU ROLLED A '1'. The exit door has opened and you may leave at your leisure...");
 									}
 									if (eRoll == 6)
 									{
-										puts ("YOU ROLLED A '6'. **** ZAP! *** An electric shock has killed you!");
+										puts ("***Ya done messed up!*** YOU ROLLED A '6'. **** ZAP! *** An electric shock has killed you!");
+									}
+									if (eRoll == 5)
+									{
+										puts ("YOU ROLLED A '5'. I will give you another chance to escape. Hope you like computer-related trivia...\n");
+										
+										trivia(&triviaTrueFalse); // FUNCTION AT BOTTOM OF PROGRAM!!!
+
+										if ((room3outfile = fopen("room3.txt", "w")) != NULL) // opens file on users computer
+										{
+										  	eRoll = 1 + (rand() % 2); //rerolled a dice for random selection of possible tools (or none) granted 
+											if (eRoll == 1)
+											{
+												fputs ("Congrats! You have been granted an axe. Maybe you can make a hole in the door? Or the wall?", room3outfile);
+											}
+											if (eRoll == 2)
+											{
+												fputs ("Sucks for you... Now the room will fill up with water even quicker... No tool has been granted to you, so looks like you are dead! GAME OVER!", room3outfile);
+												exit(EXIT_SUCCESS);	
+											}
+														
+										} //fclose
+										else
+										{
+											puts ("ERROR! YOUR TERRIBLE COMPUTER COULDN'T OPEN A SIMPLE TEXT FILE!");					
+										}
+										fclose(room3outfile);
+
+											
+										// call a function here w/ prototype. Have the function pass a true or false value back here.
+										// for the tool granted to user, have it be displayed in an outfile.
 									}
 									while ((eRoll < 1) || (eRoll > 6))
 									{
@@ -297,13 +305,13 @@ int main(void)
 									}							
 									break;
 									// you may choose another card
-								case 3:
+								case 2:
 									printf ("\n");
-									printf ("**** BUTTON 3 PRESSED ****\n");
-									printf ("***This button just cut power to lights in the room (as well as those hidden doors I mentioned before). Hope you like the dark and tigers...***\n");
+									printf ("**** BUTTON 2 PRESSED ****\n");
+									printf ("***This button just cut power to lights in the room (as well as those hidden doors I mentioned before). Hope you like the dark and bees...***\n");
 									while (choice != 99)
 									{
-										puts ("Display reads: Power has been cut to this room. You will be given one chance to either escape from this room alive or not. Let's play some trivia. Being one myself, I like computers, so I would like you to guess what year Gottfried Leibniz invented binary");
+										puts ("Display reads: Power has been cut to this room. You will be given a chance to either escape from this room alive or not. Let's play some trivia. Being one myself, I like computers, so I would like you to guess what year Gottfried Leibniz invented binary");
 										scanf ("%d", &choice);
 										while (choice != 1679)
 										{
@@ -318,21 +326,20 @@ int main(void)
 									}
 									break;
 								default:
-									while (choice != 99)
-									{
-										puts ("Choose a new door to explore....");
-										scanf ("%d", &choice);
 									
-									}
+									puts ("Man, you do not listen to instructions very well... Didn't I tell you to select buttons 1 OR 2??? Come back when you are not half-asleep...");
+									scanf ("%d", &choice);
+									
 									break;
 	
 							}
-							break; // added
-							puts("you open the door and find ........");
+							break;
+							puts("Choose another room.");
 							scanf("%d",&choice);
-					}// END ELTHON CISNEROS' ROOM
+					}
 					break;
-			}
+			}// ***END*** ELTHON CISNEROS' ROOM
+
 			case 4:
 			{
 					while(choice != 99)
@@ -2858,4 +2865,36 @@ void switcch(void)
 	}
 	puts("Feeding the beast only fueled his rage!");
 }
+
+void trivia(int *ptr) // Function for Room 3 (Elthon Cisneros). (uses pointers)
+{
+	const int releaseYear = 1985;
+	int rollNum;
+	int userAnswer; 
+	
+	puts ("Answer this trivia correctly (you only get 6 chances) for a chance to win a tool to help you escape this room: 'What year was Windows 1.0 released?' \n");
+	scanf ("%d", &userAnswer);
+	while (releaseYear != userAnswer)
+	{
+		rollNum++;
+		puts ("WRONG!!! Guess again!!!");
+		scanf ("%d", &userAnswer);
+		if ((rollNum >= 2) && (releaseYear != userAnswer))
+		{
+			puts ("Hint: Sometime in 1980's");
+		}
+		if ((rollNum >= 6) && (releaseYear != userAnswer))
+		{
+			puts ("YOU HAVE HIT 6 INCORRECT GUESSES!!! Your ignorance makes me sick... You are clearly not Computer Science/Computer Tech/Information Tech material (or couldn't bother Googling it with the smartphone in your pocket)... ***YOU DIE!!!***\n");
+			exit(EXIT_SUCCESS);
+		}
+	}
+	if (userAnswer == releaseYear)
+	{
+		puts ("You are truly a computer geek... but you GUESSED CORRECTLY! Check your computer for a file called 'room3.txt' to reveal what tool you won!!!\n");
+		*ptr = 1;
+	}
+
+}//END TRIVIA FUNCTION (ROOM 3)
+
 
