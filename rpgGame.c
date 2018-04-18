@@ -879,22 +879,38 @@ int main(void)
 					{
 							int boxNum=0;
 							int randNum=0;
+							int numBoxes=0;
+							int opt1=0;
+							int opt2=0;
+							int opt3=0;
+							int *aPtr;
 							char aString[256];
 							char aLetter;
 							FILE *writePage;
+							aPtr=&randNum;
 
-							puts("You open the door and find a damp room, mostly empty, three boxes lay on the floor");
-							puts("You feel the urge to look through them");
+							printf("You open the door of Room #%d and find a damp room, mostly empty, three boxes lay on the floor\n",choice);
+							puts("The floor feels wet, it seems water is entering the room");
+							puts("You feel the urge to look through the boxes, something in there might help the situation");
 							puts("How many would you like to look through?");
-							scanf("%d",&choice);
+							scanf("%d",&numBoxes);
 							srand(time(NULL));
-							if(choice>3||choice==0)
+							if(numBoxes>3)
 							{
-								puts("Why? just leave");
+								printf("You don't have the time to search through %d boxes\n",numBoxes);
+								puts("I'll give you a second chance");
+								puts("How many boxes would you like to look through?");
+								scanf("%d",&numBoxes);
+							}
+							if(numBoxes==0)
+							{
+								puts("I guess giving up is not so bad");
+								puts("The room floods and you drown.");
+								choice=99;
 							}
 							else
 							{
-								for(i=0;i<choice;i++)
+								for(i=0;i<numBoxes;i++)
 								{
 									printf("Which box would you like to look in?\n");
 									scanf("%d",&boxNum);
@@ -918,7 +934,7 @@ int main(void)
 											}
 											if(aString[0]=='y' && aString [1]=='e' && aString[2]=='s')
 											{
-												randNum=(rand()%5)+1;
+												*aPtr=(rand()%5)+1;
 												printf("You rolled a %d, that's it nothing else\n",randNum);
 											}
 											else if(aString[0]=='n' && aString[1] == 'o')
@@ -929,6 +945,7 @@ int main(void)
 											{
 												printf("Well I guess you leave it alone\n");	
 											}
+											opt1++;
 											break;
 										case 2:
 											printf("Under Box #%d you find a pencil and a small page\n",boxNum);
@@ -944,21 +961,31 @@ int main(void)
 												aLetter=getc(stdin);
 											}
 											fclose(writePage);
-
+											opt2++;
 											break;
 										case 3:
 											printf("Under Box #%d is an old dusty monitor\n",boxNum);
 											printf("You try to power it on, even though it is not connected to an outlet\n");
 											printf("Surprisingly it turns on, because of magic? or maybe it is powered by AA batteries?\nEither way it works\n");
 											readScreen();
+											opt3++;
 											break;
 										default:
 											break;
 									}
 								}
-								if(choice==3)
+								if(numBoxes==3)
 								{
 									puts("You just wasted your time looking through 3 useless boxes");
+									if(opt1==1 && opt2==1 && opt3==1)
+									{
+										puts("But you took the time to look through all 3 of them");
+										puts("A secret door opens, it leads to the outside world, you are free of this place");
+									}
+								}
+								else
+								{
+									puts("The room floods with water, you end up drowning");
 								}
 							}
 							break;	
