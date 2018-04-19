@@ -2597,22 +2597,21 @@ int main(void)
                                             chance--;
                                             printf("You have %d chances remaining\n", chance);
                                         }
-                                        else if (guess < tekashi && choice > 0)
+                                        if (guess < tekashi && choice > 0)
                                         {
                                             printf("\n%d is too low\n", guess);
                                             chance--;
                                             printf("You have %d chances remaining\n", chance);
                                         }
-                                        else if (chance == 0)
-                                        {
-                                            puts("\n-------ROOM SELF DESTRUCTS--------\n\tGAME OVER!!!\n\n");
-                                            
-                                        }
-                                        else if (guess == tekashi)
+                                        if (guess == tekashi)
                                         {
                                             printf("\n %d Deadass!! Tekashi 6-9\n", guess);
                                             printf("Door unlocks-_-_-\"Click!\"\n\n");
                                             break;
+                                        }
+                                        if (chance == 0)
+                                        {
+                                            puts("\n-------ROOM SELF DESTRUCTS--------\n\tGAME OVER!!!\n\n");
                                         }
                                     } while (chance != 0);
                                     break;
