@@ -615,6 +615,7 @@ void main(void)
 			{
 					while(choice != 99)
 					{		
+							int select;
 							puts("You open the door and find youself ambushed by a group of knight and they captured you as a slave.");
 							puts("Later, woke up in a dungeon cell with many men guarding your cell.");
 							puts("However the prison guards ignorantly sleep during their nightshift");
@@ -629,9 +630,9 @@ void main(void)
 							puts("3. Open the door #3");
 							puts("4. Open the door #4");
 							puts("5. Open the door #5");
-							scanf("%d",&choice);
+							scanf("%d",&select);
 							
-							switch(choice)
+							switch(select)
 							{
 								case 1:
 								puts("NO! IT's A TRAP! The door leads you the courtyard and the knights surrounded and beat you to death for escaping.");
@@ -670,9 +671,9 @@ void main(void)
 							puts("However, the secured door takes you into another room with five more doors in front of you.");
 							puts("Same as before but you have to be more cautious and pick a door to open that will help you escape.");
 							puts("Choose a door to open but choose wisely(#1-5).");
-							scanf("%d",&choice);
+							scanf("%d",&select);
 							
-							switch(choice)
+							switch(select)
 							{
 								case 1:
 								puts("NO STOP! You open the door and make one step without watching your step and fell into a waterfall.");	
