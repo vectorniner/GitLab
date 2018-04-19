@@ -30,6 +30,8 @@
 #define CORRECTCODE 1775
 int exercise(void);
 void convertToUpper(char *sPtr);
+int rollDice(int *dice);
+void printDice(int *dice, int sum);
 
 
 
@@ -162,68 +164,67 @@ int main(void)
 				}
 				break;
 			}
-			case 2:
+			
+		case 2:// Mohamed Shalabi- Room2
 			{
+
                                 while(choice != 99)
+				{
 
-                                {
-                          	        	puts("Thank you for choosing my door!!!");
-                           	        	puts("Now,you open the door and I hope you enjoyed your time!!");
-                           			puts("********************************************************");
+								  char guess;
+								  char nick_name[256];
+								  int i, dice[NUM_DICE], sum, oldSum, correct, goodGuesses;
+								  srand(time(NULL));
+								  goodGuesses = 0;
+								  sum = rollDice(dice);
+								  FILE *wPtr = fopen("room2.txt", "w");
+								  printf("Please enter your nickname\n");
+								  scanf("%s",nick_name);
+    							    	  printf(" Welcome %s to the guessing game, you have only (5) tries. Good Luck!!",nick_name);
+                                                                  printf(" After you are done, you will know your result in file called room2");
 
-                            			char guess;
-                            			int i, dice[NUM_DICE], sum, oldSum, correct, goodGuesses;
-                            			srand(time(NULL));
-                            			goodGuesses = 0;
+      							    	  for (i=0;i<5; i++)
+      								  {
 
-                            			//sum = rollDice(dice);
+								       printDice(dice, sum);
+								       oldSum = sum;
+								       sum = rollDice(dice);
 
-                            			printf("Please Enter, How many times do you want to play? ");
-                            			scanf("%d", &i);
-						int n =0;
-						for ( n=0;n <=i; n--)
-                            			{
+								       printf(
+									     "Do you think the next total will be higher, "
+									     "the same, or lower than the previous total? "
+									     "(h, s, l)\n"
+									       );
+								        scanf(" %c", &guess);
 
-                                	        	//printDice(dice, sum);
-                                			oldSum = sum;
-                                			//sum = rollDice(dice);
+        								switch (guess)
+        								{
+										case 'h': correct = sum > oldSum; break;
+										case 's': correct = sum == oldSum; break;
+										case 'l': correct = sum < oldSum; break;
+										default: correct = 0; printf("Not h, s or l.\n");
+        								}
+       									if (correct)
+        								{
+            									 printf("Your guess was correct!\n");
+           									 goodGuesses++;
+        								}
+        								 else
+             						                {
+        						 			  printf("Your guess was incorrect!\n");
+        								}
+ 	     							  }
 
-                                			printf("Do you think the next total will be Higher,""the Same,or Lower than the previous total? ""(h, s, l)\n");
-                                			scanf(" %c", &guess);
+    								  fprintf(wPtr,"%s got a total of guesses correct=%d\n",nick_name,goodGuesses);
+								  printf("\n");
+								  printf("you can know your score in a file called room2.txt\n");
+								  printf("\n\n");
+								  fclose(wPtr);
+    							          break;
 
-                                			switch (guess)
-                                			{
-                                        			case 'h':
-                                                    	        	correct = (sum > oldSum);
-                                                    			break;
-                                        			case 's':
-                                                    			correct = (sum == oldSum);
-                                                    			break;
-                                        			case 'l':
-                                                            		correct = sum < oldSum;
-                                                    	         	break;
-                                        			default:
-                                                     			correct = 0; printf("Not h, s or l.\n");
-                                			}
-
-                                			if (correct)
-                                			{
-                                    			printf("Your guess was correct!\n");
-                                    			goodGuesses++;
-                                			}
-
-                                			else
-                                			{
-                                    			printf("Your guess was incorrect!\n");
-                                			}
-
-                            			}//end for loop
-                            	        	printf("You got a total of %d guesses correct!\n", goodGuesses);
-                            			printf("Thank you again for coming to my room #2\n");
-                           			break;
-                        	} //end while
-                   			break;
-                	}// end case2
+							}
+                					break;
+            		}
 
           	case 3: // ELTHON CISNEROS'S ROOM  
 			{
@@ -3449,4 +3450,24 @@ randomNumber = (lowestNumber + rand() % ((HighestNumber + 1) - lowestNumber));
 return randomNumber;
 }
 	
+int rollDice(int *dice)
+{
+    int i, sum;
+    for (i = sum = 0; i < NUM_DICE; i++)
+    {
+        dice[i] = rand()%6 + 1;
+        sum += dice[i];
+    }
+    return sum;
+}
+
+void printDice(int *dice, int sum)
+{
+    int i;
+    printf("\n\n");
+    for (i = 0; i < NUM_DICE; i++)
+        printf("Die %d: %d\n", i + 1, dice[i]);
+    printf("---------\nTotal: %d\n\n", sum);
+}
+
 
