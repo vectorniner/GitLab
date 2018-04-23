@@ -17,7 +17,12 @@
 //Emanuel Fonseca
 //Cameron Jackson
 //Erick Cabanban
+
+//Kevin Maatubang
+
+
 //Bradford Mcdaniel
+
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -2452,54 +2457,148 @@ int main(void)
 				break;
 			}//bracket of case room 16 DO NOT REMOVE (note for myself no one else)
 
-			case 17: // This room just adds to the game. Can be edited later to result in a loss and terminate the program. Currently, solving or failing to solve the problem ends up with the player choosing a room again
+			case 17: // Kevin Maatubang (Last edt 4/18/18)
 			{
-				while(choice != 99)
-				{
-					puts("\nYou open the door to room 17.");
-					puts("Upon entering, the door slams behind you and you hear it lock.");
-					puts("A lightbulb hanging from the ceiling begins to light up. After waiting a few moments, the lights slightly turn up and you notice something in the center of the room.");
-					puts("In the center of the room, you see a small table with a number pad embedded onto it.");
-				        puts("Upon inspection of the number pad, you press it  and the whole room suddenly lights up entirely, putting you in a daze.");
-					puts("You recover from the daze. Upon recovering, you see a small screen display hanging in front of you connected to the number pad.");
-					puts("Even worse, you notice multiple explosives, enough to blow the room (and yourself) out of existence.");
-					puts("On the screen display, it shows: Enter the correct 4 number password. After 3 wrong attempts, say bye to your life.");
-					puts("You look around the room and see a lot of scratch and scribbles, but you notice something barely legible.");
-					puts("You decipher it and it says roomx365."); // The 4 number password is 17 * 365, which is 6205
-					puts("You question the meaning of it as you hesitate to approach the number pad.");
-					puts("You must now enter the 4 number password.");
-
-					int i;						
-																						   					for(i = 1; i<4; i++)
+					while(choice != 99)
 					{
-						scanf("%d", &choice);
-						if(choice != 6205)
+						puts("\nYou open the door to room 17.");
+						puts("Upon entering, the door slams behind you and you hear it lock.");
+						puts("A lightbulb hanging from the ceiling begins to light up. After waiting a few moments, the lights slightly turn up and you notice something in the center of the room.");
+						puts("In the center of the room, you see a small table with a number pad embedded onto it.");
+				        puts("Upon inspection of the number pad, you press it  and the whole room suddenly lights up entirely, putting you in a daze.");
+						puts("You recover from the daze. Upon recovering, you see a small screen display hanging in front of you connected to the number pad.");
+						puts("Even worse, you notice multiple explosives, enough to blow the room (and yourself) out of existence.");
+						puts("On the screen display, it shows: Enter the correct 4 number password. After 3 wrong attempts, say bye to your life.");
+						puts("You look around the room and see a lot of scratch and scribbles, but you notice something barely legible.");
+						puts("You decipher it and it says roomx365."); // The 4 number password is 17 * 365, which is 6205
+						puts("You question the meaning of it as you hesitate to approach the number pad.");
+						puts("You must now enter the 4 number password.");
+						int i;	//Counter for first loop;
+						FILE *inptr;
+						for(i = 1; i<4; i++)
 						{
-							printf("\nYou guessed wrong. Attempt %d failed.\n", i);
-							if(i ==3)
+							scanf("%d", &choice);
+							if(choice != 6205)
 							{
-								puts("\nAll attempts failed, goodbye.");
-								puts("The explosion magically blows you back to where you started. Hey at least you aren't dead ... yet\n");
-								//choice = 99; //uncommenting would execute this: puts("Magically you are transported through space and time. You are back at the beginning....."); and end the program	break;
+								printf("\nYou guessed wrong. Attempt %d failed.\n", i);
+								if(i == 3)
+								{	
+									inptr = fopen("Room17message.txt", "w");
+									fprintf(inptr, "You couldn't even beat the first part of the room. GiT GuD");
+									fclose(inptr);
+									puts("\nAll attempts failed, goodbye.");
+									//puts("The explosion magically blows you back to where you started. Hey at least you aren't dead ... yet\n");
+									choice = 99; // Needed to end program after 3 attempts
+									break;
+								}	
+								
+							}	
+							else if(choice == 6205)
+							{
+								puts("\nThe screen displays: Congratulations, you can math, as you hear a hidden hatch from the floor open. With no where else to go, you cautiously go down the hatch.");
+								// Section of room 17 to implement room random number generation.
+								puts("After you walk down the hatch, you find yourself in a similar room looking room just before walking down the hatch, just less demolished");
+								puts("You see a paper hanging on a wall that says Hope YOU are lucky, as you notice normal 6-sided die sitting in the middle of the room");
+								puts("After grabbing the paper of the wall, you read that this a game all about luck. You must correctly guess the exact roll before rolling the die once. You have 8 attempts");
+								puts("Influencing the roll or guessing wrong three times will automatically lock the hatch, trapping you forever");
+								srand(time(NULL));
+								int side;	// Variable for the roll of a die (1-6))
+								int guess;	// Variable for input
+								puts("Enter your guess between 1-6");
+								for(i = 1; i < 9; i++)
+								{
+									scanf("%d", &guess);
+									side = 1 + (rand()%6);
+									printf("You guessed a %d. You rolled a %d.\n", guess, side);
+								
+									if(guess != side)
+									{
+										printf("\nYou guessed wrong. Attempt %d failed.\n", i);
+										if(i == 8)
+										{
+											inptr = fopen("Room17message.txt", "w");
+											fprintf(inptr, "Not bad, just unlucky. How unfortunate.");
+											fclose(inptr);
+											puts("You are unlucky and are trapped in the room forever. GAME OVER");
+											choice = 99; // Needed to end game when all guesses are wrong
+										}										
+									}
+									else if(guess == side)	
+									{
+										char answer[100] = {0};
+										puts("You are showered with confetti that appeared out of nowhere. Lady luck has smiled upon you");
+										puts("As the confetti stops falling, you see a rope fall from an open hole on the ceiling. With the stacks of confetti blocking the hatch, you climb up the rope");
+										puts("As you finish ascending, you notice some old dude in a suit");
+										puts("He says he can teleport you out of here if you answer these three questions correctly without making any mistake");
+										puts("Wanting to get out of this hell, you accept his offer");
+										puts("His first question, what is the last name of the current Commander in Chief? (The current year is 2018)?");
+										scanf("%s", answer);
+										if(strcmp(answer, "trump") == 0 || strcmp(answer, "Trump") == 0)
+										{	
+											puts("Not bad, the dude says, but you good luck answering this. What are the initials of the instructor who told the class to make this game?");
+											scanf("%s", answer);
+											if(strcmp(answer, "gp") == 0 || strcmp(answer, "GP") == 0)
+											{
+												puts("Ok, you got lucky, but you'll never be able to answer this.");
+												puts("The answer to the previous question is also an acronym for a certain champion in the MOBA game League of Legends. Who is that champion?");
+												scanf("%s", answer);
+												if(strcmp(answer, "Gangplank") == 0 || strcmp(answer, "gangplank") == 0)
+												{
+													inptr = fopen("Room17message.txt", "w");
+													fprintf(inptr, "You can math, you have been blessed by the rng gods, and you know the answers to some random questions you'll hear once in your life. Gj Friend.");
+													fclose(inptr);
+													puts("Wow. You sure know your stuff. I'll let you out.");
+													puts("Turns out this old dude was a wizard and he opens up a portal. You decide to walk through it. You find yourself out of harms way.");
+													puts("Congratulations on beating room 17!");
+													choice = 99; 	// Needed to end program upon success
+													break;		// Needed to end program upon success
+												}
+												else		
+												{
+													inptr = fopen("Room17message.txt", "w");
+													fprintf(inptr, "As the maker of this room, I didn't expect you to know the answer to this question. So close, yet so far.");
+													fclose(inptr);
+													puts("Wrong Answer");
+													choice = 99; // Ends program on wrong guess
+												}
+											}	
+											else
+											{
+											inptr = fopen("Room17message.txt", "w");
+											fprintf(inptr, "Shame on you for not knowing the name of the instructor of this course (CSC 251).");
+											fclose(inptr);
+											puts("Wrong Answer");
+											choice = 99; // Ends program on wrong guess
+											}
+										}
+										else
+										{
+											inptr = fopen("Room17message.txt", "w");
+											fprintf(inptr, "All you need to know was a little terminology. Otherwise, there is no reason you not know this iconic person.");
+											fclose(inptr);
+											puts("Wrong Answer");
+											choice = 99; // Ends program on wrong guess
+										}
+												
+										break;
+									}	
+									else
+									{
+										printf("You guessed wrong. Attempt %d failed.", i);
+										break;
+									}			
+								}	
+								break;
 							}
-						}																					
-						else if(choice == 6205)
-						{
-							puts("\nThe screen displays: Congratulations, you can math, as you hear the door unlock and open behind you.");
-							puts("You never sprinted so fast in your life as you exit the room.");
-							puts("As you are about to exit the room, a portal appears out of no where and you inadvertently run through it...\n"); 
-							// After the correct choice, the player is transported back to the beginning as if nothing happened
-							break;
-						}
-						else
-						{
-							printf("You guessed wrong. Attempt %d failed.", i);
-							break;
+							else
+							{
+								printf("You guessed wrong. Attempt %d failed.", i);
+							//	break;
+							}			
 						}	
-					}			
-					break; // Break statement needed here to avoid infinite loop of room 17 whether correct or wrong	
-				}				
-				break;	
+						break; // Break statement needed here to avoid infinite loop of room 17 whether correct or wrong		
+					}		
+					break;
 			}
 			case 18://MINE: JOSEPH MORENO - ROOM 18			
 			{
