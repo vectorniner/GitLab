@@ -17,7 +17,7 @@
 //Emanuel Fonseca
 //Cameron Jackson
 //Erick Cabanban
-
+//Bradford Mcdaniel
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -32,7 +32,7 @@ int exercise(void);
 void convertToUpper(char *sPtr);
 int rollDice(int *dice);
 void printDice(int *dice, int sum);
-
+void swap (int *x, int  *y );
 
 
 
@@ -1909,8 +1909,10 @@ int main(void)
 			{
 					while(choice != 99)
 					{
-					
-						int choices;
+						char string[1000];
+						FILE *f;
+						int i;
+						int choices,jar1=7,jar2=0,jar3=0;
 						int battlecommands;
 						int bossBattle,attackDamage,bossAttackdamage ,BossDamlower=100 ,BossDamnupper=400; //boss range for damage is higher than the kids defend command will have one save after that only damage reduction will be 25%
 						int demogorgonHP=9999,partyHP=1000;
@@ -1923,7 +1925,7 @@ int main(void)
 
 								{	
 								puts("You encounter a demogorgon, the kids from stranger things appear to help you fight including eleven");
-								puts("battle begins \nmenu press the number to use the command example 1 to fight./n \nfight \ndefend \nitem \nrun");
+								puts("Battle begins \nmenu press the number to use the command example 1 to fight./n \nfight \ndefend \nitem \nrun");
 									scanf("%d",&battlecommands);
 									while(battlecommands!=5&&demogorgonHP>0&&partyHP>0)
 									{
@@ -2003,20 +2005,59 @@ int main(void)
 						}// end of choice 1 if
 						case 2:
 						{
-							puts("you move into room with a lake");
+							
+							puts("You find a room with a large book in the center it ask for you to sign your name please type your name in to gain the rights to room13");
+							f=fopen("book.txt", "w");
+    							puts("Cartman from SouthPark enters the room... Cartman: its you Sir Douchebag I shall write your name in the book of truth");
+    							fprintf(f," By the powers vested in Eric Cartman first of his name, Grand wizard of Kupa Keep room 13 is yours Sir Douchebag");
+    							fclose(f);
 							break;
 						}
 
 
 						case 3:
 						{
-							puts("room fills with water no escape game over");
+								
+							puts("This room has one sign that reads Loud people are rude we will make you talk in a inside voice in this room");
+							puts("you figure out you need to yell to leave this room you scream (type anything in all caps no spaces)");
+							scanf("%s",string);
+							while(string[i])
+							{
+		   						string[i] = tolower(string[i]);
+								i++;
+		    					}
+							printf("Mystic wind blows as your voice lowers and repeats what you said but in a softer tone \n");
+   							printf("%s\n",string);
+	   						puts("Maybe is if I speak in a normal voice it will reverse it!");
+							scanf("%s",string);
+								i=0;
+							while(string[i])
+							{
+		   						string[i] = toupper(string[i]);
+								i++;
+		   					}
+							printf("Your Voice booms and you hear a crash nearby there is now a way out!\n ");
+							printf("%s\n",string);
 							break;
 						}
 						case 4:
 						{
-							puts(" you find the sword of truth");
-							break;
+							puts(" you find a room with three jars and a old man he puts the key to the room in one and begins to swap them, Choose the jar the key is and you can leave ");
+							puts("there are three swaps it seems the key started in jar one farthest to the left type which jar you think its in 1 for the left  for the middle jar 3 for the right jar");
+							swap (&jar1, &jar2);
+							swap (&jar2, &jar3);
+							swap(&jar3, &jar1);
+							scanf("%d",&pick);
+								if(pick==1)
+								{
+									puts("puts you found the key lets get out of here!");
+									return 0;
+								}
+								else
+								{
+									puts("the old man laughs has he reveals a empty jar you hear a low growl you are eaten by a large dargon game over");
+									return 0;
+								}		
 						}
 						default:
 						{
@@ -3548,4 +3589,11 @@ void printDice(int *dice, int sum)
     printf("---------\nTotal: %d\n\n", sum);
 }
 
+void swap (int *x, int *y )
+ {
 
+
+    int temp = *x; 
+    *x = *y;
+    *y = temp;
+}
