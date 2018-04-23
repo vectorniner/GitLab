@@ -10,14 +10,18 @@
 //Maik De Leon Lopez 3/21/18
 //Kevin Ramirez
 //Airrion Young 4/8/18
-//Cesar Gutierrez 4/2/18
+//Cesar Gutierrez 4/18/18
 //Thar Soe
 // Elthon Cisneros 4/6/18
 //Victor De Jesus 4/2/18
 //Emanuel Fonseca
 //Cameron Jackson
 //Erick Cabanban
+
 //Kevin Maatubang
+
+
+//Bradford Mcdaniel
 
 
 #include <stdio.h>
@@ -33,7 +37,7 @@ int exercise(void);
 void convertToUpper(char *sPtr);
 int rollDice(int *dice);
 void printDice(int *dice, int sum);
-
+void swap (int *x, int  *y );
 
 
 
@@ -48,7 +52,7 @@ void writte(void);
 void switcch(void);
 int room12RandomNumber(int lowestNumber, int highestNumber);
 
-
+void readScreen(void);
 
 
 
@@ -56,18 +60,18 @@ int main(void)
 {
 	int x,y,z,i,h,g,k,choice=0;
 	char name[256];
-
+    system("clear");
 	printf("Please enter your name: "); //Input any number of array inputs
 	scanf("%s",name);
-
+    system("clear");
 	printf("Hello %s welcome to the rpgGame!\n",name);
-	
+    
 	while(choice != 99)
 	{
-		puts("You find yourself in a dark room and you are not sure how you got here.");
-        	puts("As you look around you see the room has 25 doors, each labeled with a number. You are not sure how such a small room can have 25 doors, sooo magic...");
-        	puts("The room starts filling with water and you must choose a door to open or you will likely drown. you may quit anytime by selecting option 99");
-        	puts("What door do you choose?");
+		puts("\nYou find yourself in a dark room and you are not sure how you got here.");
+        	puts("\nAs you look around you see the room has 25 doors, each labeled with a number. You are not sure how such a small room can have 25 doors, sooo magic...");
+        	puts("\nThe room starts filling with water and you must choose a door to open or you will likely drown. you may quit anytime by selecting option 99");
+        	puts("\nWhat door do you choose?");
         	scanf("%d",&choice);
 		
 		switch(choice)
@@ -617,6 +621,8 @@ int main(void)
 					while(choice != 99)
 					{
 							int select;
+							FILE *optr;
+							optr = fopen("Note(room 6).txt", "w+");
 							puts("You enter the room and close the door to prevent the water from flowing in. Looking around you find a well at the center with no rope, sealed crates at the corner of the room, a locked door at the other side, a crack in the wall, and a pile of clothes next to the well. What would you like to investigate?\n1. The well\n2. The crates\n3. The door\n4. The crack\n5. The clothes");
 							scanf("%d",&select);
 							while(select != 5) {		
@@ -626,7 +632,8 @@ int main(void)
 										scanf("%d",&select);
 										break;
 									case 2:
-										puts("The crates are shut tight and is impossible to open without a specific tool.\nWhere else would you like to investigate?");	scanf("%d",&select);
+										puts("The crates are shut tight and is impossible to open without a specific tool.\nWhere else would you like to investigate?");
+										scanf("%d",&select);
 										break;
 									case 3: 
 										puts("The door will not yield by brute force, you require a key to move forward.\nWhere else would you like to investigate?");
@@ -643,7 +650,7 @@ int main(void)
 								}
 							}
 											
-							puts("You find a small chisel and hammer within the clothes. Perhaps this person was a carpenter. You decided to take them.");
+							puts("You find a small chisel and hammer within the clothes along with a piece of paper. Examining the clothes a bit closer you notice that the clothes is mishhapened for a human...\n");
 							puts("With your newly acquired hammer and chisel, you think of some ideas on how to use the hammer and chisel. What would you like to use the hammer and chisel on?\n1. The well\n2. The crates\n3. The door\n4. The crack");
 							scanf("%d",&select);
 							while(select != 4) {
@@ -660,7 +667,7 @@ int main(void)
 										scanf("%d",&select);
 										break;
 									case 5:
-										puts("Despite not listing the clothes as an option, you decided to be a rebel and use the hammer and chisel on the pile of clothes anyway. You somehow tear the clothes using the hammer and chisel and found a key embedded into the clothes. You use the key on the locked door and discovered it worked! You escaped!");
+										puts("Somehow, you decided against the obvious and decide to use the hammer and chisel on the clothes. While you tear through the clothes you find a magical glowing key. You use the key on the door and suddenly, you find yourself in a room filled with treasure! You leave the dungeon with chests full of riches! You found the true ending!");
 										exit(EXIT_SUCCESS);
 									default:
 										puts("That is not a valid choice, please pick a number from 1 to 5");
@@ -753,7 +760,9 @@ int main(void)
 										break;
 								}
 							}
-							puts("You decided to use the rope and managed to sling the rope around the bucket somehow. You tug it towards you until you retrieved the bucket. Once retrieved, you tie the rope around the bucket's handle and lower it into the well. Steadily and nimbly, you scoop the shiny object into the bucket and pull it upwards. The object was a key! You used the key on the door and escaped! You win!");
+							puts("You decided to use the rope and managed to sling the rope around the bucket somehow. You tug it towards you until you retrieved the bucket. Once retrieved, you tie the rope around the bucket's handle and lower it into the well. Steadily and nimbly, you scoop the shiny object into the bucket and pull it upwards. The object was a key! You used the key on the door and escaped!\n\nSuddenly, you noticed the piece of paper from earlier suddenly wet with black ink, maybe you should check it out?");
+							fputs("Dlj 313,\nTstyrd slgp mpnzxp otcp ty xj acpotnlxpye, pgpcj olj te qppwd ld tq estd ofyrpzy pialyod hteszfe wtxted. Egpcj etxp I qppw ld tq I'x nwzdpc ez hsle I yppo, lyo pgpcj etxp I zapy esp ozzc ez yzestyr. Iy estd dtxawp czzx I opntop ez deza, te'd etxp ez elvp xj cpde. Iq lyjzyp cplod estd eplc esczfrs xj nwzespd fdtyr xj slxxpc lyo nstdpw, I qldszypo l vpj qczx xlrtn esle htww spwa jzf zy jzfc hlj.\nKey: 11", optr);
+							fclose(optr);
 							exit(EXIT_SUCCESS);
 					}
 					break;
@@ -1043,74 +1052,122 @@ int main(void)
 			}
 			case 11:
 			{
-					while(choice != 99)
-					{
-							int boxNum=0;
-							int randNum=0;
-							char aString[256];
-							FILE *writePage;
-
-							puts("You open the door and find a damp room, mostly empty, three boxes lay on the floor");
-							puts("You feel the urge to look through them");
-							puts("How many would you like to look through?");
-							scanf("%d",&choice);
-							srand(time(NULL));
-							if(choice>3||choice==0)
-							{
-								puts("Why? just leave");
-							}
-							else
-							{
-								for(i=0;i<choice;i++)
-								{
-									printf("Which box would you like to look in?\n");
-									scanf("%d",&boxNum);
-									switch(boxNum)
+						while(choice != 99)
+						{
+									int boxNum=0;
+									int randNum=0;
+									int numBoxes=0;
+									int opt1=0;
+									int opt2=0;
+									int opt3=0;
+									int *aPtr;
+									char aString[256];
+									char aLetter;
+									FILE *writePage;
+									aPtr=&randNum;
+									printf("You open the door of Room #%d and find a damp room, mostly empty, three boxes lay on the floor\n",choice);
+									puts("The floor feels wet, it seems water is entering the room");
+									puts("You feel the urge to look through the boxes, something in there might help the situation");
+									puts("How many would you like to look through?");
+									scanf("%d",&numBoxes);	
+									srand(time(NULL));
+									if(numBoxes>3)
 									{
-										case 1:
-											if(isalpha(aString[0]))
-											{
-												aString[0]=tolower(aString[0]);
-												if(isalpha(aString[1]))
-												{
-													aString[1]=tolower(aString[1]);
-													if(isalpha(aString[2]))
-													{
-														aString[2]=tolower(aString[2]);
-													}
-												}
-											}
-											if(aString[0]=='y' && aString [1]=='e' && aString[2]=='s')
-											{
-												randNum=(rand()%5)+1;
-												printf("You rolled a %d, that's it\n",randNum);
-											}
-											break;
-										case 2:
-											printf("Under the box you find a pencil and a small page\n");
-												writePage=fopen("page.txt","w");
-												printf("What would you like to write in it?\nKEEP IT SHORT!\n");
-												scanf("%s",aString);
-												fputs(aString,writePage);
-
-											break;
-										case 3:
-											printf("Box #%d was empty\n",boxNum);
-											break;
-										default:
-											break;
+										printf("You don't have the time to search through %d boxes\n",numBoxes);
+										puts("I'll give you a second chance");
+										puts("How many boxes would you like to look through?");
+										scanf("%d",&numBoxes);
 									}
-								}
-								if(choice==3)
-								{
-									puts("You just wasted your time looking through 3 useless boxes");
-								}
-							}
-							break;
-					}
-					break;
-				
-				
+									if(numBoxes==0)
+									{
+										puts("I guess giving up is not so bad");
+										puts("The room floods and you drown.");
+										choice=99;
+									}
+									else
+									{
+										for(i=0;i<numBoxes;i++)
+										{
+											printf("Which box would you like to look in?\n");
+											scanf("%d",&boxNum);
+											switch(boxNum)
+											{
+												case 1:
+													printf("Under Box #%d there is a Die, Would you like to Roll it?\n",boxNum);			
+													printf("Enter \"Yes\" or \"No\"\n");
+													scanf("%s",aString);
+													if(isalpha(aString[0]))		
+													{							
+														aString[0]=tolower(aString[0]);
+														if(isalpha(aString[1]))		
+														{
+															aString[1]=tolower(aString[1]);
+															if(isalpha(aString[2]))
+															{
+																aString[2]=tolower(aString[2]);
+															}	
+														}
+													}
+													if(aString[0]=='y' && aString [1]=='e' && aString[2]=='s')
+													{
+														*aPtr=(rand()%5)+1;
+														printf("You rolled a %d, that's it nothing else\n",randNum);
+													}
+													else if(aString[0]=='n' && aString[1] == 'o')
+													{
+														printf("You place the box on top of the Die\n");
+													}
+													else
+													{
+														printf("Well I guess you leave it alone\n");	
+													}
+													opt1++;
+													break;
+												case 2:
+													printf("Under Box #%d you find a pencil and a small page\n",boxNum);
+													writePage=fopen("page.txt","w");
+													printf("What would you like to write in it?\nKEEP IT SHORT!\nEnter CTRL-D to Stop\n");
+													aLetter=getc(stdin);
+													while((aLetter!=EOF))
+													{
+														if(isprint(aLetter))
+														{
+															fputc(aLetter,writePage);
+														}
+														aLetter=getc(stdin);
+													}
+													fclose(writePage);
+													opt2++;
+													break;
+												case 3:
+													printf("Under Box #%d is an old dusty monitor\n",boxNum);
+													printf("You try to power it on, even though it is not connected to an outlet\n");
+													printf("Surprisingly it turns on, because of magic? or maybe it is powered by AA batteries?\nEither way it works\n");
+													readScreen();
+													opt3++;
+													break;
+												default:
+													break;
+											}
+										}
+										if(numBoxes==3)
+										{
+											puts("You just wasted your time looking through 3 useless boxes");
+											if(opt1==1 && opt2==1 && opt3==1)
+											{
+												puts("But you took the time to look through all 3 of them");
+												puts("A secret door opens, it leads to the outside world, you are free of this place");
+											}
+										}
+										else
+										{
+											puts("The room floods with water, you end up drowning");
+										}
+									}
+									break;	
+						}
+
+						break;
 			}
 			case 12:
 			{
@@ -1857,8 +1914,10 @@ int main(void)
 			{
 					while(choice != 99)
 					{
-					
-						int choices;
+						char string[1000];
+						FILE *f;
+						int i;
+						int choices,jar1=7,jar2=0,jar3=0;
 						int battlecommands;
 						int bossBattle,attackDamage,bossAttackdamage ,BossDamlower=100 ,BossDamnupper=400; //boss range for damage is higher than the kids defend command will have one save after that only damage reduction will be 25%
 						int demogorgonHP=9999,partyHP=1000;
@@ -1871,7 +1930,7 @@ int main(void)
 
 								{	
 								puts("You encounter a demogorgon, the kids from stranger things appear to help you fight including eleven");
-								puts("battle begins \nmenu press the number to use the command example 1 to fight./n \nfight \ndefend \nitem \nrun");
+								puts("Battle begins \nmenu press the number to use the command example 1 to fight./n \nfight \ndefend \nitem \nrun");
 									scanf("%d",&battlecommands);
 									while(battlecommands!=5&&demogorgonHP>0&&partyHP>0)
 									{
@@ -1951,20 +2010,59 @@ int main(void)
 						}// end of choice 1 if
 						case 2:
 						{
-							puts("you move into room with a lake");
+							
+							puts("You find a room with a large book in the center it ask for you to sign your name please type your name in to gain the rights to room13");
+							f=fopen("book.txt", "w");
+    							puts("Cartman from SouthPark enters the room... Cartman: its you Sir Douchebag I shall write your name in the book of truth");
+    							fprintf(f," By the powers vested in Eric Cartman first of his name, Grand wizard of Kupa Keep room 13 is yours Sir Douchebag");
+    							fclose(f);
 							break;
 						}
 
 
 						case 3:
 						{
-							puts("room fills with water no escape game over");
+								
+							puts("This room has one sign that reads Loud people are rude we will make you talk in a inside voice in this room");
+							puts("you figure out you need to yell to leave this room you scream (type anything in all caps no spaces)");
+							scanf("%s",string);
+							while(string[i])
+							{
+		   						string[i] = tolower(string[i]);
+								i++;
+		    					}
+							printf("Mystic wind blows as your voice lowers and repeats what you said but in a softer tone \n");
+   							printf("%s\n",string);
+	   						puts("Maybe is if I speak in a normal voice it will reverse it!");
+							scanf("%s",string);
+								i=0;
+							while(string[i])
+							{
+		   						string[i] = toupper(string[i]);
+								i++;
+		   					}
+							printf("Your Voice booms and you hear a crash nearby there is now a way out!\n ");
+							printf("%s\n",string);
 							break;
 						}
 						case 4:
 						{
-							puts(" you find the sword of truth");
-							break;
+							puts(" you find a room with three jars and a old man he puts the key to the room in one and begins to swap them, Choose the jar the key is and you can leave ");
+							puts("there are three swaps it seems the key started in jar one farthest to the left type which jar you think its in 1 for the left  for the middle jar 3 for the right jar");
+							swap (&jar1, &jar2);
+							swap (&jar2, &jar3);
+							swap(&jar3, &jar1);
+							scanf("%d",&pick);
+								if(pick==1)
+								{
+									puts("puts you found the key lets get out of here!");
+									return 0;
+								}
+								else
+								{
+									puts("the old man laughs has he reveals a empty jar you hear a low growl you are eaten by a large dargon game over");
+									return 0;
+								}		
 						}
 						default:
 						{
@@ -2789,257 +2887,282 @@ int main(void)
 					break;
 			}
 			case 20:
-			{
-                srand(time(NULL));
-                int password = 20;
-                int health = 100;
-                int defense = 0;
-                int money = 0;
-                int bonusMoney = 0;
-                int enemyHitMax = 2;
-                int enemyHit = (rand()%(enemyHit-1));
-                int myHit = 3;
-                system("clear");
-                printf("The door labeled Room 20 is locked you must enter the 2 digit password: \n");
-                scanf("%d", &choice);
-                
-                if(choice == password)
-                {
-                    system("clear");
-                    printf("You enter the door labled Room 20\n");
-                    printf("Current Status - Health: %d \t Defense: %d \t Money: %d\n\n\n\n", health,defense,money);
-                }
-                else
-                {
-                    system("clear");
-                    printf("You are locked out\n\n");
-                    if(password > choice)
-                    {
-                        printf("You guessed a lower number than the password\n\n");
-                    }
-                    else if(password < choice)
-                    {
-                        printf("You guessed a greater number than the password\n\n");
-                    }
-                    break;
-                }
-                system("clear");
-                printf("You have guessed right the door opens and you walk into never ending hallways full of enemys\n");
-                printf("You have encountered a sewer rat\n");
-                printf("\nYou enter the battle with your hands\n");
-                
-                puts("You have three choices:");
-                puts("1. Fight.");
-                puts("2. Run.");
-                puts("3. Insult its mother.");
-                scanf("%d",&choice);
-                int ratH = (rand()%(3-1))+1;
-                int attack;
-                switch(choice){
-                    case 1:
-                        system("clear");
-                        printf("You have entered the battle:");
-                        while(ratH > 0)
                         {
-                            printf("\n1.Punch \n2.Kick");
-                            scanf("%d",&choice);
-                            printf("Rat health: %d", ratH);
-                            if(choice == 1)
+                            srand(time(NULL));
+                            int password = 20  ;
+                            int health = 100;
+                            int defense = 1;
+                            int money = 0;
+                            int bonusMoney = 0;
+                            int enemyHitMax = 2;
+                            int myHitMax = 3;
+                            
+                            system("clear");
+                            printf("The door labeled Room 20 is locked you must enter the 2 digit password: \n");
+                            scanf("%d", &choice);
+                            
+                            if(choice == password)
                             {
-                                attack =(rand()%(2-1))+1;
-                                printf("\n%d\n",attack);
-                                ratH = ratH-attack;
-                                health -= 1;
+                                system("clear");
+                                printf("You enter the door labled Room 20\n");
+                                printf("Current Status - Health: %d \t Defense: %d \t Money: %d\n\n\n\n", health,defense,money);
                             }
-                            else if(choice == 2)
+                            else
                             {
-                                attack = (rand()%(3-1)+1);
-                                printf("\n%d\n",attack);
-                                ratH = ratH-attack;
-                                health -= 1;
-                            }
-                        }
-                        printf("The rat is dead\n");
-                        money += 10;
-                        printf("Current Status - Health: %d \t Defense: %d \t Money: %d\n\n\n\n", health,defense,money);
-                        break;
-                        
-                    case 2:
-                        system("clear");
-                        printf("You have ran away\n\n");
-                        break;
-                        
-                    case 3:
-                        system("clear");
-                        printf("The rat has ran away...\n\n\n");
-                        printf("...(Ground Rumbles)...\n\n\n");
-                        printf("It turnes out the rat ran away to tell its mutant mother\n");
-                        printf("The glowing green mother rat towers over you blocking the sun\n");
-                        printf("You have entered the battle:");
-                        ratH = 99999;
-                        while(ratH > 0)
-                        {
-                            puts("\n1.Punch \n2.Kick");
-                            scanf("%d",&choice);
-                            printf("Rat health: %d", ratH);
-                            if(health<=0)
-                            {
-                                printf("\n\nYou died\n");
+                                system("clear");
+                                printf("You are locked out\n\n");
+                                if(password > choice)
+                                {
+                                    printf("You guessed a lower number than the password\n\n\n");
+                                }
+                                else if(password < choice)
+                                {
+                                    printf("You guessed a greater number than the password\n\n\n");
+                                }
                                 break;
                             }
-                            if(choice == 1)
-                            {
-                                attack =(rand()%(2-1))+1;
-                                printf("\n%d\n",attack);
-                                ratH = ratH-attack;
-                                health -= 99999;
-                            }
-                            else if(choice == 2)
-                            {
-                                attack = (rand()%(3-1)+1);
-                                printf("\n%d\n",attack);
-                                ratH = ratH-attack;
-                                health -= 99999;
-                            }
-                        }
-                        system("clear");
-                        break;
-                }
-                FILE *fp;
-                char filename[100];
-                char ch;
-                int linecount, wordcount, charcount;
-                printf("If you would like to open a file for a chance to get bonus gold press 1 else press 2 to continue\n");
-                scanf("%d",&choice);
-                
-                switch(choice){
-                    case 1:
-                        charcount = 0;
-                        system("clear");
-                        printf("Enter a filename :");
-                        scanf("%s",filename);
-                        system("clear");
-                        
-                        fp = fopen(filename,"r");
-                        
-                        if ( fp )
-                        {
-                            while ((ch=getc(fp)) != EOF) {
-                                if (ch != ' ' && ch != '\n') { ++charcount; }
-                            }
-                            if(charcount >= 100)
-                            {
-                                bonusMoney = 10;
-                                printf("You have earned %d gold\n", bonusMoney);
-                                money += bonusMoney;
-                            }
-                            else if(charcount >= 50 && charcount < 100)
-                            {
-                                bonusMoney = 5;
-                                printf("You have earned %d gold\n", bonusMoney);
-                                money += bonusMoney;
-                            }
-                            else if(charcount >= 10 && charcount < 50)
-                            {
-                                bonusMoney = 10;
-                                printf("You have earned %d gold\n", bonusMoney);
-                                money += bonusMoney;
-                            }
-                            else if(charcount < 10)
-                            {
-                                printf("You earn nothing loser\n");
-                            }
-                            
-                        }
-                        else
-                        {
-                            printf("Failed to open the file\n");
-                        }
-                        break;
-                    case 2:
-                        system("clear");
-                        printf("You say 'No thank You'\n");
-                        break;
-                }
-                while(choice != 99)
-                {
-                    if(money >= 100)
-                    {
-                        system("clear");
-                        printf("You have earned enough money to exit\n\n");
-                        break;
-                    }
-                    if(health <= 0)
-                    {
-                        system("clear");
-                        printf("You have died\n\n");
-                        break;
-                    }
-                    int enemyHealth = (rand()%(enemyHitMax-1)+1);
-                    int attack = (rand()%(enemyHitMax-1)+1);
-                    printf("Current Status - Health: %d \t Defense: %d \t Money: %d\n\n\n\n", health,defense,money);
-                    printf("You have encountered an enemy\n");
-                    
-                    puts("You have three choices:");
-                    puts("1. Fight.");
-                    puts("2. Run. (-2 gold)");
-                    puts("3. Store.");
-                    puts("4. Exit");
-                    scanf("%d",&choice);
-                    
-                    switch(choice){
-                        case 1:
                             system("clear");
-                            printf("You have entered the battle:");
+                            printf("You have guessed right \nThe door opens and you walk into never ending hallways full of enemys\n");
+                            printf("You have encountered a sewer rat\n");
+                            printf("\nYou enter the battle with your hands\n");
                             
-                            while(enemyHealth > 0)
+                            puts("You have three choices:");
+                            puts("1. Fight.");
+                            puts("2. Run.");
+                            puts("3. Insult its mother.");
+                            scanf("%d",&choice);
+                            int ratH = (rand()%(3-1))+1;
+                            int attack;
+                            switch(choice){
+                                case 1:
+                                    system("clear");
+                                    printf("You have entered the battle:");
+                                    while(ratH > 0)
+                                    {
+                                        printf("\n1.Punch \n2.Kick");
+                                        scanf("%d",&choice);
+                                        printf("Rat health: %d", ratH);
+                                        if(choice == 1)
+                                        {
+                                            attack =(rand()%(2-1))+1;
+                                            printf("\n%d\n",attack);
+                                            ratH = ratH-attack;
+                                            health -= 1;
+                                        }
+                                        else if(choice == 2)
+                                        {
+                                            attack = (rand()%(3-1)+1);
+                                            printf("\n%d\n",attack);
+                                            ratH = ratH-attack;
+                                            health -= 1;
+                                        }
+                                    }
+                                    printf("The rat is dead\n");
+                                    money += 10;
+                                    printf("Current Status - Health: %d \t Defense: %d \t Money: %d\n\n\n\n", health,defense,money);
+                                    break;
+                                    
+                                case 2:
+                                    system("clear");
+                                    printf("You have ran away\n\n");
+                                    break;
+                                    
+                                case 3:
+                                    system("clear");
+                                    printf("The rat has ran away...\n\n\n");
+                                    printf("...(Ground Rumbles)...\n\n\n");
+                                    printf("It turnes out the rat ran away to tell its mutant mother\n");
+                                    printf("The glowing green mother rat towers over you blocking the sun\n");
+                                    printf("You have entered the battle:");
+                                    ratH = 99999;
+                                    while(ratH > 0)
+                                    {
+                                        puts("\n1.Punch \n2.Kick");
+                                        scanf("%d",&choice);
+                                        printf("Rat health: %d", ratH);
+                                        if(health<=0)
+                                        {
+                                            printf("\n\nYou died\n");
+                                            break;
+                                        }
+                                        if(choice == 1)
+                                        {
+                                            attack =(rand()%(2-1))+1;
+                                            printf("\n%d\n",attack);
+                                            ratH = ratH-attack;
+                                            health -= 99999;
+                                        }
+                                        else if(choice == 2)
+                                        {
+                                            attack = (rand()%(3-1)+1);
+                                            printf("\n%d\n",attack);
+                                            ratH = ratH-attack;
+                                            health -= 99999;
+                                        }
+                                    }
+                                    system("clear");
+                                    
+                                    break;
+                            }
+                            FILE *fp;
+                            char filename[100];
+                            char ch;
+                            int linecount, wordcount, charcount;
+                            int loop = 0;
+                            while(choice != 99)
                             {
-                                printf("\n1.Punch \n2.Kick");
+                                if(money >= 100)
+                                {
+                                    system("clear");
+                                    printf("You have earned enough money to exit\n\n");
+                                    break;
+                                }
+                                if(health <= 0)
+                                {
+                                    system("clear");
+                                    printf("You have died\n\n");
+                                    break;
+                                }
+                                while(loop != 1)    //Allows only one file to be opened
+                                {
+                                    printf("If you would like to open a file for a chance to get bonus gold: \nPress 1 \nElse press 2 to continue\n");
+                                    scanf("%d",&choice);
+                                    
+                                    switch(choice){
+                                        case 1:
+                                            charcount = 0;
+                                            system("clear");
+                                            printf("Enter a filename :");
+                                            scanf("%s",filename);
+                                            system("clear");
+                                            
+                                            fp = fopen(filename,"r");
+                                            
+                                            if ( fp )
+                                            {
+                                                while ((ch=getc(fp)) != EOF) {
+                                                    if (ch != ' ' && ch != '\n') { ++charcount; }
+                                                }
+                                                if(charcount >= 100)
+                                                {
+                                                    bonusMoney = 10;
+                                                    printf("You have earned %d gold\n", bonusMoney);
+                                                    money += bonusMoney;
+                                                }
+                                                else if(charcount >= 50 && charcount < 100)
+                                                {
+                                                    bonusMoney = 5;
+                                                    printf("You have earned %d gold\n", bonusMoney);
+                                                    money += bonusMoney;
+                                                }
+                                                else if(charcount >= 10 && charcount < 50)
+                                                {
+                                                    bonusMoney = 10;
+                                                    printf("You have earned %d gold\n", bonusMoney);
+                                                    money += bonusMoney;
+                                                }
+                                                else if(charcount < 10)
+                                                {
+                                                    printf("You earn nothing loser\n");
+                                                }
+                                                
+                                            }
+                                            else
+                                            {
+                                                printf("Failed to open the file\n");
+                                            }
+                                            break;
+                                        case 2:
+                                            system("clear");
+                                            printf("You say 'No thank You'\n");
+                                            break;
+                                    }
+                                    loop++;
+                                }
+                                int enemyHit = (rand()%(enemyHitMax-0));
+                                int myHit = (rand()%(myHitMax-0));
+                                int enemyHealth = (rand()%(enemyHitMax-1)+1);
+                                int attack = (rand()%(enemyHitMax-1)+1);
+                                printf("Current Status - Health: %d \t Defense: %d \t Money: %d\n\n\n\n", health,defense,money);
+                                printf("You have encountered an enemy\n");
+                                
+                                puts("You have three choices:");
+                                puts("1. Fight.");
+                                puts("2. Run. (-2 gold)");
+                                puts("3. Store.");
+                                puts("4. Exit");
                                 scanf("%d",&choice);
-                                if(choice == 1)
-                                {
-                                    
-                                    attack =(rand()%(myHit-1))+1;
-                                    printf("\n%d\n",attack);
-                                    enemyHealth -= attack;
-                                    health -= 2;
+                                
+                                switch(choice){
+                                    case 1:
+                                        system("clear");
+                                        printf("You have entered the battle:");
+                                        
+                                        while(enemyHealth > 0)
+                                        {
+                                            printf("\n1.Punch \n2.Kick");
+                                            scanf("%d",&choice);
+                                            if(choice == 1)
+                                            {
+                                                printf("\n%d\n",myHit);
+                                                enemyHealth -= myHit;
+                                                health -= enemyHit;
+                                            }
+                                            else if(choice == 2)
+                                            {
+                                                printf("\n%d\n",attack);
+                                                enemyHealth -= attack+2;
+                                                health -= enemyHit;
+                                            }
+                                        }
+                                        
+                                        money += 5;
+                                        myHitMax += 1;
+                                        enemyHitMax += 1;
+                                        system("clear");
+                                        printf("The enemy is dead\n");
+                                        break;
+                                        
+                                    case 2:
+                                        system("clear");
+                                        printf("You have ran away\n\n");
+                                        money -= 2;
+                                        break;
+                                        
+                                    case 3:
+                                        system("clear");
+                                        
+                                        printf("Shop is under construction\n\nArmor coming soon\n\n");
+                                        
+                                        printf("1.Buy Potion for 5\n2.Exit\n\n");
+                                        scanf("%d",&choice);
+                                        
+                                        switch(choice)
+                                    {
+                                        case 1:
+                                            if(money<=0)
+                                            {
+                                                system("clear");
+                                                printf("You have no money to shop\n\n");
+                                                break;
+                                            }
+                                            system("clear");
+                                            money -= 5;
+                                            health += 10;
+                                            break;
+                                        case 2:
+                                            system("clear");
+                                            break;
+                                    }
+                                        break;
+                                    case 4:
+                                        health = 0;
                                 }
-                                else if(choice == 2)
-                                {
-                                    
-                                    attack = (rand()%(myHit-1)+1);
-                                    printf("\n%d\n",attack);
-                                    enemyHealth -= attack;
-                                    health -= 2;
-                                }
+                                
+                                
                             }
-                            
-                            money += 5;
-                            myHit += 2;
-                            enemyHitMax += 2;
-                            system("clear");
-                            printf("The enemy is dead\n");
                             break;
-                            
-                        case 2:
-                            system("clear");
-                            printf("You have ran away\n\n");
-                            money -= 2;
-                            break;
-                            
-                        case 3:
-                            system("clear");
-                            printf("Shop is under construction\n\nPotions and Armor coming soon\n\n");
-                            
-                            break;
-                        case 4:
-                            health = 0;
-                    }
-                    
-                    
-                }
-                break;
-			}
+                        }
 			case 21:
 			{
 					
@@ -3565,4 +3688,11 @@ void printDice(int *dice, int sum)
     printf("---------\nTotal: %d\n\n", sum);
 }
 
+void swap (int *x, int *y )
+ {
 
+
+    int temp = *x; 
+    *x = *y;
+    *y = temp;
+}
