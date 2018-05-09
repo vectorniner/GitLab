@@ -356,7 +356,7 @@ int main(void)
                 break;
             }// ***END*** ELTHON CISNEROS' ROOM
                 
-            case 4:
+            case 4: // Emanuel Fonseca
             {
                 while(choice != 99)
                 {
@@ -369,7 +369,7 @@ int main(void)
                         puts("welcome to room 4!");
                         puts("before we get to the games lets write out a letter in case you dont make it!");
                         
-                        wptr= fopen("Letter.txt", "at");
+                        wptr= fopen("Letter.txt", "a");
                         
                         puts("enter your age");
                         scanf(" %d", &age);
