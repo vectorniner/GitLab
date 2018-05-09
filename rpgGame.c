@@ -631,7 +631,6 @@ void main(void)
 							puts("4. Open the door #4");
 							puts("5. Open the door #5");
 							scanf("%d",&select);
-							
 							switch(select)
 							{
 								case 1:
@@ -654,8 +653,8 @@ void main(void)
 
                                                			case 4:
                                                 		puts("Well done, the door you enter leads you to the road to your next challenge and your jouney continues");
-			                              		break;
-
+							        break;
+ 
                                                			case 5:
                                                 		puts("AH!!!! The door you open released a prisoner and trapped you into his cell as a scapegoat so the prisoner can escape. You are unable to break the door and trapped in the room forever!");
 								puts("GAME OVER!");
@@ -663,17 +662,17 @@ void main(void)
                                                 		break;
 
                                                			default:
-                                                		puts("Error!!! You entered an invalid number and crush the game! Restart Room 8 and type any number between 1 and 5!");
-								exit(EXIT_SUCCESS);
+                                                		puts("Error!!! You entered an invalid number type any number between 1 and 5!");
+								scanf("%d",&select);
 								break;
-                                                	}
-						
+                                                		
+							}
+							int select2;
 							puts("However, the secured door takes you into another room with five more doors in front of you.");
 							puts("Same as before but you have to be more cautious and pick a door to open that will help you escape.");
 							puts("Choose a door to open but choose wisely(#1-5).");
-							scanf("%d",&select);
-							
-							switch(select)
+							scanf("%d",&select2);
+							switch(select2)
 							{
 								case 1:
 								puts("NO STOP! You open the door and make one step without watching your step and fell into a waterfall.");	
@@ -689,7 +688,7 @@ void main(void)
 							
 							        case 3:
 								puts("Yes! The door leads to you to a safe passage out of the room but you are not out of the dungeon yet.");
-								choice = 99;
+								select2 = 99;
 								break;
 							
 								case 4:
@@ -699,17 +698,18 @@ void main(void)
 								break;
 
 								case 5:
+							        puts("AH! The door triggered a trap causing a large hammer-like trap to swing right at your chest and push you back at the wall knocking you unconscious.");
 								puts("GAME OVER!");
 								exit(EXIT_SUCCESS);
-								break;
+                        			   		break;
 							
 								default:					
-								puts("Error!!! You entered an invalid number and crush the game! Restrat Room 8 and type any number between 1 and 5!");
-								exit(EXIT_SUCCESS);
+								puts("Error!!! You entered an invalid number type any number between 1 and 5!");
+								scanf("%d",&select2);
 								break;							
-								
+									
 							}
-							int select2;
+							int select3;
 							puts("After leaving the dungeon cell, you reach to the bridge the leads you to the gates that blocks road to your freedom.");
 							puts("However, a powerful knight wielding a large axe appeared and closed the gates preventing you from escaping.");
 							puts("You tried to convince him that you have important mission to do but the knight refused to listen.");
@@ -717,8 +717,8 @@ void main(void)
 							puts("The knight draws his first move by swing his axe at you. What is your first defense?");
 							puts("1. Block the attack with your sword.");
 							puts("2. Dodge roll");
-							scanf("%d", &select2);
-                                                       	if(select2 == 1)
+							scanf("%d", &select3);
+                                                       	if(select3 == 1)
 							{
 								puts("OH NO! You tried to block the knight's powerful slash attack with your sword but it slice through your sword.");
 								puts("You are now hopeless as the knight is about to slice your head off.");
@@ -726,15 +726,15 @@ void main(void)
 								exit(EXIT_SUCCESS);
 								break;
 							}
-							else if(select2 == 2)
+							else if(select3 == 2)
 							{	
 								puts("You roll through the knight's slash attack leaving him wide open."); 
 								puts("You now have the opportunity to strike back against the knight");
                                                         	puts("What is your next move?");
                                                         	puts("1. Strike the Knight's axe with a slash attack from your sword.");
                                                         	puts("2. Charge at the Knight with a powerful thrust attack.");
-                                                        	scanf("%d", &select2);
-                                                        		if(select2 == 1)
+                                                        	scanf("%d", &select3);
+                                                        		if(select3 == 1)
                                                         		{
                                                                 	puts("You strike at the Knight's axe with your sword and push the knight close the bridge.");
 									puts("The Knight broke free and pushed you back and almost pushed off the bridge.");
@@ -743,16 +743,16 @@ void main(void)
 									puts("What will you do?");
 									puts("1. Roll around and dodge");
 									puts("2. Grab your sword and make a thrust attack at the knight.");
-									scanf("%d", &select2);
-										if(select2 == 1)
+									scanf("%d", &select3);
+										if(select3 == 1)
 										{
 										puts("You dodge roll around the knight and the knight almost fell off the bridge leaving him exposed.");
 										puts("THe knight is defenseless allowing you to finish him off.");
 										puts("Was is your final descision.");
 										puts("1. Charge the knight with a powerful thrust attack.");
 										puts("2. Throw your sword at the knight.");
-										scanf("%d", &select2);
-											if(select2 == 1)
+										scanf("%d", &select3);
+											if(select3 == 1)
 											{
 											puts("You charged at the knight and impale the knight.");
 											puts("However the knight grabbed you and you and the knight fall off the bridge together ending your battle."); 
@@ -760,7 +760,7 @@ void main(void)
 											exit(EXIT_SUCCESS);
 											break;	
 											}
-											else if (select2 = 2)
+											else if (select3 = 2)
 											{
 											puts("You throw your sword at the knight incapcitatinghim.");
 											puts("The injury caused the knight to lost his footingand fell off the bridge.");
@@ -786,7 +786,7 @@ void main(void)
 										puts("That is an invalid choice! Please input 1 or 2.");
 										}
 									}
-								else if(select2 = 2)
+								else if(select3 = 1)
 								{
 								puts("NO DON'T! You recklessly charge at the knight and gave him the upperhand by mananging to grab his axe and did a powerful swing.");
 								puts("Knight's slash attack disarms your sword and your are unarmed and powerless to overcome the knight's might.");
