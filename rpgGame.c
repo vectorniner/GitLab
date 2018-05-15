@@ -762,7 +762,8 @@ int main(void)
                     }
                     puts("You decided to use the rope and managed to sling the rope around the bucket somehow. You tug it towards you until you retrieved the bucket. Once retrieved, you tie the rope around the bucket's handle and lower it into the well. Steadily and nimbly, you scoop the shiny object into the bucket and pull it upwards. The object was a key! You used the key on the door and escaped!\n\nSuddenly, you noticed the piece of paper from earlier suddenly wet with black ink, maybe you should check it out?");
                     fputs("Dlj 313,\nTstyrd slgp mpnzxp otcp ty xj acpotnlxpye, pgpcj olj te qppwd ld tq estd ofyrpzy pialyod hteszfe wtxted. Egpcj etxp I qppw ld tq I'x nwzdpc ez hsle I yppo, lyo pgpcj etxp I zapy esp ozzc ez yzestyr. Iy estd dtxawp czzx I opntop ez deza, te'd etxp ez elvp xj cpde. Iq lyjzyp cplod estd eplc esczfrs xj nwzespd fdtyr xj slxxpc lyo nstdpw, I qldszypo l vpj qczx xlrtn esle htww spwa jzf zy jzfc hlj.\nKey: 11", optr);
-                    exit(EXIT_SUCCESS);
+                fclose(optr);    
+		exit(EXIT_SUCCESS);
                 }
                 break;
             }
